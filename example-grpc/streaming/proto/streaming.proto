@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package streaming;
+
+option go_package = "github.com/cshep4/proto-repository/example-grpc/streaming/proto";
+
+service StreamingService {
+  rpc ServerStream(ServerStreamRequest) returns (stream ServerStreamResponse);
+  rpc ClientStream(stream ClientStreamRequest) returns (ClientStreamResponse);
+  rpc BiDirectionalStream(stream BiDirectionalStreamRequest) returns (stream BiDirectionalStreamResponse);
+}
+
+message ServerStreamRequest {
+  string message = 1;
+}
+
+message ServerStreamResponse {
+  string message = 1;
+}
+
+message ClientStreamRequest {
+  string name = 1;
+}
+
+message ClientStreamResponse {
+  repeated string received_messages = 1;
+}
+
+message BiDirectionalStreamRequest {
+  string name = 1;
+}
+
+message BiDirectionalStreamResponse {
+  string message = 1;
+}
