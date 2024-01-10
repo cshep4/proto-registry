@@ -1,0 +1,37 @@
+version: v1
+managed:
+  enabled: true
+plugins:
+  # go
+  - plugin: buf.build/grpc/go:v1.3.0
+    out: gen/go
+    opt:
+      - paths=source_relative
+      - require_unimplemented_servers=false
+  - plugin: buf.build/bufbuild/validate-go:v1.0.2
+    out: gen/go
+    opt:
+      - paths=source_relative
+  - plugin: buf.build/protocolbuffers/go
+    out: gen/go
+    opt: paths=source_relative
+  # java
+  - plugin: buf.build/grpc/java:v1.55.1
+    out: gen/java/src/main/java
+  - plugin: buf.build/protocolbuffers/java
+    out: gen/java/src/main/java
+  # node
+  - plugin: buf.build/community/stephenh-ts-proto:v1.166.2
+    out: gen/nodejs
+    opt:
+      - esModuleInterop=true
+  # php
+  - plugin: buf.build/grpc/php:v1.60.0
+    out: gen/php
+  - plugin: buf.build/protocolbuffers/php:v25.1
+    out: gen/php
+  # python
+  - plugin: buf.build/grpc/python:v1.60.0
+    out: gen/python
+  - plugin: buf.build/protocolbuffers/python
+    out: gen/python

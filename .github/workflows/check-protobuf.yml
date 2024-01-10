@@ -1,0 +1,30 @@
+name: Check Protobuf
+
+on:
+  push:
+    paths:
+      - 'protobuf/**'
+      - '.github/workflows/check-protobuf.yml'
+
+jobs:
+  check-protobuf:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Buf
+        uses: bufbuild/buf-setup-action@v1
+        with:
+          github_token: ${{ github.token }}
+
+      - name: Lint Protobuf
+        uses: bufbuild/buf-lint-action@v1
+        with:
+          input: protobuf
+
+      - name: Check Breaking Changes
+        uses: bufbuild/buf-breaking-action@v1
+        with:
+          input: protobuf
+          against: 'https://github.com/cshep4/proto-repository.git#branch=main,subdir=protobuf'
