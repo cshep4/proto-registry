@@ -9,6 +9,7 @@ import (
 	"golang.org/x/sync/errgroup"
 	"google.golang.org/grpc"
 
+	"github.com/cshep4/proto-repository/example-grpc/streaming/internal/stream"
 	"github.com/cshep4/proto-repository/example-grpc/streaming/proto"
 )
 
@@ -17,9 +18,9 @@ func main() {
 
 	gs := grpc.NewServer()
 
-	helloService := &stream.Service{}
+	streamingService := &stream.Service{}
 
-	proto.RegisterHelloServiceServer(gs, helloService)
+	proto.RegisterStreamingServiceServer(gs, streamingService)
 
 	lis, err := net.Listen("tcp", ":50051")
 	if err != nil {

@@ -2,9 +2,8 @@ package main
 
 import (
 	"context"
-	"log/slog"
+	"log"
 	"net"
-	"os"
 
 	"golang.org/x/sync/errgroup"
 	"google.golang.org/grpc"
@@ -24,19 +23,17 @@ func main() {
 
 	lis, err := net.Listen("tcp", ":50051")
 	if err != nil {
-		slog.Error("failed to listen", slog.String("error", err.Error()))
-		os.Exit(1)
+		log.Fatal(err)
 	}
 
 	eg, ctx := errgroup.WithContext(ctx)
 
 	eg.Go(func() error {
-		slog.Info("starting grpc server", slog.String("address", ":50051"))
+		log.Println("starting grpc server at :50051")
 		return gs.Serve(lis)
 	})
 
 	if err := eg.Wait(); err != nil {
-		slog.Error("error running server", slog.String("error", err.Error()))
-		os.Exit(1)
+		log.Fatal(err)
 	}
 }

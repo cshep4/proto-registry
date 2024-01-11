@@ -6,6 +6,7 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"io"
+	"time"
 )
 
 type Service struct {
@@ -24,6 +25,7 @@ func (s Service) ServerStream(req *proto.ServerStreamRequest, stream proto.Strea
 		if err := stream.Send(res); err != nil {
 			return err
 		}
+		time.Sleep(time.Second)
 	}
 
 	return nil

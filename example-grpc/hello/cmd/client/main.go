@@ -2,8 +2,7 @@ package main
 
 import (
 	"context"
-	"log/slog"
-	"os"
+	"log"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
@@ -16,8 +15,7 @@ func main() {
 
 	conn, err := grpc.Dial("localhost:50051", grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
-		slog.Error("failed to dial", slog.String("error", err.Error()))
-		os.Exit(1)
+		log.Fatal(err)
 	}
 	defer conn.Close()
 
@@ -25,9 +23,8 @@ func main() {
 
 	res, err := client.SayHello(ctx, &proto.SayHelloRequest{Name: "Chris"})
 	if err != nil {
-		slog.Error("failed to say hello", slog.String("error", err.Error()))
-		os.Exit(1)
+		log.Fatal(err)
 	}
 
-	slog.Info(res.Message)
+	log.Printf("Response received: %s", res.Message)
 }
