@@ -45,13 +45,13 @@ func main() {
 }
 
 func clientStreaming(ctx context.Context, client proto.StreamingServiceClient) error {
-	stream, err := client.ClientStream(ctx)
+	stream, err := client.ClientStreaming(ctx)
 	if err != nil {
 		return err
 	}
 
 	for i := 0; i < 5; i++ {
-		req := &proto.ClientStreamRequest{Name: fmt.Sprintf("name %d", i)}
+		req := &proto.ClientStreamingRequest{Name: fmt.Sprintf("name %d", i)}
 		if err := stream.Send(req); err != nil {
 			return err
 		}
@@ -68,7 +68,7 @@ func clientStreaming(ctx context.Context, client proto.StreamingServiceClient) e
 }
 
 func serverStreaming(ctx context.Context, client proto.StreamingServiceClient) error {
-	stream, err := client.ServerStream(ctx, &proto.ServerStreamRequest{Message: "hello world!"})
+	stream, err := client.ServerStreaming(ctx, &proto.ServerStreamingRequest{Message: "hello world!"})
 	if err != nil {
 		return err
 	}
@@ -88,7 +88,7 @@ func serverStreaming(ctx context.Context, client proto.StreamingServiceClient) e
 }
 
 func biDirectionalStreaming(ctx context.Context, client proto.StreamingServiceClient) error {
-	stream, err := client.BiDirectionalStream(ctx)
+	stream, err := client.BiDirectionalStreaming(ctx)
 	if err != nil {
 		return err
 	}
@@ -110,7 +110,7 @@ func biDirectionalStreaming(ctx context.Context, client proto.StreamingServiceCl
 	})
 
 	for i := 0; i < 5; i++ {
-		req := &proto.BiDirectionalStreamRequest{Name: fmt.Sprintf("name %d", i)}
+		req := &proto.BiDirectionalStreamingRequest{Name: fmt.Sprintf("name %d", i)}
 		if err := stream.Send(req); err != nil {
 			return err
 		}

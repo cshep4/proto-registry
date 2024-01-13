@@ -1,8 +1,11 @@
 syntax = "proto3";
 
-package streaming;
+package streaming.v1;
 
-option go_package = "github.com/cshep4/proto-repository/example-grpc/streaming/proto";
+option go_package = "github.com/cshep4/proto-repository/gen/go/streaming/v1";
+option java_multiple_files = true;
+option java_package = "com.cshep4.proto.streaming.v1";
+option php_namespace = "Streaming\\V1";
 
 service StreamingService {
   rpc ServerStreaming(ServerStreamingRequest) returns (stream ServerStreamingResponse);

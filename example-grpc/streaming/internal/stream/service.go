@@ -2,24 +2,26 @@ package stream
 
 import (
 	"fmt"
-	"github.com/cshep4/proto-repository/example-grpc/streaming/proto"
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/status"
 	"io"
 	"time"
+
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
+
+	"github.com/cshep4/proto-repository/example-grpc/streaming/proto"
 )
 
 type Service struct {
 	*proto.UnimplementedStreamingServiceServer
 }
 
-func (s Service) ServerStream(req *proto.ServerStreamRequest, stream proto.StreamingService_ServerStreamServer) error {
+func (s Service) ServerStreaming(req *proto.ServerStreamingRequest, stream proto.StreamingService_ServerStreamingServer) error {
 	if req.GetMessage() == "" {
 		return status.Error(codes.InvalidArgument, "name cannot be empty")
 	}
 
 	for i := 0; i < 5; i++ {
-		res := &proto.ServerStreamResponse{
+		res := &proto.ServerStreamingResponse{
 			Message: fmt.Sprintf("%d) %s", i, req.GetMessage()),
 		}
 		if err := stream.Send(res); err != nil {
@@ -31,12 +33,12 @@ func (s Service) ServerStream(req *proto.ServerStreamRequest, stream proto.Strea
 	return nil
 }
 
-func (s Service) ClientStream(stream proto.StreamingService_ClientStreamServer) error {
+func (s Service) ClientStreaming(stream proto.StreamingService_ClientStreamingServer) error {
 	var receivedMessages []string
 	for {
 		req, err := stream.Recv()
 		if err == io.EOF {
-			return stream.SendAndClose(&proto.ClientStreamResponse{ReceivedMessages: receivedMessages})
+			return stream.SendAndClose(&proto.ClientStreamingResponse{ReceivedMessages: receivedMessages})
 		}
 		if err != nil {
 			return err
@@ -46,7 +48,7 @@ func (s Service) ClientStream(stream proto.StreamingService_ClientStreamServer) 
 	}
 }
 
-func (s Service) BiDirectionalStream(stream proto.StreamingService_BiDirectionalStreamServer) error {
+func (s Service) BiDirectionalStreaming(stream proto.StreamingService_BiDirectionalStreamingServer) error {
 	for {
 		req, err := stream.Recv()
 		if err == io.EOF {
@@ -56,7 +58,7 @@ func (s Service) BiDirectionalStream(stream proto.StreamingService_BiDirectional
 			return err
 		}
 
-		res := &proto.BiDirectionalStreamResponse{
+		res := &proto.BiDirectionalStreamingResponse{
 			Message: fmt.Sprintf("Hello %s!", req.GetName()),
 		}
 		if err := stream.Send(res); err != nil {
