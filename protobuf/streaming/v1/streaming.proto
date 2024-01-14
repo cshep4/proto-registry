@@ -10,31 +10,21 @@ option php_namespace = "Streaming\\V1";
 service StreamingService {
   rpc ServerStreaming(ServerStreamingRequest) returns (stream ServerStreamingResponse);
 
-  rpc ClientStreaming(stream ClientStreamingRequest) returns (ClientStreamingResponse);
-
-  rpc BiDirectionalStreaming(stream BiDirectionalStreamingRequest) returns (stream BiDirectionalStreamingResponse);
+  rpc NewClientStreaming(stream NewClientStreamingRequest) returns (NewClientStreamingResponse);
 }
 
 message ServerStreamingRequest {
-  string message = 1;
+  string message = 2;
 }
 
 message ServerStreamingResponse {
-  string message = 1;
+  string output_message = 1;
 }
 
-message ClientStreamingRequest {
+message NewClientStreamingRequest {
   string name = 1;
 }
 
-message ClientStreamingResponse {
-  repeated string received_messages = 1;
-}
-
-message BiDirectionalStreamingRequest {
-  string name = 1;
-}
-
-message BiDirectionalStreamingResponse {
-  string message = 1;
+message NewClientStreamingResponse {
+  string received_messages = 1;
 }
