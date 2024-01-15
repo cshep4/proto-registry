@@ -3,6 +3,7 @@ module github.com/cshep4/proto-repository/example-grpc/streaming
 go 1.21.1
 
 require (
+	github.com/google/uuid v1.3.1
 	golang.org/x/sync v0.4.0
 	google.golang.org/grpc v1.60.1
 	google.golang.org/protobuf v1.32.0

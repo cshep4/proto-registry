@@ -16,24 +16,25 @@ class Streaming
         }
         $pool->internalAddGeneratedFile(
             '
-Ñ
-streaming/v1/streaming.protostreaming.v1"2
-ServerStreamingRequest
-message (	Rmessage"3
-ServerStreamingResponse
-message (	Rmessage",
-ClientStreamingRequest
-name (	Rname"F
-ClientStreamingResponse+
-received_messages (	RreceivedMessages"3
-BiDirectionalStreamingRequest
-name (	Rname":
-BiDirectionalStreamingResponse
-message (	Rmessage2œ
-StreamingService`
-ServerStreaming$.streaming.v1.ServerStreamingRequest%.streaming.v1.ServerStreamingResponse0`
-ClientStreaming$.streaming.v1.ClientStreamingRequest%.streaming.v1.ClientStreamingResponse(w
-BiDirectionalStreaming+.streaming.v1.BiDirectionalStreamingRequest,.streaming.v1.BiDirectionalStreamingResponse(0B´
+Î
+streaming/v1/streaming.protostreaming.v1")
+DownloadFileRequest
+name (	Rname"0
+DownloadFileResponse
+content (Rcontent"-
+UploadFileRequest
+content (Rcontent"$
+UploadFileResponse
+id (	Rid"\'
+EchoRequest
+message (	Rmessage"(
+EchoResponse
+message (	Rmessage2Å
+StreamingServiceW
+DownloadFile!.streaming.v1.DownloadFileRequest".streaming.v1.DownloadFileResponse0Q
+
+UploadFile.streaming.v1.UploadFileRequest .streaming.v1.UploadFileResponse(A
+Echo.streaming.v1.EchoRequest.streaming.v1.EchoResponse(0B´
 com.streaming.v1BStreamingProtoPZ6github.com/cshep4/proto-repository/gen/go/streaming/v1¢SXX™Streaming.V1 Streaming\\V1‚Streaming\\V1\\GPBMetadataÍStreaming::V1bproto3'
         , true);
 

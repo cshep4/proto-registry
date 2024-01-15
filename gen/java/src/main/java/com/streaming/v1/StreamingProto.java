@@ -16,35 +16,35 @@ public final class StreamingProto {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_streaming_v1_ServerStreamingRequest_descriptor;
+    internal_static_streaming_v1_DownloadFileRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_streaming_v1_ServerStreamingRequest_fieldAccessorTable;
+      internal_static_streaming_v1_DownloadFileRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_streaming_v1_ServerStreamingResponse_descriptor;
+    internal_static_streaming_v1_DownloadFileResponse_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_streaming_v1_ServerStreamingResponse_fieldAccessorTable;
+      internal_static_streaming_v1_DownloadFileResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_streaming_v1_ClientStreamingRequest_descriptor;
+    internal_static_streaming_v1_UploadFileRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_streaming_v1_ClientStreamingRequest_fieldAccessorTable;
+      internal_static_streaming_v1_UploadFileRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_streaming_v1_ClientStreamingResponse_descriptor;
+    internal_static_streaming_v1_UploadFileResponse_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_streaming_v1_ClientStreamingResponse_fieldAccessorTable;
+      internal_static_streaming_v1_UploadFileResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_streaming_v1_BiDirectionalStreamingRequest_descriptor;
+    internal_static_streaming_v1_EchoRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_streaming_v1_BiDirectionalStreamingRequest_fieldAccessorTable;
+      internal_static_streaming_v1_EchoRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_streaming_v1_BiDirectionalStreamingResponse_descriptor;
+    internal_static_streaming_v1_EchoResponse_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_streaming_v1_BiDirectionalStreamingResponse_fieldAccessorTable;
+      internal_static_streaming_v1_EchoResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -55,68 +55,64 @@ public final class StreamingProto {
   static {
     java.lang.String[] descriptorData = {
       "\n\034streaming/v1/streaming.proto\022\014streamin" +
-      "g.v1\"2\n\026ServerStreamingRequest\022\030\n\007messag" +
-      "e\030\001 \001(\tR\007message\"3\n\027ServerStreamingRespo" +
-      "nse\022\030\n\007message\030\001 \001(\tR\007message\",\n\026ClientS" +
-      "treamingRequest\022\022\n\004name\030\001 \001(\tR\004name\"F\n\027C" +
-      "lientStreamingResponse\022+\n\021received_messa" +
-      "ges\030\001 \003(\tR\020receivedMessages\"3\n\035BiDirecti" +
-      "onalStreamingRequest\022\022\n\004name\030\001 \001(\tR\004name" +
-      "\":\n\036BiDirectionalStreamingResponse\022\030\n\007me" +
-      "ssage\030\001 \001(\tR\007message2\317\002\n\020StreamingServic" +
-      "e\022`\n\017ServerStreaming\022$.streaming.v1.Serv" +
-      "erStreamingRequest\032%.streaming.v1.Server" +
-      "StreamingResponse0\001\022`\n\017ClientStreaming\022$" +
-      ".streaming.v1.ClientStreamingRequest\032%.s" +
-      "treaming.v1.ClientStreamingResponse(\001\022w\n" +
-      "\026BiDirectionalStreaming\022+.streaming.v1.B" +
-      "iDirectionalStreamingRequest\032,.streaming" +
-      ".v1.BiDirectionalStreamingResponse(\0010\001B\253" +
-      "\001\n\020com.streaming.v1B\016StreamingProtoP\001Z6g" +
-      "ithub.com/cshep4/proto-repository/gen/go" +
-      "/streaming/v1\242\002\003SXX\252\002\014Streaming.V1\312\002\014Str" +
-      "eaming\\V1\342\002\030Streaming\\V1\\GPBMetadata\352\002\rS" +
-      "treaming::V1b\006proto3"
+      "g.v1\")\n\023DownloadFileRequest\022\022\n\004name\030\001 \001(" +
+      "\tR\004name\"0\n\024DownloadFileResponse\022\030\n\007conte" +
+      "nt\030\001 \001(\014R\007content\"-\n\021UploadFileRequest\022\030" +
+      "\n\007content\030\001 \001(\014R\007content\"$\n\022UploadFileRe" +
+      "sponse\022\016\n\002id\030\001 \001(\tR\002id\"\'\n\013EchoRequest\022\030\n" +
+      "\007message\030\001 \001(\tR\007message\"(\n\014EchoResponse\022" +
+      "\030\n\007message\030\001 \001(\tR\007message2\201\002\n\020StreamingS" +
+      "ervice\022W\n\014DownloadFile\022!.streaming.v1.Do" +
+      "wnloadFileRequest\032\".streaming.v1.Downloa" +
+      "dFileResponse0\001\022Q\n\nUploadFile\022\037.streamin" +
+      "g.v1.UploadFileRequest\032 .streaming.v1.Up" +
+      "loadFileResponse(\001\022A\n\004Echo\022\031.streaming.v" +
+      "1.EchoRequest\032\032.streaming.v1.EchoRespons" +
+      "e(\0010\001B\253\001\n\020com.streaming.v1B\016StreamingPro" +
+      "toP\001Z6github.com/cshep4/proto-repository" +
+      "/gen/go/streaming/v1\242\002\003SXX\252\002\014Streaming.V" +
+      "1\312\002\014Streaming\\V1\342\002\030Streaming\\V1\\GPBMetad" +
+      "ata\352\002\rStreaming::V1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_streaming_v1_ServerStreamingRequest_descriptor =
+    internal_static_streaming_v1_DownloadFileRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_streaming_v1_ServerStreamingRequest_fieldAccessorTable = new
+    internal_static_streaming_v1_DownloadFileRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_streaming_v1_ServerStreamingRequest_descriptor,
-        new java.lang.String[] { "Message", });
-    internal_static_streaming_v1_ServerStreamingResponse_descriptor =
+        internal_static_streaming_v1_DownloadFileRequest_descriptor,
+        new java.lang.String[] { "Name", });
+    internal_static_streaming_v1_DownloadFileResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_streaming_v1_ServerStreamingResponse_fieldAccessorTable = new
+    internal_static_streaming_v1_DownloadFileResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_streaming_v1_ServerStreamingResponse_descriptor,
-        new java.lang.String[] { "Message", });
-    internal_static_streaming_v1_ClientStreamingRequest_descriptor =
+        internal_static_streaming_v1_DownloadFileResponse_descriptor,
+        new java.lang.String[] { "Content", });
+    internal_static_streaming_v1_UploadFileRequest_descriptor =
       getDescriptor().getMessageTypes().get(2);
-    internal_static_streaming_v1_ClientStreamingRequest_fieldAccessorTable = new
+    internal_static_streaming_v1_UploadFileRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_streaming_v1_ClientStreamingRequest_descriptor,
-        new java.lang.String[] { "Name", });
-    internal_static_streaming_v1_ClientStreamingResponse_descriptor =
+        internal_static_streaming_v1_UploadFileRequest_descriptor,
+        new java.lang.String[] { "Content", });
+    internal_static_streaming_v1_UploadFileResponse_descriptor =
       getDescriptor().getMessageTypes().get(3);
-    internal_static_streaming_v1_ClientStreamingResponse_fieldAccessorTable = new
+    internal_static_streaming_v1_UploadFileResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_streaming_v1_ClientStreamingResponse_descriptor,
-        new java.lang.String[] { "ReceivedMessages", });
-    internal_static_streaming_v1_BiDirectionalStreamingRequest_descriptor =
+        internal_static_streaming_v1_UploadFileResponse_descriptor,
+        new java.lang.String[] { "Id", });
+    internal_static_streaming_v1_EchoRequest_descriptor =
       getDescriptor().getMessageTypes().get(4);
-    internal_static_streaming_v1_BiDirectionalStreamingRequest_fieldAccessorTable = new
+    internal_static_streaming_v1_EchoRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_streaming_v1_BiDirectionalStreamingRequest_descriptor,
-        new java.lang.String[] { "Name", });
-    internal_static_streaming_v1_BiDirectionalStreamingResponse_descriptor =
+        internal_static_streaming_v1_EchoRequest_descriptor,
+        new java.lang.String[] { "Message", });
+    internal_static_streaming_v1_EchoResponse_descriptor =
       getDescriptor().getMessageTypes().get(5);
-    internal_static_streaming_v1_BiDirectionalStreamingResponse_fieldAccessorTable = new
+    internal_static_streaming_v1_EchoResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_streaming_v1_BiDirectionalStreamingResponse_descriptor,
+        internal_static_streaming_v1_EchoResponse_descriptor,
         new java.lang.String[] { "Message", });
   }
 

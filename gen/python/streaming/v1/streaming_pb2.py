@@ -14,7 +14,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1cstreaming/v1/streaming.proto\x12\x0cstreaming.v1\"2\n\x16ServerStreamingRequest\x12\x18\n\x07message\x18\x01 \x01(\tR\x07message\"3\n\x17ServerStreamingResponse\x12\x18\n\x07message\x18\x01 \x01(\tR\x07message\",\n\x16\x43lientStreamingRequest\x12\x12\n\x04name\x18\x01 \x01(\tR\x04name\"F\n\x17\x43lientStreamingResponse\x12+\n\x11received_messages\x18\x01 \x03(\tR\x10receivedMessages\"3\n\x1d\x42iDirectionalStreamingRequest\x12\x12\n\x04name\x18\x01 \x01(\tR\x04name\":\n\x1e\x42iDirectionalStreamingResponse\x12\x18\n\x07message\x18\x01 \x01(\tR\x07message2\xcf\x02\n\x10StreamingService\x12`\n\x0fServerStreaming\x12$.streaming.v1.ServerStreamingRequest\x1a%.streaming.v1.ServerStreamingResponse0\x01\x12`\n\x0f\x43lientStreaming\x12$.streaming.v1.ClientStreamingRequest\x1a%.streaming.v1.ClientStreamingResponse(\x01\x12w\n\x16\x42iDirectionalStreaming\x12+.streaming.v1.BiDirectionalStreamingRequest\x1a,.streaming.v1.BiDirectionalStreamingResponse(\x01\x30\x01\x42\xab\x01\n\x10\x63om.streaming.v1B\x0eStreamingProtoP\x01Z6github.com/cshep4/proto-repository/gen/go/streaming/v1\xa2\x02\x03SXX\xaa\x02\x0cStreaming.V1\xca\x02\x0cStreaming\\V1\xe2\x02\x18Streaming\\V1\\GPBMetadata\xea\x02\rStreaming::V1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1cstreaming/v1/streaming.proto\x12\x0cstreaming.v1\")\n\x13\x44ownloadFileRequest\x12\x12\n\x04name\x18\x01 \x01(\tR\x04name\"0\n\x14\x44ownloadFileResponse\x12\x18\n\x07\x63ontent\x18\x01 \x01(\x0cR\x07\x63ontent\"-\n\x11UploadFileRequest\x12\x18\n\x07\x63ontent\x18\x01 \x01(\x0cR\x07\x63ontent\"$\n\x12UploadFileResponse\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\"\'\n\x0b\x45\x63hoRequest\x12\x18\n\x07message\x18\x01 \x01(\tR\x07message\"(\n\x0c\x45\x63hoResponse\x12\x18\n\x07message\x18\x01 \x01(\tR\x07message2\x81\x02\n\x10StreamingService\x12W\n\x0c\x44ownloadFile\x12!.streaming.v1.DownloadFileRequest\x1a\".streaming.v1.DownloadFileResponse0\x01\x12Q\n\nUploadFile\x12\x1f.streaming.v1.UploadFileRequest\x1a .streaming.v1.UploadFileResponse(\x01\x12\x41\n\x04\x45\x63ho\x12\x19.streaming.v1.EchoRequest\x1a\x1a.streaming.v1.EchoResponse(\x01\x30\x01\x42\xab\x01\n\x10\x63om.streaming.v1B\x0eStreamingProtoP\x01Z6github.com/cshep4/proto-repository/gen/go/streaming/v1\xa2\x02\x03SXX\xaa\x02\x0cStreaming.V1\xca\x02\x0cStreaming\\V1\xe2\x02\x18Streaming\\V1\\GPBMetadata\xea\x02\rStreaming::V1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -22,18 +22,18 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'streaming.v1.streaming_pb2'
 if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['DESCRIPTOR']._options = None
   _globals['DESCRIPTOR']._serialized_options = b'\n\020com.streaming.v1B\016StreamingProtoP\001Z6github.com/cshep4/proto-repository/gen/go/streaming/v1\242\002\003SXX\252\002\014Streaming.V1\312\002\014Streaming\\V1\342\002\030Streaming\\V1\\GPBMetadata\352\002\rStreaming::V1'
-  _globals['_SERVERSTREAMINGREQUEST']._serialized_start=46
-  _globals['_SERVERSTREAMINGREQUEST']._serialized_end=96
-  _globals['_SERVERSTREAMINGRESPONSE']._serialized_start=98
-  _globals['_SERVERSTREAMINGRESPONSE']._serialized_end=149
-  _globals['_CLIENTSTREAMINGREQUEST']._serialized_start=151
-  _globals['_CLIENTSTREAMINGREQUEST']._serialized_end=195
-  _globals['_CLIENTSTREAMINGRESPONSE']._serialized_start=197
-  _globals['_CLIENTSTREAMINGRESPONSE']._serialized_end=267
-  _globals['_BIDIRECTIONALSTREAMINGREQUEST']._serialized_start=269
-  _globals['_BIDIRECTIONALSTREAMINGREQUEST']._serialized_end=320
-  _globals['_BIDIRECTIONALSTREAMINGRESPONSE']._serialized_start=322
-  _globals['_BIDIRECTIONALSTREAMINGRESPONSE']._serialized_end=380
-  _globals['_STREAMINGSERVICE']._serialized_start=383
-  _globals['_STREAMINGSERVICE']._serialized_end=718
+  _globals['_DOWNLOADFILEREQUEST']._serialized_start=46
+  _globals['_DOWNLOADFILEREQUEST']._serialized_end=87
+  _globals['_DOWNLOADFILERESPONSE']._serialized_start=89
+  _globals['_DOWNLOADFILERESPONSE']._serialized_end=137
+  _globals['_UPLOADFILEREQUEST']._serialized_start=139
+  _globals['_UPLOADFILEREQUEST']._serialized_end=184
+  _globals['_UPLOADFILERESPONSE']._serialized_start=186
+  _globals['_UPLOADFILERESPONSE']._serialized_end=222
+  _globals['_ECHOREQUEST']._serialized_start=224
+  _globals['_ECHOREQUEST']._serialized_end=263
+  _globals['_ECHORESPONSE']._serialized_start=265
+  _globals['_ECHORESPONSE']._serialized_end=305
+  _globals['_STREAMINGSERVICE']._serialized_start=308
+  _globals['_STREAMINGSERVICE']._serialized_end=565
 # @@protoc_insertion_point(module_scope)

@@ -5,160 +5,46 @@ import { map } from "rxjs/operators";
 
 export const protobufPackage = "streaming.v1";
 
-export interface ServerStreamingRequest {
-  message: string;
-}
-
-export interface ServerStreamingResponse {
-  message: string;
-}
-
-export interface ClientStreamingRequest {
+export interface DownloadFileRequest {
   name: string;
 }
 
-export interface ClientStreamingResponse {
-  receivedMessages: string[];
+export interface DownloadFileResponse {
+  content: Uint8Array;
 }
 
-export interface BiDirectionalStreamingRequest {
-  name: string;
+export interface UploadFileRequest {
+  content: Uint8Array;
 }
 
-export interface BiDirectionalStreamingResponse {
+export interface UploadFileResponse {
+  id: string;
+}
+
+export interface EchoRequest {
   message: string;
 }
 
-function createBaseServerStreamingRequest(): ServerStreamingRequest {
-  return { message: "" };
+export interface EchoResponse {
+  message: string;
 }
 
-export const ServerStreamingRequest = {
-  encode(message: ServerStreamingRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.message !== "") {
-      writer.uint32(10).string(message.message);
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): ServerStreamingRequest {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseServerStreamingRequest();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag !== 10) {
-            break;
-          }
-
-          message.message = reader.string();
-          continue;
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): ServerStreamingRequest {
-    return { message: isSet(object.message) ? globalThis.String(object.message) : "" };
-  },
-
-  toJSON(message: ServerStreamingRequest): unknown {
-    const obj: any = {};
-    if (message.message !== "") {
-      obj.message = message.message;
-    }
-    return obj;
-  },
-
-  create<I extends Exact<DeepPartial<ServerStreamingRequest>, I>>(base?: I): ServerStreamingRequest {
-    return ServerStreamingRequest.fromPartial(base ?? ({} as any));
-  },
-  fromPartial<I extends Exact<DeepPartial<ServerStreamingRequest>, I>>(object: I): ServerStreamingRequest {
-    const message = createBaseServerStreamingRequest();
-    message.message = object.message ?? "";
-    return message;
-  },
-};
-
-function createBaseServerStreamingResponse(): ServerStreamingResponse {
-  return { message: "" };
-}
-
-export const ServerStreamingResponse = {
-  encode(message: ServerStreamingResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.message !== "") {
-      writer.uint32(10).string(message.message);
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): ServerStreamingResponse {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseServerStreamingResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag !== 10) {
-            break;
-          }
-
-          message.message = reader.string();
-          continue;
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): ServerStreamingResponse {
-    return { message: isSet(object.message) ? globalThis.String(object.message) : "" };
-  },
-
-  toJSON(message: ServerStreamingResponse): unknown {
-    const obj: any = {};
-    if (message.message !== "") {
-      obj.message = message.message;
-    }
-    return obj;
-  },
-
-  create<I extends Exact<DeepPartial<ServerStreamingResponse>, I>>(base?: I): ServerStreamingResponse {
-    return ServerStreamingResponse.fromPartial(base ?? ({} as any));
-  },
-  fromPartial<I extends Exact<DeepPartial<ServerStreamingResponse>, I>>(object: I): ServerStreamingResponse {
-    const message = createBaseServerStreamingResponse();
-    message.message = object.message ?? "";
-    return message;
-  },
-};
-
-function createBaseClientStreamingRequest(): ClientStreamingRequest {
+function createBaseDownloadFileRequest(): DownloadFileRequest {
   return { name: "" };
 }
 
-export const ClientStreamingRequest = {
-  encode(message: ClientStreamingRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+export const DownloadFileRequest = {
+  encode(message: DownloadFileRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.name !== "") {
       writer.uint32(10).string(message.name);
     }
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): ClientStreamingRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): DownloadFileRequest {
     const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseClientStreamingRequest();
+    const message = createBaseDownloadFileRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -178,11 +64,11 @@ export const ClientStreamingRequest = {
     return message;
   },
 
-  fromJSON(object: any): ClientStreamingRequest {
+  fromJSON(object: any): DownloadFileRequest {
     return { name: isSet(object.name) ? globalThis.String(object.name) : "" };
   },
 
-  toJSON(message: ClientStreamingRequest): unknown {
+  toJSON(message: DownloadFileRequest): unknown {
     const obj: any = {};
     if (message.name !== "") {
       obj.name = message.name;
@@ -190,32 +76,32 @@ export const ClientStreamingRequest = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<ClientStreamingRequest>, I>>(base?: I): ClientStreamingRequest {
-    return ClientStreamingRequest.fromPartial(base ?? ({} as any));
+  create<I extends Exact<DeepPartial<DownloadFileRequest>, I>>(base?: I): DownloadFileRequest {
+    return DownloadFileRequest.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<ClientStreamingRequest>, I>>(object: I): ClientStreamingRequest {
-    const message = createBaseClientStreamingRequest();
+  fromPartial<I extends Exact<DeepPartial<DownloadFileRequest>, I>>(object: I): DownloadFileRequest {
+    const message = createBaseDownloadFileRequest();
     message.name = object.name ?? "";
     return message;
   },
 };
 
-function createBaseClientStreamingResponse(): ClientStreamingResponse {
-  return { receivedMessages: [] };
+function createBaseDownloadFileResponse(): DownloadFileResponse {
+  return { content: new Uint8Array(0) };
 }
 
-export const ClientStreamingResponse = {
-  encode(message: ClientStreamingResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.receivedMessages) {
-      writer.uint32(10).string(v!);
+export const DownloadFileResponse = {
+  encode(message: DownloadFileResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.content.length !== 0) {
+      writer.uint32(10).bytes(message.content);
     }
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): ClientStreamingResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): DownloadFileResponse {
     const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseClientStreamingResponse();
+    const message = createBaseDownloadFileResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -224,7 +110,7 @@ export const ClientStreamingResponse = {
             break;
           }
 
-          message.receivedMessages.push(reader.string());
+          message.content = reader.bytes();
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -235,48 +121,44 @@ export const ClientStreamingResponse = {
     return message;
   },
 
-  fromJSON(object: any): ClientStreamingResponse {
-    return {
-      receivedMessages: globalThis.Array.isArray(object?.receivedMessages)
-        ? object.receivedMessages.map((e: any) => globalThis.String(e))
-        : [],
-    };
+  fromJSON(object: any): DownloadFileResponse {
+    return { content: isSet(object.content) ? bytesFromBase64(object.content) : new Uint8Array(0) };
   },
 
-  toJSON(message: ClientStreamingResponse): unknown {
+  toJSON(message: DownloadFileResponse): unknown {
     const obj: any = {};
-    if (message.receivedMessages?.length) {
-      obj.receivedMessages = message.receivedMessages;
+    if (message.content.length !== 0) {
+      obj.content = base64FromBytes(message.content);
     }
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<ClientStreamingResponse>, I>>(base?: I): ClientStreamingResponse {
-    return ClientStreamingResponse.fromPartial(base ?? ({} as any));
+  create<I extends Exact<DeepPartial<DownloadFileResponse>, I>>(base?: I): DownloadFileResponse {
+    return DownloadFileResponse.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<ClientStreamingResponse>, I>>(object: I): ClientStreamingResponse {
-    const message = createBaseClientStreamingResponse();
-    message.receivedMessages = object.receivedMessages?.map((e) => e) || [];
+  fromPartial<I extends Exact<DeepPartial<DownloadFileResponse>, I>>(object: I): DownloadFileResponse {
+    const message = createBaseDownloadFileResponse();
+    message.content = object.content ?? new Uint8Array(0);
     return message;
   },
 };
 
-function createBaseBiDirectionalStreamingRequest(): BiDirectionalStreamingRequest {
-  return { name: "" };
+function createBaseUploadFileRequest(): UploadFileRequest {
+  return { content: new Uint8Array(0) };
 }
 
-export const BiDirectionalStreamingRequest = {
-  encode(message: BiDirectionalStreamingRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.name !== "") {
-      writer.uint32(10).string(message.name);
+export const UploadFileRequest = {
+  encode(message: UploadFileRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.content.length !== 0) {
+      writer.uint32(10).bytes(message.content);
     }
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): BiDirectionalStreamingRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): UploadFileRequest {
     const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseBiDirectionalStreamingRequest();
+    const message = createBaseUploadFileRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -285,7 +167,7 @@ export const BiDirectionalStreamingRequest = {
             break;
           }
 
-          message.name = reader.string();
+          message.content = reader.bytes();
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -296,46 +178,101 @@ export const BiDirectionalStreamingRequest = {
     return message;
   },
 
-  fromJSON(object: any): BiDirectionalStreamingRequest {
-    return { name: isSet(object.name) ? globalThis.String(object.name) : "" };
+  fromJSON(object: any): UploadFileRequest {
+    return { content: isSet(object.content) ? bytesFromBase64(object.content) : new Uint8Array(0) };
   },
 
-  toJSON(message: BiDirectionalStreamingRequest): unknown {
+  toJSON(message: UploadFileRequest): unknown {
     const obj: any = {};
-    if (message.name !== "") {
-      obj.name = message.name;
+    if (message.content.length !== 0) {
+      obj.content = base64FromBytes(message.content);
     }
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<BiDirectionalStreamingRequest>, I>>(base?: I): BiDirectionalStreamingRequest {
-    return BiDirectionalStreamingRequest.fromPartial(base ?? ({} as any));
+  create<I extends Exact<DeepPartial<UploadFileRequest>, I>>(base?: I): UploadFileRequest {
+    return UploadFileRequest.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<BiDirectionalStreamingRequest>, I>>(
-    object: I,
-  ): BiDirectionalStreamingRequest {
-    const message = createBaseBiDirectionalStreamingRequest();
-    message.name = object.name ?? "";
+  fromPartial<I extends Exact<DeepPartial<UploadFileRequest>, I>>(object: I): UploadFileRequest {
+    const message = createBaseUploadFileRequest();
+    message.content = object.content ?? new Uint8Array(0);
     return message;
   },
 };
 
-function createBaseBiDirectionalStreamingResponse(): BiDirectionalStreamingResponse {
+function createBaseUploadFileResponse(): UploadFileResponse {
+  return { id: "" };
+}
+
+export const UploadFileResponse = {
+  encode(message: UploadFileResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.id !== "") {
+      writer.uint32(10).string(message.id);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): UploadFileResponse {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseUploadFileResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 10) {
+            break;
+          }
+
+          message.id = reader.string();
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): UploadFileResponse {
+    return { id: isSet(object.id) ? globalThis.String(object.id) : "" };
+  },
+
+  toJSON(message: UploadFileResponse): unknown {
+    const obj: any = {};
+    if (message.id !== "") {
+      obj.id = message.id;
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<UploadFileResponse>, I>>(base?: I): UploadFileResponse {
+    return UploadFileResponse.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<UploadFileResponse>, I>>(object: I): UploadFileResponse {
+    const message = createBaseUploadFileResponse();
+    message.id = object.id ?? "";
+    return message;
+  },
+};
+
+function createBaseEchoRequest(): EchoRequest {
   return { message: "" };
 }
 
-export const BiDirectionalStreamingResponse = {
-  encode(message: BiDirectionalStreamingResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+export const EchoRequest = {
+  encode(message: EchoRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.message !== "") {
       writer.uint32(10).string(message.message);
     }
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): BiDirectionalStreamingResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): EchoRequest {
     const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseBiDirectionalStreamingResponse();
+    const message = createBaseEchoRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -355,11 +292,11 @@ export const BiDirectionalStreamingResponse = {
     return message;
   },
 
-  fromJSON(object: any): BiDirectionalStreamingResponse {
+  fromJSON(object: any): EchoRequest {
     return { message: isSet(object.message) ? globalThis.String(object.message) : "" };
   },
 
-  toJSON(message: BiDirectionalStreamingResponse): unknown {
+  toJSON(message: EchoRequest): unknown {
     const obj: any = {};
     if (message.message !== "") {
       obj.message = message.message;
@@ -367,24 +304,77 @@ export const BiDirectionalStreamingResponse = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<BiDirectionalStreamingResponse>, I>>(base?: I): BiDirectionalStreamingResponse {
-    return BiDirectionalStreamingResponse.fromPartial(base ?? ({} as any));
+  create<I extends Exact<DeepPartial<EchoRequest>, I>>(base?: I): EchoRequest {
+    return EchoRequest.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<BiDirectionalStreamingResponse>, I>>(
-    object: I,
-  ): BiDirectionalStreamingResponse {
-    const message = createBaseBiDirectionalStreamingResponse();
+  fromPartial<I extends Exact<DeepPartial<EchoRequest>, I>>(object: I): EchoRequest {
+    const message = createBaseEchoRequest();
+    message.message = object.message ?? "";
+    return message;
+  },
+};
+
+function createBaseEchoResponse(): EchoResponse {
+  return { message: "" };
+}
+
+export const EchoResponse = {
+  encode(message: EchoResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.message !== "") {
+      writer.uint32(10).string(message.message);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): EchoResponse {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseEchoResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 10) {
+            break;
+          }
+
+          message.message = reader.string();
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): EchoResponse {
+    return { message: isSet(object.message) ? globalThis.String(object.message) : "" };
+  },
+
+  toJSON(message: EchoResponse): unknown {
+    const obj: any = {};
+    if (message.message !== "") {
+      obj.message = message.message;
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<EchoResponse>, I>>(base?: I): EchoResponse {
+    return EchoResponse.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<EchoResponse>, I>>(object: I): EchoResponse {
+    const message = createBaseEchoResponse();
     message.message = object.message ?? "";
     return message;
   },
 };
 
 export interface StreamingService {
-  ServerStreaming(request: ServerStreamingRequest): Observable<ServerStreamingResponse>;
-  ClientStreaming(request: Observable<ClientStreamingRequest>): Promise<ClientStreamingResponse>;
-  BiDirectionalStreaming(
-    request: Observable<BiDirectionalStreamingRequest>,
-  ): Observable<BiDirectionalStreamingResponse>;
+  DownloadFile(request: DownloadFileRequest): Observable<DownloadFileResponse>;
+  UploadFile(request: Observable<UploadFileRequest>): Promise<UploadFileResponse>;
+  Echo(request: Observable<EchoRequest>): Observable<EchoResponse>;
 }
 
 export const StreamingServiceServiceName = "streaming.v1.StreamingService";
@@ -394,28 +384,26 @@ export class StreamingServiceClientImpl implements StreamingService {
   constructor(rpc: Rpc, opts?: { service?: string }) {
     this.service = opts?.service || StreamingServiceServiceName;
     this.rpc = rpc;
-    this.ServerStreaming = this.ServerStreaming.bind(this);
-    this.ClientStreaming = this.ClientStreaming.bind(this);
-    this.BiDirectionalStreaming = this.BiDirectionalStreaming.bind(this);
+    this.DownloadFile = this.DownloadFile.bind(this);
+    this.UploadFile = this.UploadFile.bind(this);
+    this.Echo = this.Echo.bind(this);
   }
-  ServerStreaming(request: ServerStreamingRequest): Observable<ServerStreamingResponse> {
-    const data = ServerStreamingRequest.encode(request).finish();
-    const result = this.rpc.serverStreamingRequest(this.service, "ServerStreaming", data);
-    return result.pipe(map((data) => ServerStreamingResponse.decode(_m0.Reader.create(data))));
-  }
-
-  ClientStreaming(request: Observable<ClientStreamingRequest>): Promise<ClientStreamingResponse> {
-    const data = request.pipe(map((request) => ClientStreamingRequest.encode(request).finish()));
-    const promise = this.rpc.clientStreamingRequest(this.service, "ClientStreaming", data);
-    return promise.then((data) => ClientStreamingResponse.decode(_m0.Reader.create(data)));
+  DownloadFile(request: DownloadFileRequest): Observable<DownloadFileResponse> {
+    const data = DownloadFileRequest.encode(request).finish();
+    const result = this.rpc.serverStreamingRequest(this.service, "DownloadFile", data);
+    return result.pipe(map((data) => DownloadFileResponse.decode(_m0.Reader.create(data))));
   }
 
-  BiDirectionalStreaming(
-    request: Observable<BiDirectionalStreamingRequest>,
-  ): Observable<BiDirectionalStreamingResponse> {
-    const data = request.pipe(map((request) => BiDirectionalStreamingRequest.encode(request).finish()));
-    const result = this.rpc.bidirectionalStreamingRequest(this.service, "BiDirectionalStreaming", data);
-    return result.pipe(map((data) => BiDirectionalStreamingResponse.decode(_m0.Reader.create(data))));
+  UploadFile(request: Observable<UploadFileRequest>): Promise<UploadFileResponse> {
+    const data = request.pipe(map((request) => UploadFileRequest.encode(request).finish()));
+    const promise = this.rpc.clientStreamingRequest(this.service, "UploadFile", data);
+    return promise.then((data) => UploadFileResponse.decode(_m0.Reader.create(data)));
+  }
+
+  Echo(request: Observable<EchoRequest>): Observable<EchoResponse> {
+    const data = request.pipe(map((request) => EchoRequest.encode(request).finish()));
+    const result = this.rpc.bidirectionalStreamingRequest(this.service, "Echo", data);
+    return result.pipe(map((data) => EchoResponse.decode(_m0.Reader.create(data))));
   }
 }
 
@@ -424,6 +412,31 @@ interface Rpc {
   clientStreamingRequest(service: string, method: string, data: Observable<Uint8Array>): Promise<Uint8Array>;
   serverStreamingRequest(service: string, method: string, data: Uint8Array): Observable<Uint8Array>;
   bidirectionalStreamingRequest(service: string, method: string, data: Observable<Uint8Array>): Observable<Uint8Array>;
+}
+
+function bytesFromBase64(b64: string): Uint8Array {
+  if (globalThis.Buffer) {
+    return Uint8Array.from(globalThis.Buffer.from(b64, "base64"));
+  } else {
+    const bin = globalThis.atob(b64);
+    const arr = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; ++i) {
+      arr[i] = bin.charCodeAt(i);
+    }
+    return arr;
+  }
+}
+
+function base64FromBytes(arr: Uint8Array): string {
+  if (globalThis.Buffer) {
+    return globalThis.Buffer.from(arr).toString("base64");
+  } else {
+    const bin: string[] = [];
+    arr.forEach((byte) => {
+      bin.push(globalThis.String.fromCharCode(byte));
+    });
+    return globalThis.btoa(bin.join(""));
+  }
 }
 
 type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;

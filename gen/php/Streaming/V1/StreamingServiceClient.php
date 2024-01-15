@@ -17,16 +17,16 @@ class StreamingServiceClient extends \Grpc\BaseStub {
     }
 
     /**
-     * @param \Streaming\V1\ServerStreamingRequest $argument input argument
+     * @param \Streaming\V1\DownloadFileRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
      * @return \Grpc\ServerStreamingCall
      */
-    public function ServerStreaming(\Streaming\V1\ServerStreamingRequest $argument,
+    public function DownloadFile(\Streaming\V1\DownloadFileRequest $argument,
       $metadata = [], $options = []) {
-        return $this->_serverStreamRequest('/streaming.v1.StreamingService/ServerStreaming',
+        return $this->_serverStreamRequest('/streaming.v1.StreamingService/DownloadFile',
         $argument,
-        ['\Streaming\V1\ServerStreamingResponse', 'decode'],
+        ['\Streaming\V1\DownloadFileResponse', 'decode'],
         $metadata, $options);
     }
 
@@ -35,9 +35,9 @@ class StreamingServiceClient extends \Grpc\BaseStub {
      * @param array $options call options
      * @return \Grpc\ClientStreamingCall
      */
-    public function ClientStreaming($metadata = [], $options = []) {
-        return $this->_clientStreamRequest('/streaming.v1.StreamingService/ClientStreaming',
-        ['\Streaming\V1\ClientStreamingResponse','decode'],
+    public function UploadFile($metadata = [], $options = []) {
+        return $this->_clientStreamRequest('/streaming.v1.StreamingService/UploadFile',
+        ['\Streaming\V1\UploadFileResponse','decode'],
         $metadata, $options);
     }
 
@@ -46,9 +46,9 @@ class StreamingServiceClient extends \Grpc\BaseStub {
      * @param array $options call options
      * @return \Grpc\BidiStreamingCall
      */
-    public function BiDirectionalStreaming($metadata = [], $options = []) {
-        return $this->_bidiRequest('/streaming.v1.StreamingService/BiDirectionalStreaming',
-        ['\Streaming\V1\BiDirectionalStreamingResponse','decode'],
+    public function Echo($metadata = [], $options = []) {
+        return $this->_bidiRequest('/streaming.v1.StreamingService/Echo',
+        ['\Streaming\V1\EchoResponse','decode'],
         $metadata, $options);
     }
 

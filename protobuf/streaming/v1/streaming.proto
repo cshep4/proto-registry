@@ -8,33 +8,33 @@ option java_package = "com.cshep4.proto.streaming.v1";
 option php_namespace = "Streaming\\V1";
 
 service StreamingService {
-  rpc ServerStreaming(ServerStreamingRequest) returns (stream ServerStreamingResponse);
+  rpc DownloadFile(DownloadFileRequest) returns (stream DownloadFileResponse);
 
-  rpc ClientStreaming(stream ClientStreamingRequest) returns (ClientStreamingResponse);
+  rpc UploadFile(stream UploadFileRequest) returns (UploadFileResponse);
 
-  rpc BiDirectionalStreaming(stream BiDirectionalStreamingRequest) returns (stream BiDirectionalStreamingResponse);
+  rpc Echo(stream EchoRequest) returns (stream EchoResponse);
 }
 
-message ServerStreamingRequest {
-  string message = 1;
-}
-
-message ServerStreamingResponse {
-  string message = 1;
-}
-
-message ClientStreamingRequest {
+message DownloadFileRequest {
   string name = 1;
 }
 
-message ClientStreamingResponse {
-  repeated string received_messages = 1;
+message DownloadFileResponse {
+  bytes content = 1;
 }
 
-message BiDirectionalStreamingRequest {
-  string name = 1;
+message UploadFileRequest {
+  bytes content = 1;
 }
 
-message BiDirectionalStreamingResponse {
+message UploadFileResponse {
+  string id = 1;
+}
+
+message EchoRequest {
+  string message = 1;
+}
+
+message EchoResponse {
   string message = 1;
 }

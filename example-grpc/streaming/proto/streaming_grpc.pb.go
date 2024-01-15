@@ -22,9 +22,9 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type StreamingServiceClient interface {
-	ServerStreaming(ctx context.Context, in *ServerStreamingRequest, opts ...grpc.CallOption) (StreamingService_ServerStreamingClient, error)
-	ClientStreaming(ctx context.Context, opts ...grpc.CallOption) (StreamingService_ClientStreamingClient, error)
-	BiDirectionalStreaming(ctx context.Context, opts ...grpc.CallOption) (StreamingService_BiDirectionalStreamingClient, error)
+	DownloadFile(ctx context.Context, in *DownloadFileRequest, opts ...grpc.CallOption) (StreamingService_DownloadFileClient, error)
+	UploadFile(ctx context.Context, opts ...grpc.CallOption) (StreamingService_UploadFileClient, error)
+	Echo(ctx context.Context, opts ...grpc.CallOption) (StreamingService_EchoClient, error)
 }
 
 type streamingServiceClient struct {
@@ -35,12 +35,12 @@ func NewStreamingServiceClient(cc grpc.ClientConnInterface) StreamingServiceClie
 	return &streamingServiceClient{cc}
 }
 
-func (c *streamingServiceClient) ServerStreaming(ctx context.Context, in *ServerStreamingRequest, opts ...grpc.CallOption) (StreamingService_ServerStreamingClient, error) {
-	stream, err := c.cc.NewStream(ctx, &StreamingService_ServiceDesc.Streams[0], "/streaming.StreamingService/ServerStreaming", opts...)
+func (c *streamingServiceClient) DownloadFile(ctx context.Context, in *DownloadFileRequest, opts ...grpc.CallOption) (StreamingService_DownloadFileClient, error) {
+	stream, err := c.cc.NewStream(ctx, &StreamingService_ServiceDesc.Streams[0], "/streaming.StreamingService/DownloadFile", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &streamingServiceServerStreamingClient{stream}
+	x := &streamingServiceDownloadFileClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -50,82 +50,82 @@ func (c *streamingServiceClient) ServerStreaming(ctx context.Context, in *Server
 	return x, nil
 }
 
-type StreamingService_ServerStreamingClient interface {
-	Recv() (*ServerStreamingResponse, error)
+type StreamingService_DownloadFileClient interface {
+	Recv() (*DownloadFileResponse, error)
 	grpc.ClientStream
 }
 
-type streamingServiceServerStreamingClient struct {
+type streamingServiceDownloadFileClient struct {
 	grpc.ClientStream
 }
 
-func (x *streamingServiceServerStreamingClient) Recv() (*ServerStreamingResponse, error) {
-	m := new(ServerStreamingResponse)
+func (x *streamingServiceDownloadFileClient) Recv() (*DownloadFileResponse, error) {
+	m := new(DownloadFileResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
 	return m, nil
 }
 
-func (c *streamingServiceClient) ClientStreaming(ctx context.Context, opts ...grpc.CallOption) (StreamingService_ClientStreamingClient, error) {
-	stream, err := c.cc.NewStream(ctx, &StreamingService_ServiceDesc.Streams[1], "/streaming.StreamingService/ClientStreaming", opts...)
+func (c *streamingServiceClient) UploadFile(ctx context.Context, opts ...grpc.CallOption) (StreamingService_UploadFileClient, error) {
+	stream, err := c.cc.NewStream(ctx, &StreamingService_ServiceDesc.Streams[1], "/streaming.StreamingService/UploadFile", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &streamingServiceClientStreamingClient{stream}
+	x := &streamingServiceUploadFileClient{stream}
 	return x, nil
 }
 
-type StreamingService_ClientStreamingClient interface {
-	Send(*ClientStreamingRequest) error
-	CloseAndRecv() (*ClientStreamingResponse, error)
+type StreamingService_UploadFileClient interface {
+	Send(*UploadFileRequest) error
+	CloseAndRecv() (*UploadFileResponse, error)
 	grpc.ClientStream
 }
 
-type streamingServiceClientStreamingClient struct {
+type streamingServiceUploadFileClient struct {
 	grpc.ClientStream
 }
 
-func (x *streamingServiceClientStreamingClient) Send(m *ClientStreamingRequest) error {
+func (x *streamingServiceUploadFileClient) Send(m *UploadFileRequest) error {
 	return x.ClientStream.SendMsg(m)
 }
 
-func (x *streamingServiceClientStreamingClient) CloseAndRecv() (*ClientStreamingResponse, error) {
+func (x *streamingServiceUploadFileClient) CloseAndRecv() (*UploadFileResponse, error) {
 	if err := x.ClientStream.CloseSend(); err != nil {
 		return nil, err
 	}
-	m := new(ClientStreamingResponse)
+	m := new(UploadFileResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
 	return m, nil
 }
 
-func (c *streamingServiceClient) BiDirectionalStreaming(ctx context.Context, opts ...grpc.CallOption) (StreamingService_BiDirectionalStreamingClient, error) {
-	stream, err := c.cc.NewStream(ctx, &StreamingService_ServiceDesc.Streams[2], "/streaming.StreamingService/BiDirectionalStreaming", opts...)
+func (c *streamingServiceClient) Echo(ctx context.Context, opts ...grpc.CallOption) (StreamingService_EchoClient, error) {
+	stream, err := c.cc.NewStream(ctx, &StreamingService_ServiceDesc.Streams[2], "/streaming.StreamingService/Echo", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &streamingServiceBiDirectionalStreamingClient{stream}
+	x := &streamingServiceEchoClient{stream}
 	return x, nil
 }
 
-type StreamingService_BiDirectionalStreamingClient interface {
-	Send(*BiDirectionalStreamingRequest) error
-	Recv() (*BiDirectionalStreamingResponse, error)
+type StreamingService_EchoClient interface {
+	Send(*EchoRequest) error
+	Recv() (*EchoResponse, error)
 	grpc.ClientStream
 }
 
-type streamingServiceBiDirectionalStreamingClient struct {
+type streamingServiceEchoClient struct {
 	grpc.ClientStream
 }
 
-func (x *streamingServiceBiDirectionalStreamingClient) Send(m *BiDirectionalStreamingRequest) error {
+func (x *streamingServiceEchoClient) Send(m *EchoRequest) error {
 	return x.ClientStream.SendMsg(m)
 }
 
-func (x *streamingServiceBiDirectionalStreamingClient) Recv() (*BiDirectionalStreamingResponse, error) {
-	m := new(BiDirectionalStreamingResponse)
+func (x *streamingServiceEchoClient) Recv() (*EchoResponse, error) {
+	m := new(EchoResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
@@ -136,9 +136,9 @@ func (x *streamingServiceBiDirectionalStreamingClient) Recv() (*BiDirectionalStr
 // All implementations must embed UnimplementedStreamingServiceServer
 // for forward compatibility
 type StreamingServiceServer interface {
-	ServerStreaming(*ServerStreamingRequest, StreamingService_ServerStreamingServer) error
-	ClientStreaming(StreamingService_ClientStreamingServer) error
-	BiDirectionalStreaming(StreamingService_BiDirectionalStreamingServer) error
+	DownloadFile(*DownloadFileRequest, StreamingService_DownloadFileServer) error
+	UploadFile(StreamingService_UploadFileServer) error
+	Echo(StreamingService_EchoServer) error
 	mustEmbedUnimplementedStreamingServiceServer()
 }
 
@@ -146,14 +146,14 @@ type StreamingServiceServer interface {
 type UnimplementedStreamingServiceServer struct {
 }
 
-func (UnimplementedStreamingServiceServer) ServerStreaming(*ServerStreamingRequest, StreamingService_ServerStreamingServer) error {
-	return status.Errorf(codes.Unimplemented, "method ServerStreaming not implemented")
+func (UnimplementedStreamingServiceServer) DownloadFile(*DownloadFileRequest, StreamingService_DownloadFileServer) error {
+	return status.Errorf(codes.Unimplemented, "method DownloadFile not implemented")
 }
-func (UnimplementedStreamingServiceServer) ClientStreaming(StreamingService_ClientStreamingServer) error {
-	return status.Errorf(codes.Unimplemented, "method ClientStreaming not implemented")
+func (UnimplementedStreamingServiceServer) UploadFile(StreamingService_UploadFileServer) error {
+	return status.Errorf(codes.Unimplemented, "method UploadFile not implemented")
 }
-func (UnimplementedStreamingServiceServer) BiDirectionalStreaming(StreamingService_BiDirectionalStreamingServer) error {
-	return status.Errorf(codes.Unimplemented, "method BiDirectionalStreaming not implemented")
+func (UnimplementedStreamingServiceServer) Echo(StreamingService_EchoServer) error {
+	return status.Errorf(codes.Unimplemented, "method Echo not implemented")
 }
 func (UnimplementedStreamingServiceServer) mustEmbedUnimplementedStreamingServiceServer() {}
 
@@ -168,73 +168,73 @@ func RegisterStreamingServiceServer(s grpc.ServiceRegistrar, srv StreamingServic
 	s.RegisterService(&StreamingService_ServiceDesc, srv)
 }
 
-func _StreamingService_ServerStreaming_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(ServerStreamingRequest)
+func _StreamingService_DownloadFile_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(DownloadFileRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(StreamingServiceServer).ServerStreaming(m, &streamingServiceServerStreamingServer{stream})
+	return srv.(StreamingServiceServer).DownloadFile(m, &streamingServiceDownloadFileServer{stream})
 }
 
-type StreamingService_ServerStreamingServer interface {
-	Send(*ServerStreamingResponse) error
+type StreamingService_DownloadFileServer interface {
+	Send(*DownloadFileResponse) error
 	grpc.ServerStream
 }
 
-type streamingServiceServerStreamingServer struct {
+type streamingServiceDownloadFileServer struct {
 	grpc.ServerStream
 }
 
-func (x *streamingServiceServerStreamingServer) Send(m *ServerStreamingResponse) error {
+func (x *streamingServiceDownloadFileServer) Send(m *DownloadFileResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func _StreamingService_ClientStreaming_Handler(srv interface{}, stream grpc.ServerStream) error {
-	return srv.(StreamingServiceServer).ClientStreaming(&streamingServiceClientStreamingServer{stream})
+func _StreamingService_UploadFile_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(StreamingServiceServer).UploadFile(&streamingServiceUploadFileServer{stream})
 }
 
-type StreamingService_ClientStreamingServer interface {
-	SendAndClose(*ClientStreamingResponse) error
-	Recv() (*ClientStreamingRequest, error)
+type StreamingService_UploadFileServer interface {
+	SendAndClose(*UploadFileResponse) error
+	Recv() (*UploadFileRequest, error)
 	grpc.ServerStream
 }
 
-type streamingServiceClientStreamingServer struct {
+type streamingServiceUploadFileServer struct {
 	grpc.ServerStream
 }
 
-func (x *streamingServiceClientStreamingServer) SendAndClose(m *ClientStreamingResponse) error {
+func (x *streamingServiceUploadFileServer) SendAndClose(m *UploadFileResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func (x *streamingServiceClientStreamingServer) Recv() (*ClientStreamingRequest, error) {
-	m := new(ClientStreamingRequest)
+func (x *streamingServiceUploadFileServer) Recv() (*UploadFileRequest, error) {
+	m := new(UploadFileRequest)
 	if err := x.ServerStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
 	return m, nil
 }
 
-func _StreamingService_BiDirectionalStreaming_Handler(srv interface{}, stream grpc.ServerStream) error {
-	return srv.(StreamingServiceServer).BiDirectionalStreaming(&streamingServiceBiDirectionalStreamingServer{stream})
+func _StreamingService_Echo_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(StreamingServiceServer).Echo(&streamingServiceEchoServer{stream})
 }
 
-type StreamingService_BiDirectionalStreamingServer interface {
-	Send(*BiDirectionalStreamingResponse) error
-	Recv() (*BiDirectionalStreamingRequest, error)
+type StreamingService_EchoServer interface {
+	Send(*EchoResponse) error
+	Recv() (*EchoRequest, error)
 	grpc.ServerStream
 }
 
-type streamingServiceBiDirectionalStreamingServer struct {
+type streamingServiceEchoServer struct {
 	grpc.ServerStream
 }
 
-func (x *streamingServiceBiDirectionalStreamingServer) Send(m *BiDirectionalStreamingResponse) error {
+func (x *streamingServiceEchoServer) Send(m *EchoResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func (x *streamingServiceBiDirectionalStreamingServer) Recv() (*BiDirectionalStreamingRequest, error) {
-	m := new(BiDirectionalStreamingRequest)
+func (x *streamingServiceEchoServer) Recv() (*EchoRequest, error) {
+	m := new(EchoRequest)
 	if err := x.ServerStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
@@ -250,18 +250,18 @@ var StreamingService_ServiceDesc = grpc.ServiceDesc{
 	Methods:     []grpc.MethodDesc{},
 	Streams: []grpc.StreamDesc{
 		{
-			StreamName:    "ServerStreaming",
-			Handler:       _StreamingService_ServerStreaming_Handler,
+			StreamName:    "DownloadFile",
+			Handler:       _StreamingService_DownloadFile_Handler,
 			ServerStreams: true,
 		},
 		{
-			StreamName:    "ClientStreaming",
-			Handler:       _StreamingService_ClientStreaming_Handler,
+			StreamName:    "UploadFile",
+			Handler:       _StreamingService_UploadFile_Handler,
 			ClientStreams: true,
 		},
 		{
-			StreamName:    "BiDirectionalStreaming",
-			Handler:       _StreamingService_BiDirectionalStreaming_Handler,
+			StreamName:    "Echo",
+			Handler:       _StreamingService_Echo_Handler,
 			ServerStreams: true,
 			ClientStreams: true,
 		},

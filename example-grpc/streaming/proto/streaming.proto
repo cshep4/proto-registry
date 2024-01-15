@@ -5,33 +5,31 @@ package streaming;
 option go_package = "github.com/cshep4/proto-repository/example-grpc/streaming/proto";
 
 service StreamingService {
-  rpc ServerStreaming(ServerStreamingRequest) returns (stream ServerStreamingResponse);
-
-  rpc ClientStreaming(stream ClientStreamingRequest) returns (ClientStreamingResponse);
-
-  rpc BiDirectionalStreaming(stream BiDirectionalStreamingRequest) returns (stream BiDirectionalStreamingResponse);
+  rpc DownloadFile(DownloadFileRequest) returns (stream DownloadFileResponse);
+  rpc UploadFile(stream UploadFileRequest) returns (UploadFileResponse);
+  rpc Echo(stream EchoRequest) returns (stream EchoResponse);
 }
 
-message ServerStreamingRequest {
-  string message = 1;
-}
-
-message ServerStreamingResponse {
-  string message = 1;
-}
-
-message ClientStreamingRequest {
+message DownloadFileRequest {
   string name = 1;
 }
 
-message ClientStreamingResponse {
-  repeated string received_messages = 1;
+message DownloadFileResponse {
+  bytes content = 1;
 }
 
-message BiDirectionalStreamingRequest {
+message UploadFileRequest {
+  bytes content = 1;
+}
+
+message UploadFileResponse {
   string name = 1;
 }
 
-message BiDirectionalStreamingResponse {
+message EchoRequest {
+  string message = 1;
+}
+
+message EchoResponse {
   string message = 1;
 }

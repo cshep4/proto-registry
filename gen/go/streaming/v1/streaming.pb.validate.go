@@ -35,230 +35,22 @@ var (
 	_ = sort.Sort
 )
 
-// Validate checks the field values on ServerStreamingRequest with the rules
+// Validate checks the field values on DownloadFileRequest with the rules
 // defined in the proto definition for this message. If any rules are
 // violated, the first error encountered is returned, or nil if there are no violations.
-func (m *ServerStreamingRequest) Validate() error {
+func (m *DownloadFileRequest) Validate() error {
 	return m.validate(false)
 }
 
-// ValidateAll checks the field values on ServerStreamingRequest with the rules
+// ValidateAll checks the field values on DownloadFileRequest with the rules
 // defined in the proto definition for this message. If any rules are
 // violated, the result is a list of violation errors wrapped in
-// ServerStreamingRequestMultiError, or nil if none found.
-func (m *ServerStreamingRequest) ValidateAll() error {
+// DownloadFileRequestMultiError, or nil if none found.
+func (m *DownloadFileRequest) ValidateAll() error {
 	return m.validate(true)
 }
 
-func (m *ServerStreamingRequest) validate(all bool) error {
-	if m == nil {
-		return nil
-	}
-
-	var errors []error
-
-	// no validation rules for Message
-
-	if len(errors) > 0 {
-		return ServerStreamingRequestMultiError(errors)
-	}
-
-	return nil
-}
-
-// ServerStreamingRequestMultiError is an error wrapping multiple validation
-// errors returned by ServerStreamingRequest.ValidateAll() if the designated
-// constraints aren't met.
-type ServerStreamingRequestMultiError []error
-
-// Error returns a concatenation of all the error messages it wraps.
-func (m ServerStreamingRequestMultiError) Error() string {
-	var msgs []string
-	for _, err := range m {
-		msgs = append(msgs, err.Error())
-	}
-	return strings.Join(msgs, "; ")
-}
-
-// AllErrors returns a list of validation violation errors.
-func (m ServerStreamingRequestMultiError) AllErrors() []error { return m }
-
-// ServerStreamingRequestValidationError is the validation error returned by
-// ServerStreamingRequest.Validate if the designated constraints aren't met.
-type ServerStreamingRequestValidationError struct {
-	field  string
-	reason string
-	cause  error
-	key    bool
-}
-
-// Field function returns field value.
-func (e ServerStreamingRequestValidationError) Field() string { return e.field }
-
-// Reason function returns reason value.
-func (e ServerStreamingRequestValidationError) Reason() string { return e.reason }
-
-// Cause function returns cause value.
-func (e ServerStreamingRequestValidationError) Cause() error { return e.cause }
-
-// Key function returns key value.
-func (e ServerStreamingRequestValidationError) Key() bool { return e.key }
-
-// ErrorName returns error name.
-func (e ServerStreamingRequestValidationError) ErrorName() string {
-	return "ServerStreamingRequestValidationError"
-}
-
-// Error satisfies the builtin error interface
-func (e ServerStreamingRequestValidationError) Error() string {
-	cause := ""
-	if e.cause != nil {
-		cause = fmt.Sprintf(" | caused by: %v", e.cause)
-	}
-
-	key := ""
-	if e.key {
-		key = "key for "
-	}
-
-	return fmt.Sprintf(
-		"invalid %sServerStreamingRequest.%s: %s%s",
-		key,
-		e.field,
-		e.reason,
-		cause)
-}
-
-var _ error = ServerStreamingRequestValidationError{}
-
-var _ interface {
-	Field() string
-	Reason() string
-	Key() bool
-	Cause() error
-	ErrorName() string
-} = ServerStreamingRequestValidationError{}
-
-// Validate checks the field values on ServerStreamingResponse with the rules
-// defined in the proto definition for this message. If any rules are
-// violated, the first error encountered is returned, or nil if there are no violations.
-func (m *ServerStreamingResponse) Validate() error {
-	return m.validate(false)
-}
-
-// ValidateAll checks the field values on ServerStreamingResponse with the
-// rules defined in the proto definition for this message. If any rules are
-// violated, the result is a list of violation errors wrapped in
-// ServerStreamingResponseMultiError, or nil if none found.
-func (m *ServerStreamingResponse) ValidateAll() error {
-	return m.validate(true)
-}
-
-func (m *ServerStreamingResponse) validate(all bool) error {
-	if m == nil {
-		return nil
-	}
-
-	var errors []error
-
-	// no validation rules for Message
-
-	if len(errors) > 0 {
-		return ServerStreamingResponseMultiError(errors)
-	}
-
-	return nil
-}
-
-// ServerStreamingResponseMultiError is an error wrapping multiple validation
-// errors returned by ServerStreamingResponse.ValidateAll() if the designated
-// constraints aren't met.
-type ServerStreamingResponseMultiError []error
-
-// Error returns a concatenation of all the error messages it wraps.
-func (m ServerStreamingResponseMultiError) Error() string {
-	var msgs []string
-	for _, err := range m {
-		msgs = append(msgs, err.Error())
-	}
-	return strings.Join(msgs, "; ")
-}
-
-// AllErrors returns a list of validation violation errors.
-func (m ServerStreamingResponseMultiError) AllErrors() []error { return m }
-
-// ServerStreamingResponseValidationError is the validation error returned by
-// ServerStreamingResponse.Validate if the designated constraints aren't met.
-type ServerStreamingResponseValidationError struct {
-	field  string
-	reason string
-	cause  error
-	key    bool
-}
-
-// Field function returns field value.
-func (e ServerStreamingResponseValidationError) Field() string { return e.field }
-
-// Reason function returns reason value.
-func (e ServerStreamingResponseValidationError) Reason() string { return e.reason }
-
-// Cause function returns cause value.
-func (e ServerStreamingResponseValidationError) Cause() error { return e.cause }
-
-// Key function returns key value.
-func (e ServerStreamingResponseValidationError) Key() bool { return e.key }
-
-// ErrorName returns error name.
-func (e ServerStreamingResponseValidationError) ErrorName() string {
-	return "ServerStreamingResponseValidationError"
-}
-
-// Error satisfies the builtin error interface
-func (e ServerStreamingResponseValidationError) Error() string {
-	cause := ""
-	if e.cause != nil {
-		cause = fmt.Sprintf(" | caused by: %v", e.cause)
-	}
-
-	key := ""
-	if e.key {
-		key = "key for "
-	}
-
-	return fmt.Sprintf(
-		"invalid %sServerStreamingResponse.%s: %s%s",
-		key,
-		e.field,
-		e.reason,
-		cause)
-}
-
-var _ error = ServerStreamingResponseValidationError{}
-
-var _ interface {
-	Field() string
-	Reason() string
-	Key() bool
-	Cause() error
-	ErrorName() string
-} = ServerStreamingResponseValidationError{}
-
-// Validate checks the field values on ClientStreamingRequest with the rules
-// defined in the proto definition for this message. If any rules are
-// violated, the first error encountered is returned, or nil if there are no violations.
-func (m *ClientStreamingRequest) Validate() error {
-	return m.validate(false)
-}
-
-// ValidateAll checks the field values on ClientStreamingRequest with the rules
-// defined in the proto definition for this message. If any rules are
-// violated, the result is a list of violation errors wrapped in
-// ClientStreamingRequestMultiError, or nil if none found.
-func (m *ClientStreamingRequest) ValidateAll() error {
-	return m.validate(true)
-}
-
-func (m *ClientStreamingRequest) validate(all bool) error {
+func (m *DownloadFileRequest) validate(all bool) error {
 	if m == nil {
 		return nil
 	}
@@ -268,19 +60,19 @@ func (m *ClientStreamingRequest) validate(all bool) error {
 	// no validation rules for Name
 
 	if len(errors) > 0 {
-		return ClientStreamingRequestMultiError(errors)
+		return DownloadFileRequestMultiError(errors)
 	}
 
 	return nil
 }
 
-// ClientStreamingRequestMultiError is an error wrapping multiple validation
-// errors returned by ClientStreamingRequest.ValidateAll() if the designated
+// DownloadFileRequestMultiError is an error wrapping multiple validation
+// errors returned by DownloadFileRequest.ValidateAll() if the designated
 // constraints aren't met.
-type ClientStreamingRequestMultiError []error
+type DownloadFileRequestMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
-func (m ClientStreamingRequestMultiError) Error() string {
+func (m DownloadFileRequestMultiError) Error() string {
 	var msgs []string
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
@@ -289,11 +81,11 @@ func (m ClientStreamingRequestMultiError) Error() string {
 }
 
 // AllErrors returns a list of validation violation errors.
-func (m ClientStreamingRequestMultiError) AllErrors() []error { return m }
+func (m DownloadFileRequestMultiError) AllErrors() []error { return m }
 
-// ClientStreamingRequestValidationError is the validation error returned by
-// ClientStreamingRequest.Validate if the designated constraints aren't met.
-type ClientStreamingRequestValidationError struct {
+// DownloadFileRequestValidationError is the validation error returned by
+// DownloadFileRequest.Validate if the designated constraints aren't met.
+type DownloadFileRequestValidationError struct {
 	field  string
 	reason string
 	cause  error
@@ -301,24 +93,24 @@ type ClientStreamingRequestValidationError struct {
 }
 
 // Field function returns field value.
-func (e ClientStreamingRequestValidationError) Field() string { return e.field }
+func (e DownloadFileRequestValidationError) Field() string { return e.field }
 
 // Reason function returns reason value.
-func (e ClientStreamingRequestValidationError) Reason() string { return e.reason }
+func (e DownloadFileRequestValidationError) Reason() string { return e.reason }
 
 // Cause function returns cause value.
-func (e ClientStreamingRequestValidationError) Cause() error { return e.cause }
+func (e DownloadFileRequestValidationError) Cause() error { return e.cause }
 
 // Key function returns key value.
-func (e ClientStreamingRequestValidationError) Key() bool { return e.key }
+func (e DownloadFileRequestValidationError) Key() bool { return e.key }
 
 // ErrorName returns error name.
-func (e ClientStreamingRequestValidationError) ErrorName() string {
-	return "ClientStreamingRequestValidationError"
+func (e DownloadFileRequestValidationError) ErrorName() string {
+	return "DownloadFileRequestValidationError"
 }
 
 // Error satisfies the builtin error interface
-func (e ClientStreamingRequestValidationError) Error() string {
+func (e DownloadFileRequestValidationError) Error() string {
 	cause := ""
 	if e.cause != nil {
 		cause = fmt.Sprintf(" | caused by: %v", e.cause)
@@ -330,14 +122,14 @@ func (e ClientStreamingRequestValidationError) Error() string {
 	}
 
 	return fmt.Sprintf(
-		"invalid %sClientStreamingRequest.%s: %s%s",
+		"invalid %sDownloadFileRequest.%s: %s%s",
 		key,
 		e.field,
 		e.reason,
 		cause)
 }
 
-var _ error = ClientStreamingRequestValidationError{}
+var _ error = DownloadFileRequestValidationError{}
 
 var _ interface {
 	Field() string
@@ -345,44 +137,46 @@ var _ interface {
 	Key() bool
 	Cause() error
 	ErrorName() string
-} = ClientStreamingRequestValidationError{}
+} = DownloadFileRequestValidationError{}
 
-// Validate checks the field values on ClientStreamingResponse with the rules
+// Validate checks the field values on DownloadFileResponse with the rules
 // defined in the proto definition for this message. If any rules are
 // violated, the first error encountered is returned, or nil if there are no violations.
-func (m *ClientStreamingResponse) Validate() error {
+func (m *DownloadFileResponse) Validate() error {
 	return m.validate(false)
 }
 
-// ValidateAll checks the field values on ClientStreamingResponse with the
-// rules defined in the proto definition for this message. If any rules are
+// ValidateAll checks the field values on DownloadFileResponse with the rules
+// defined in the proto definition for this message. If any rules are
 // violated, the result is a list of violation errors wrapped in
-// ClientStreamingResponseMultiError, or nil if none found.
-func (m *ClientStreamingResponse) ValidateAll() error {
+// DownloadFileResponseMultiError, or nil if none found.
+func (m *DownloadFileResponse) ValidateAll() error {
 	return m.validate(true)
 }
 
-func (m *ClientStreamingResponse) validate(all bool) error {
+func (m *DownloadFileResponse) validate(all bool) error {
 	if m == nil {
 		return nil
 	}
 
 	var errors []error
 
+	// no validation rules for Content
+
 	if len(errors) > 0 {
-		return ClientStreamingResponseMultiError(errors)
+		return DownloadFileResponseMultiError(errors)
 	}
 
 	return nil
 }
 
-// ClientStreamingResponseMultiError is an error wrapping multiple validation
-// errors returned by ClientStreamingResponse.ValidateAll() if the designated
+// DownloadFileResponseMultiError is an error wrapping multiple validation
+// errors returned by DownloadFileResponse.ValidateAll() if the designated
 // constraints aren't met.
-type ClientStreamingResponseMultiError []error
+type DownloadFileResponseMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
-func (m ClientStreamingResponseMultiError) Error() string {
+func (m DownloadFileResponseMultiError) Error() string {
 	var msgs []string
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
@@ -391,11 +185,11 @@ func (m ClientStreamingResponseMultiError) Error() string {
 }
 
 // AllErrors returns a list of validation violation errors.
-func (m ClientStreamingResponseMultiError) AllErrors() []error { return m }
+func (m DownloadFileResponseMultiError) AllErrors() []error { return m }
 
-// ClientStreamingResponseValidationError is the validation error returned by
-// ClientStreamingResponse.Validate if the designated constraints aren't met.
-type ClientStreamingResponseValidationError struct {
+// DownloadFileResponseValidationError is the validation error returned by
+// DownloadFileResponse.Validate if the designated constraints aren't met.
+type DownloadFileResponseValidationError struct {
 	field  string
 	reason string
 	cause  error
@@ -403,24 +197,24 @@ type ClientStreamingResponseValidationError struct {
 }
 
 // Field function returns field value.
-func (e ClientStreamingResponseValidationError) Field() string { return e.field }
+func (e DownloadFileResponseValidationError) Field() string { return e.field }
 
 // Reason function returns reason value.
-func (e ClientStreamingResponseValidationError) Reason() string { return e.reason }
+func (e DownloadFileResponseValidationError) Reason() string { return e.reason }
 
 // Cause function returns cause value.
-func (e ClientStreamingResponseValidationError) Cause() error { return e.cause }
+func (e DownloadFileResponseValidationError) Cause() error { return e.cause }
 
 // Key function returns key value.
-func (e ClientStreamingResponseValidationError) Key() bool { return e.key }
+func (e DownloadFileResponseValidationError) Key() bool { return e.key }
 
 // ErrorName returns error name.
-func (e ClientStreamingResponseValidationError) ErrorName() string {
-	return "ClientStreamingResponseValidationError"
+func (e DownloadFileResponseValidationError) ErrorName() string {
+	return "DownloadFileResponseValidationError"
 }
 
 // Error satisfies the builtin error interface
-func (e ClientStreamingResponseValidationError) Error() string {
+func (e DownloadFileResponseValidationError) Error() string {
 	cause := ""
 	if e.cause != nil {
 		cause = fmt.Sprintf(" | caused by: %v", e.cause)
@@ -432,14 +226,14 @@ func (e ClientStreamingResponseValidationError) Error() string {
 	}
 
 	return fmt.Sprintf(
-		"invalid %sClientStreamingResponse.%s: %s%s",
+		"invalid %sDownloadFileResponse.%s: %s%s",
 		key,
 		e.field,
 		e.reason,
 		cause)
 }
 
-var _ error = ClientStreamingResponseValidationError{}
+var _ error = DownloadFileResponseValidationError{}
 
 var _ interface {
 	Field() string
@@ -447,46 +241,46 @@ var _ interface {
 	Key() bool
 	Cause() error
 	ErrorName() string
-} = ClientStreamingResponseValidationError{}
+} = DownloadFileResponseValidationError{}
 
-// Validate checks the field values on BiDirectionalStreamingRequest with the
-// rules defined in the proto definition for this message. If any rules are
-// violated, the first error encountered is returned, or nil if there are no violations.
-func (m *BiDirectionalStreamingRequest) Validate() error {
+// Validate checks the field values on UploadFileRequest with the rules defined
+// in the proto definition for this message. If any rules are violated, the
+// first error encountered is returned, or nil if there are no violations.
+func (m *UploadFileRequest) Validate() error {
 	return m.validate(false)
 }
 
-// ValidateAll checks the field values on BiDirectionalStreamingRequest with
-// the rules defined in the proto definition for this message. If any rules
-// are violated, the result is a list of violation errors wrapped in
-// BiDirectionalStreamingRequestMultiError, or nil if none found.
-func (m *BiDirectionalStreamingRequest) ValidateAll() error {
+// ValidateAll checks the field values on UploadFileRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// UploadFileRequestMultiError, or nil if none found.
+func (m *UploadFileRequest) ValidateAll() error {
 	return m.validate(true)
 }
 
-func (m *BiDirectionalStreamingRequest) validate(all bool) error {
+func (m *UploadFileRequest) validate(all bool) error {
 	if m == nil {
 		return nil
 	}
 
 	var errors []error
 
-	// no validation rules for Name
+	// no validation rules for Content
 
 	if len(errors) > 0 {
-		return BiDirectionalStreamingRequestMultiError(errors)
+		return UploadFileRequestMultiError(errors)
 	}
 
 	return nil
 }
 
-// BiDirectionalStreamingRequestMultiError is an error wrapping multiple
-// validation errors returned by BiDirectionalStreamingRequest.ValidateAll()
-// if the designated constraints aren't met.
-type BiDirectionalStreamingRequestMultiError []error
+// UploadFileRequestMultiError is an error wrapping multiple validation errors
+// returned by UploadFileRequest.ValidateAll() if the designated constraints
+// aren't met.
+type UploadFileRequestMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
-func (m BiDirectionalStreamingRequestMultiError) Error() string {
+func (m UploadFileRequestMultiError) Error() string {
 	var msgs []string
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
@@ -495,12 +289,11 @@ func (m BiDirectionalStreamingRequestMultiError) Error() string {
 }
 
 // AllErrors returns a list of validation violation errors.
-func (m BiDirectionalStreamingRequestMultiError) AllErrors() []error { return m }
+func (m UploadFileRequestMultiError) AllErrors() []error { return m }
 
-// BiDirectionalStreamingRequestValidationError is the validation error
-// returned by BiDirectionalStreamingRequest.Validate if the designated
-// constraints aren't met.
-type BiDirectionalStreamingRequestValidationError struct {
+// UploadFileRequestValidationError is the validation error returned by
+// UploadFileRequest.Validate if the designated constraints aren't met.
+type UploadFileRequestValidationError struct {
 	field  string
 	reason string
 	cause  error
@@ -508,24 +301,24 @@ type BiDirectionalStreamingRequestValidationError struct {
 }
 
 // Field function returns field value.
-func (e BiDirectionalStreamingRequestValidationError) Field() string { return e.field }
+func (e UploadFileRequestValidationError) Field() string { return e.field }
 
 // Reason function returns reason value.
-func (e BiDirectionalStreamingRequestValidationError) Reason() string { return e.reason }
+func (e UploadFileRequestValidationError) Reason() string { return e.reason }
 
 // Cause function returns cause value.
-func (e BiDirectionalStreamingRequestValidationError) Cause() error { return e.cause }
+func (e UploadFileRequestValidationError) Cause() error { return e.cause }
 
 // Key function returns key value.
-func (e BiDirectionalStreamingRequestValidationError) Key() bool { return e.key }
+func (e UploadFileRequestValidationError) Key() bool { return e.key }
 
 // ErrorName returns error name.
-func (e BiDirectionalStreamingRequestValidationError) ErrorName() string {
-	return "BiDirectionalStreamingRequestValidationError"
+func (e UploadFileRequestValidationError) ErrorName() string {
+	return "UploadFileRequestValidationError"
 }
 
 // Error satisfies the builtin error interface
-func (e BiDirectionalStreamingRequestValidationError) Error() string {
+func (e UploadFileRequestValidationError) Error() string {
 	cause := ""
 	if e.cause != nil {
 		cause = fmt.Sprintf(" | caused by: %v", e.cause)
@@ -537,14 +330,14 @@ func (e BiDirectionalStreamingRequestValidationError) Error() string {
 	}
 
 	return fmt.Sprintf(
-		"invalid %sBiDirectionalStreamingRequest.%s: %s%s",
+		"invalid %sUploadFileRequest.%s: %s%s",
 		key,
 		e.field,
 		e.reason,
 		cause)
 }
 
-var _ error = BiDirectionalStreamingRequestValidationError{}
+var _ error = UploadFileRequestValidationError{}
 
 var _ interface {
 	Field() string
@@ -552,24 +345,128 @@ var _ interface {
 	Key() bool
 	Cause() error
 	ErrorName() string
-} = BiDirectionalStreamingRequestValidationError{}
+} = UploadFileRequestValidationError{}
 
-// Validate checks the field values on BiDirectionalStreamingResponse with the
-// rules defined in the proto definition for this message. If any rules are
+// Validate checks the field values on UploadFileResponse with the rules
+// defined in the proto definition for this message. If any rules are
 // violated, the first error encountered is returned, or nil if there are no violations.
-func (m *BiDirectionalStreamingResponse) Validate() error {
+func (m *UploadFileResponse) Validate() error {
 	return m.validate(false)
 }
 
-// ValidateAll checks the field values on BiDirectionalStreamingResponse with
-// the rules defined in the proto definition for this message. If any rules
-// are violated, the result is a list of violation errors wrapped in
-// BiDirectionalStreamingResponseMultiError, or nil if none found.
-func (m *BiDirectionalStreamingResponse) ValidateAll() error {
+// ValidateAll checks the field values on UploadFileResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// UploadFileResponseMultiError, or nil if none found.
+func (m *UploadFileResponse) ValidateAll() error {
 	return m.validate(true)
 }
 
-func (m *BiDirectionalStreamingResponse) validate(all bool) error {
+func (m *UploadFileResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Id
+
+	if len(errors) > 0 {
+		return UploadFileResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// UploadFileResponseMultiError is an error wrapping multiple validation errors
+// returned by UploadFileResponse.ValidateAll() if the designated constraints
+// aren't met.
+type UploadFileResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m UploadFileResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m UploadFileResponseMultiError) AllErrors() []error { return m }
+
+// UploadFileResponseValidationError is the validation error returned by
+// UploadFileResponse.Validate if the designated constraints aren't met.
+type UploadFileResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e UploadFileResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e UploadFileResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e UploadFileResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e UploadFileResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e UploadFileResponseValidationError) ErrorName() string {
+	return "UploadFileResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e UploadFileResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sUploadFileResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = UploadFileResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = UploadFileResponseValidationError{}
+
+// Validate checks the field values on EchoRequest with the rules defined in
+// the proto definition for this message. If any rules are violated, the first
+// error encountered is returned, or nil if there are no violations.
+func (m *EchoRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on EchoRequest with the rules defined in
+// the proto definition for this message. If any rules are violated, the
+// result is a list of violation errors wrapped in EchoRequestMultiError, or
+// nil if none found.
+func (m *EchoRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *EchoRequest) validate(all bool) error {
 	if m == nil {
 		return nil
 	}
@@ -579,19 +476,18 @@ func (m *BiDirectionalStreamingResponse) validate(all bool) error {
 	// no validation rules for Message
 
 	if len(errors) > 0 {
-		return BiDirectionalStreamingResponseMultiError(errors)
+		return EchoRequestMultiError(errors)
 	}
 
 	return nil
 }
 
-// BiDirectionalStreamingResponseMultiError is an error wrapping multiple
-// validation errors returned by BiDirectionalStreamingResponse.ValidateAll()
-// if the designated constraints aren't met.
-type BiDirectionalStreamingResponseMultiError []error
+// EchoRequestMultiError is an error wrapping multiple validation errors
+// returned by EchoRequest.ValidateAll() if the designated constraints aren't met.
+type EchoRequestMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
-func (m BiDirectionalStreamingResponseMultiError) Error() string {
+func (m EchoRequestMultiError) Error() string {
 	var msgs []string
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
@@ -600,12 +496,11 @@ func (m BiDirectionalStreamingResponseMultiError) Error() string {
 }
 
 // AllErrors returns a list of validation violation errors.
-func (m BiDirectionalStreamingResponseMultiError) AllErrors() []error { return m }
+func (m EchoRequestMultiError) AllErrors() []error { return m }
 
-// BiDirectionalStreamingResponseValidationError is the validation error
-// returned by BiDirectionalStreamingResponse.Validate if the designated
-// constraints aren't met.
-type BiDirectionalStreamingResponseValidationError struct {
+// EchoRequestValidationError is the validation error returned by
+// EchoRequest.Validate if the designated constraints aren't met.
+type EchoRequestValidationError struct {
 	field  string
 	reason string
 	cause  error
@@ -613,24 +508,22 @@ type BiDirectionalStreamingResponseValidationError struct {
 }
 
 // Field function returns field value.
-func (e BiDirectionalStreamingResponseValidationError) Field() string { return e.field }
+func (e EchoRequestValidationError) Field() string { return e.field }
 
 // Reason function returns reason value.
-func (e BiDirectionalStreamingResponseValidationError) Reason() string { return e.reason }
+func (e EchoRequestValidationError) Reason() string { return e.reason }
 
 // Cause function returns cause value.
-func (e BiDirectionalStreamingResponseValidationError) Cause() error { return e.cause }
+func (e EchoRequestValidationError) Cause() error { return e.cause }
 
 // Key function returns key value.
-func (e BiDirectionalStreamingResponseValidationError) Key() bool { return e.key }
+func (e EchoRequestValidationError) Key() bool { return e.key }
 
 // ErrorName returns error name.
-func (e BiDirectionalStreamingResponseValidationError) ErrorName() string {
-	return "BiDirectionalStreamingResponseValidationError"
-}
+func (e EchoRequestValidationError) ErrorName() string { return "EchoRequestValidationError" }
 
 // Error satisfies the builtin error interface
-func (e BiDirectionalStreamingResponseValidationError) Error() string {
+func (e EchoRequestValidationError) Error() string {
 	cause := ""
 	if e.cause != nil {
 		cause = fmt.Sprintf(" | caused by: %v", e.cause)
@@ -642,14 +535,14 @@ func (e BiDirectionalStreamingResponseValidationError) Error() string {
 	}
 
 	return fmt.Sprintf(
-		"invalid %sBiDirectionalStreamingResponse.%s: %s%s",
+		"invalid %sEchoRequest.%s: %s%s",
 		key,
 		e.field,
 		e.reason,
 		cause)
 }
 
-var _ error = BiDirectionalStreamingResponseValidationError{}
+var _ error = EchoRequestValidationError{}
 
 var _ interface {
 	Field() string
@@ -657,4 +550,105 @@ var _ interface {
 	Key() bool
 	Cause() error
 	ErrorName() string
-} = BiDirectionalStreamingResponseValidationError{}
+} = EchoRequestValidationError{}
+
+// Validate checks the field values on EchoResponse with the rules defined in
+// the proto definition for this message. If any rules are violated, the first
+// error encountered is returned, or nil if there are no violations.
+func (m *EchoResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on EchoResponse with the rules defined
+// in the proto definition for this message. If any rules are violated, the
+// result is a list of violation errors wrapped in EchoResponseMultiError, or
+// nil if none found.
+func (m *EchoResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *EchoResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Message
+
+	if len(errors) > 0 {
+		return EchoResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// EchoResponseMultiError is an error wrapping multiple validation errors
+// returned by EchoResponse.ValidateAll() if the designated constraints aren't met.
+type EchoResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m EchoResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m EchoResponseMultiError) AllErrors() []error { return m }
+
+// EchoResponseValidationError is the validation error returned by
+// EchoResponse.Validate if the designated constraints aren't met.
+type EchoResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e EchoResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e EchoResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e EchoResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e EchoResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e EchoResponseValidationError) ErrorName() string { return "EchoResponseValidationError" }
+
+// Error satisfies the builtin error interface
+func (e EchoResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sEchoResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = EchoResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = EchoResponseValidationError{}

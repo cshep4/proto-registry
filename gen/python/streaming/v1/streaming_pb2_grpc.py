@@ -14,39 +14,39 @@ class StreamingServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.ServerStreaming = channel.unary_stream(
-                '/streaming.v1.StreamingService/ServerStreaming',
-                request_serializer=streaming_dot_v1_dot_streaming__pb2.ServerStreamingRequest.SerializeToString,
-                response_deserializer=streaming_dot_v1_dot_streaming__pb2.ServerStreamingResponse.FromString,
+        self.DownloadFile = channel.unary_stream(
+                '/streaming.v1.StreamingService/DownloadFile',
+                request_serializer=streaming_dot_v1_dot_streaming__pb2.DownloadFileRequest.SerializeToString,
+                response_deserializer=streaming_dot_v1_dot_streaming__pb2.DownloadFileResponse.FromString,
                 )
-        self.ClientStreaming = channel.stream_unary(
-                '/streaming.v1.StreamingService/ClientStreaming',
-                request_serializer=streaming_dot_v1_dot_streaming__pb2.ClientStreamingRequest.SerializeToString,
-                response_deserializer=streaming_dot_v1_dot_streaming__pb2.ClientStreamingResponse.FromString,
+        self.UploadFile = channel.stream_unary(
+                '/streaming.v1.StreamingService/UploadFile',
+                request_serializer=streaming_dot_v1_dot_streaming__pb2.UploadFileRequest.SerializeToString,
+                response_deserializer=streaming_dot_v1_dot_streaming__pb2.UploadFileResponse.FromString,
                 )
-        self.BiDirectionalStreaming = channel.stream_stream(
-                '/streaming.v1.StreamingService/BiDirectionalStreaming',
-                request_serializer=streaming_dot_v1_dot_streaming__pb2.BiDirectionalStreamingRequest.SerializeToString,
-                response_deserializer=streaming_dot_v1_dot_streaming__pb2.BiDirectionalStreamingResponse.FromString,
+        self.Echo = channel.stream_stream(
+                '/streaming.v1.StreamingService/Echo',
+                request_serializer=streaming_dot_v1_dot_streaming__pb2.EchoRequest.SerializeToString,
+                response_deserializer=streaming_dot_v1_dot_streaming__pb2.EchoResponse.FromString,
                 )
 
 
 class StreamingServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
-    def ServerStreaming(self, request, context):
+    def DownloadFile(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def ClientStreaming(self, request_iterator, context):
+    def UploadFile(self, request_iterator, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def BiDirectionalStreaming(self, request_iterator, context):
+    def Echo(self, request_iterator, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -55,20 +55,20 @@ class StreamingServiceServicer(object):
 
 def add_StreamingServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'ServerStreaming': grpc.unary_stream_rpc_method_handler(
-                    servicer.ServerStreaming,
-                    request_deserializer=streaming_dot_v1_dot_streaming__pb2.ServerStreamingRequest.FromString,
-                    response_serializer=streaming_dot_v1_dot_streaming__pb2.ServerStreamingResponse.SerializeToString,
+            'DownloadFile': grpc.unary_stream_rpc_method_handler(
+                    servicer.DownloadFile,
+                    request_deserializer=streaming_dot_v1_dot_streaming__pb2.DownloadFileRequest.FromString,
+                    response_serializer=streaming_dot_v1_dot_streaming__pb2.DownloadFileResponse.SerializeToString,
             ),
-            'ClientStreaming': grpc.stream_unary_rpc_method_handler(
-                    servicer.ClientStreaming,
-                    request_deserializer=streaming_dot_v1_dot_streaming__pb2.ClientStreamingRequest.FromString,
-                    response_serializer=streaming_dot_v1_dot_streaming__pb2.ClientStreamingResponse.SerializeToString,
+            'UploadFile': grpc.stream_unary_rpc_method_handler(
+                    servicer.UploadFile,
+                    request_deserializer=streaming_dot_v1_dot_streaming__pb2.UploadFileRequest.FromString,
+                    response_serializer=streaming_dot_v1_dot_streaming__pb2.UploadFileResponse.SerializeToString,
             ),
-            'BiDirectionalStreaming': grpc.stream_stream_rpc_method_handler(
-                    servicer.BiDirectionalStreaming,
-                    request_deserializer=streaming_dot_v1_dot_streaming__pb2.BiDirectionalStreamingRequest.FromString,
-                    response_serializer=streaming_dot_v1_dot_streaming__pb2.BiDirectionalStreamingResponse.SerializeToString,
+            'Echo': grpc.stream_stream_rpc_method_handler(
+                    servicer.Echo,
+                    request_deserializer=streaming_dot_v1_dot_streaming__pb2.EchoRequest.FromString,
+                    response_serializer=streaming_dot_v1_dot_streaming__pb2.EchoResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -81,7 +81,7 @@ class StreamingService(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def ServerStreaming(request,
+    def DownloadFile(request,
             target,
             options=(),
             channel_credentials=None,
@@ -91,14 +91,14 @@ class StreamingService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_stream(request, target, '/streaming.v1.StreamingService/ServerStreaming',
-            streaming_dot_v1_dot_streaming__pb2.ServerStreamingRequest.SerializeToString,
-            streaming_dot_v1_dot_streaming__pb2.ServerStreamingResponse.FromString,
+        return grpc.experimental.unary_stream(request, target, '/streaming.v1.StreamingService/DownloadFile',
+            streaming_dot_v1_dot_streaming__pb2.DownloadFileRequest.SerializeToString,
+            streaming_dot_v1_dot_streaming__pb2.DownloadFileResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def ClientStreaming(request_iterator,
+    def UploadFile(request_iterator,
             target,
             options=(),
             channel_credentials=None,
@@ -108,14 +108,14 @@ class StreamingService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.stream_unary(request_iterator, target, '/streaming.v1.StreamingService/ClientStreaming',
-            streaming_dot_v1_dot_streaming__pb2.ClientStreamingRequest.SerializeToString,
-            streaming_dot_v1_dot_streaming__pb2.ClientStreamingResponse.FromString,
+        return grpc.experimental.stream_unary(request_iterator, target, '/streaming.v1.StreamingService/UploadFile',
+            streaming_dot_v1_dot_streaming__pb2.UploadFileRequest.SerializeToString,
+            streaming_dot_v1_dot_streaming__pb2.UploadFileResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def BiDirectionalStreaming(request_iterator,
+    def Echo(request_iterator,
             target,
             options=(),
             channel_credentials=None,
@@ -125,8 +125,8 @@ class StreamingService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.stream_stream(request_iterator, target, '/streaming.v1.StreamingService/BiDirectionalStreaming',
-            streaming_dot_v1_dot_streaming__pb2.BiDirectionalStreamingRequest.SerializeToString,
-            streaming_dot_v1_dot_streaming__pb2.BiDirectionalStreamingResponse.FromString,
+        return grpc.experimental.stream_stream(request_iterator, target, '/streaming.v1.StreamingService/Echo',
+            streaming_dot_v1_dot_streaming__pb2.EchoRequest.SerializeToString,
+            streaming_dot_v1_dot_streaming__pb2.EchoResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

@@ -15,97 +15,97 @@ public final class StreamingServiceGrpc {
   public static final String SERVICE_NAME = "streaming.v1.StreamingService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<com.streaming.v1.ServerStreamingRequest,
-      com.streaming.v1.ServerStreamingResponse> getServerStreamingMethod;
+  private static volatile io.grpc.MethodDescriptor<com.streaming.v1.DownloadFileRequest,
+      com.streaming.v1.DownloadFileResponse> getDownloadFileMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "ServerStreaming",
-      requestType = com.streaming.v1.ServerStreamingRequest.class,
-      responseType = com.streaming.v1.ServerStreamingResponse.class,
+      fullMethodName = SERVICE_NAME + '/' + "DownloadFile",
+      requestType = com.streaming.v1.DownloadFileRequest.class,
+      responseType = com.streaming.v1.DownloadFileResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-  public static io.grpc.MethodDescriptor<com.streaming.v1.ServerStreamingRequest,
-      com.streaming.v1.ServerStreamingResponse> getServerStreamingMethod() {
-    io.grpc.MethodDescriptor<com.streaming.v1.ServerStreamingRequest, com.streaming.v1.ServerStreamingResponse> getServerStreamingMethod;
-    if ((getServerStreamingMethod = StreamingServiceGrpc.getServerStreamingMethod) == null) {
+  public static io.grpc.MethodDescriptor<com.streaming.v1.DownloadFileRequest,
+      com.streaming.v1.DownloadFileResponse> getDownloadFileMethod() {
+    io.grpc.MethodDescriptor<com.streaming.v1.DownloadFileRequest, com.streaming.v1.DownloadFileResponse> getDownloadFileMethod;
+    if ((getDownloadFileMethod = StreamingServiceGrpc.getDownloadFileMethod) == null) {
       synchronized (StreamingServiceGrpc.class) {
-        if ((getServerStreamingMethod = StreamingServiceGrpc.getServerStreamingMethod) == null) {
-          StreamingServiceGrpc.getServerStreamingMethod = getServerStreamingMethod =
-              io.grpc.MethodDescriptor.<com.streaming.v1.ServerStreamingRequest, com.streaming.v1.ServerStreamingResponse>newBuilder()
+        if ((getDownloadFileMethod = StreamingServiceGrpc.getDownloadFileMethod) == null) {
+          StreamingServiceGrpc.getDownloadFileMethod = getDownloadFileMethod =
+              io.grpc.MethodDescriptor.<com.streaming.v1.DownloadFileRequest, com.streaming.v1.DownloadFileResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ServerStreaming"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "DownloadFile"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.streaming.v1.ServerStreamingRequest.getDefaultInstance()))
+                  com.streaming.v1.DownloadFileRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.streaming.v1.ServerStreamingResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new StreamingServiceMethodDescriptorSupplier("ServerStreaming"))
+                  com.streaming.v1.DownloadFileResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new StreamingServiceMethodDescriptorSupplier("DownloadFile"))
               .build();
         }
       }
     }
-    return getServerStreamingMethod;
+    return getDownloadFileMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.streaming.v1.ClientStreamingRequest,
-      com.streaming.v1.ClientStreamingResponse> getClientStreamingMethod;
+  private static volatile io.grpc.MethodDescriptor<com.streaming.v1.UploadFileRequest,
+      com.streaming.v1.UploadFileResponse> getUploadFileMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "ClientStreaming",
-      requestType = com.streaming.v1.ClientStreamingRequest.class,
-      responseType = com.streaming.v1.ClientStreamingResponse.class,
+      fullMethodName = SERVICE_NAME + '/' + "UploadFile",
+      requestType = com.streaming.v1.UploadFileRequest.class,
+      responseType = com.streaming.v1.UploadFileResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
-  public static io.grpc.MethodDescriptor<com.streaming.v1.ClientStreamingRequest,
-      com.streaming.v1.ClientStreamingResponse> getClientStreamingMethod() {
-    io.grpc.MethodDescriptor<com.streaming.v1.ClientStreamingRequest, com.streaming.v1.ClientStreamingResponse> getClientStreamingMethod;
-    if ((getClientStreamingMethod = StreamingServiceGrpc.getClientStreamingMethod) == null) {
+  public static io.grpc.MethodDescriptor<com.streaming.v1.UploadFileRequest,
+      com.streaming.v1.UploadFileResponse> getUploadFileMethod() {
+    io.grpc.MethodDescriptor<com.streaming.v1.UploadFileRequest, com.streaming.v1.UploadFileResponse> getUploadFileMethod;
+    if ((getUploadFileMethod = StreamingServiceGrpc.getUploadFileMethod) == null) {
       synchronized (StreamingServiceGrpc.class) {
-        if ((getClientStreamingMethod = StreamingServiceGrpc.getClientStreamingMethod) == null) {
-          StreamingServiceGrpc.getClientStreamingMethod = getClientStreamingMethod =
-              io.grpc.MethodDescriptor.<com.streaming.v1.ClientStreamingRequest, com.streaming.v1.ClientStreamingResponse>newBuilder()
+        if ((getUploadFileMethod = StreamingServiceGrpc.getUploadFileMethod) == null) {
+          StreamingServiceGrpc.getUploadFileMethod = getUploadFileMethod =
+              io.grpc.MethodDescriptor.<com.streaming.v1.UploadFileRequest, com.streaming.v1.UploadFileResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ClientStreaming"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UploadFile"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.streaming.v1.ClientStreamingRequest.getDefaultInstance()))
+                  com.streaming.v1.UploadFileRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.streaming.v1.ClientStreamingResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new StreamingServiceMethodDescriptorSupplier("ClientStreaming"))
+                  com.streaming.v1.UploadFileResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new StreamingServiceMethodDescriptorSupplier("UploadFile"))
               .build();
         }
       }
     }
-    return getClientStreamingMethod;
+    return getUploadFileMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.streaming.v1.BiDirectionalStreamingRequest,
-      com.streaming.v1.BiDirectionalStreamingResponse> getBiDirectionalStreamingMethod;
+  private static volatile io.grpc.MethodDescriptor<com.streaming.v1.EchoRequest,
+      com.streaming.v1.EchoResponse> getEchoMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "BiDirectionalStreaming",
-      requestType = com.streaming.v1.BiDirectionalStreamingRequest.class,
-      responseType = com.streaming.v1.BiDirectionalStreamingResponse.class,
+      fullMethodName = SERVICE_NAME + '/' + "Echo",
+      requestType = com.streaming.v1.EchoRequest.class,
+      responseType = com.streaming.v1.EchoResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
-  public static io.grpc.MethodDescriptor<com.streaming.v1.BiDirectionalStreamingRequest,
-      com.streaming.v1.BiDirectionalStreamingResponse> getBiDirectionalStreamingMethod() {
-    io.grpc.MethodDescriptor<com.streaming.v1.BiDirectionalStreamingRequest, com.streaming.v1.BiDirectionalStreamingResponse> getBiDirectionalStreamingMethod;
-    if ((getBiDirectionalStreamingMethod = StreamingServiceGrpc.getBiDirectionalStreamingMethod) == null) {
+  public static io.grpc.MethodDescriptor<com.streaming.v1.EchoRequest,
+      com.streaming.v1.EchoResponse> getEchoMethod() {
+    io.grpc.MethodDescriptor<com.streaming.v1.EchoRequest, com.streaming.v1.EchoResponse> getEchoMethod;
+    if ((getEchoMethod = StreamingServiceGrpc.getEchoMethod) == null) {
       synchronized (StreamingServiceGrpc.class) {
-        if ((getBiDirectionalStreamingMethod = StreamingServiceGrpc.getBiDirectionalStreamingMethod) == null) {
-          StreamingServiceGrpc.getBiDirectionalStreamingMethod = getBiDirectionalStreamingMethod =
-              io.grpc.MethodDescriptor.<com.streaming.v1.BiDirectionalStreamingRequest, com.streaming.v1.BiDirectionalStreamingResponse>newBuilder()
+        if ((getEchoMethod = StreamingServiceGrpc.getEchoMethod) == null) {
+          StreamingServiceGrpc.getEchoMethod = getEchoMethod =
+              io.grpc.MethodDescriptor.<com.streaming.v1.EchoRequest, com.streaming.v1.EchoResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "BiDirectionalStreaming"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Echo"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.streaming.v1.BiDirectionalStreamingRequest.getDefaultInstance()))
+                  com.streaming.v1.EchoRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.streaming.v1.BiDirectionalStreamingResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new StreamingServiceMethodDescriptorSupplier("BiDirectionalStreaming"))
+                  com.streaming.v1.EchoResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new StreamingServiceMethodDescriptorSupplier("Echo"))
               .build();
         }
       }
     }
-    return getBiDirectionalStreamingMethod;
+    return getEchoMethod;
   }
 
   /**
@@ -158,23 +158,23 @@ public final class StreamingServiceGrpc {
 
     /**
      */
-    default void serverStreaming(com.streaming.v1.ServerStreamingRequest request,
-        io.grpc.stub.StreamObserver<com.streaming.v1.ServerStreamingResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getServerStreamingMethod(), responseObserver);
+    default void downloadFile(com.streaming.v1.DownloadFileRequest request,
+        io.grpc.stub.StreamObserver<com.streaming.v1.DownloadFileResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDownloadFileMethod(), responseObserver);
     }
 
     /**
      */
-    default io.grpc.stub.StreamObserver<com.streaming.v1.ClientStreamingRequest> clientStreaming(
-        io.grpc.stub.StreamObserver<com.streaming.v1.ClientStreamingResponse> responseObserver) {
-      return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getClientStreamingMethod(), responseObserver);
+    default io.grpc.stub.StreamObserver<com.streaming.v1.UploadFileRequest> uploadFile(
+        io.grpc.stub.StreamObserver<com.streaming.v1.UploadFileResponse> responseObserver) {
+      return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getUploadFileMethod(), responseObserver);
     }
 
     /**
      */
-    default io.grpc.stub.StreamObserver<com.streaming.v1.BiDirectionalStreamingRequest> biDirectionalStreaming(
-        io.grpc.stub.StreamObserver<com.streaming.v1.BiDirectionalStreamingResponse> responseObserver) {
-      return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getBiDirectionalStreamingMethod(), responseObserver);
+    default io.grpc.stub.StreamObserver<com.streaming.v1.EchoRequest> echo(
+        io.grpc.stub.StreamObserver<com.streaming.v1.EchoResponse> responseObserver) {
+      return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getEchoMethod(), responseObserver);
     }
   }
 
@@ -207,26 +207,26 @@ public final class StreamingServiceGrpc {
 
     /**
      */
-    public void serverStreaming(com.streaming.v1.ServerStreamingRequest request,
-        io.grpc.stub.StreamObserver<com.streaming.v1.ServerStreamingResponse> responseObserver) {
+    public void downloadFile(com.streaming.v1.DownloadFileRequest request,
+        io.grpc.stub.StreamObserver<com.streaming.v1.DownloadFileResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncServerStreamingCall(
-          getChannel().newCall(getServerStreamingMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getDownloadFileMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public io.grpc.stub.StreamObserver<com.streaming.v1.ClientStreamingRequest> clientStreaming(
-        io.grpc.stub.StreamObserver<com.streaming.v1.ClientStreamingResponse> responseObserver) {
+    public io.grpc.stub.StreamObserver<com.streaming.v1.UploadFileRequest> uploadFile(
+        io.grpc.stub.StreamObserver<com.streaming.v1.UploadFileResponse> responseObserver) {
       return io.grpc.stub.ClientCalls.asyncClientStreamingCall(
-          getChannel().newCall(getClientStreamingMethod(), getCallOptions()), responseObserver);
+          getChannel().newCall(getUploadFileMethod(), getCallOptions()), responseObserver);
     }
 
     /**
      */
-    public io.grpc.stub.StreamObserver<com.streaming.v1.BiDirectionalStreamingRequest> biDirectionalStreaming(
-        io.grpc.stub.StreamObserver<com.streaming.v1.BiDirectionalStreamingResponse> responseObserver) {
+    public io.grpc.stub.StreamObserver<com.streaming.v1.EchoRequest> echo(
+        io.grpc.stub.StreamObserver<com.streaming.v1.EchoResponse> responseObserver) {
       return io.grpc.stub.ClientCalls.asyncBidiStreamingCall(
-          getChannel().newCall(getBiDirectionalStreamingMethod(), getCallOptions()), responseObserver);
+          getChannel().newCall(getEchoMethod(), getCallOptions()), responseObserver);
     }
   }
 
@@ -248,10 +248,10 @@ public final class StreamingServiceGrpc {
 
     /**
      */
-    public java.util.Iterator<com.streaming.v1.ServerStreamingResponse> serverStreaming(
-        com.streaming.v1.ServerStreamingRequest request) {
+    public java.util.Iterator<com.streaming.v1.DownloadFileResponse> downloadFile(
+        com.streaming.v1.DownloadFileRequest request) {
       return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
-          getChannel(), getServerStreamingMethod(), getCallOptions(), request);
+          getChannel(), getDownloadFileMethod(), getCallOptions(), request);
     }
   }
 
@@ -272,9 +272,9 @@ public final class StreamingServiceGrpc {
     }
   }
 
-  private static final int METHODID_SERVER_STREAMING = 0;
-  private static final int METHODID_CLIENT_STREAMING = 1;
-  private static final int METHODID_BI_DIRECTIONAL_STREAMING = 2;
+  private static final int METHODID_DOWNLOAD_FILE = 0;
+  private static final int METHODID_UPLOAD_FILE = 1;
+  private static final int METHODID_ECHO = 2;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -293,9 +293,9 @@ public final class StreamingServiceGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_SERVER_STREAMING:
-          serviceImpl.serverStreaming((com.streaming.v1.ServerStreamingRequest) request,
-              (io.grpc.stub.StreamObserver<com.streaming.v1.ServerStreamingResponse>) responseObserver);
+        case METHODID_DOWNLOAD_FILE:
+          serviceImpl.downloadFile((com.streaming.v1.DownloadFileRequest) request,
+              (io.grpc.stub.StreamObserver<com.streaming.v1.DownloadFileResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -307,12 +307,12 @@ public final class StreamingServiceGrpc {
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_CLIENT_STREAMING:
-          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.clientStreaming(
-              (io.grpc.stub.StreamObserver<com.streaming.v1.ClientStreamingResponse>) responseObserver);
-        case METHODID_BI_DIRECTIONAL_STREAMING:
-          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.biDirectionalStreaming(
-              (io.grpc.stub.StreamObserver<com.streaming.v1.BiDirectionalStreamingResponse>) responseObserver);
+        case METHODID_UPLOAD_FILE:
+          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.uploadFile(
+              (io.grpc.stub.StreamObserver<com.streaming.v1.UploadFileResponse>) responseObserver);
+        case METHODID_ECHO:
+          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.echo(
+              (io.grpc.stub.StreamObserver<com.streaming.v1.EchoResponse>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -322,26 +322,26 @@ public final class StreamingServiceGrpc {
   public static final io.grpc.ServerServiceDefinition bindService(AsyncService service) {
     return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
         .addMethod(
-          getServerStreamingMethod(),
+          getDownloadFileMethod(),
           io.grpc.stub.ServerCalls.asyncServerStreamingCall(
             new MethodHandlers<
-              com.streaming.v1.ServerStreamingRequest,
-              com.streaming.v1.ServerStreamingResponse>(
-                service, METHODID_SERVER_STREAMING)))
+              com.streaming.v1.DownloadFileRequest,
+              com.streaming.v1.DownloadFileResponse>(
+                service, METHODID_DOWNLOAD_FILE)))
         .addMethod(
-          getClientStreamingMethod(),
+          getUploadFileMethod(),
           io.grpc.stub.ServerCalls.asyncClientStreamingCall(
             new MethodHandlers<
-              com.streaming.v1.ClientStreamingRequest,
-              com.streaming.v1.ClientStreamingResponse>(
-                service, METHODID_CLIENT_STREAMING)))
+              com.streaming.v1.UploadFileRequest,
+              com.streaming.v1.UploadFileResponse>(
+                service, METHODID_UPLOAD_FILE)))
         .addMethod(
-          getBiDirectionalStreamingMethod(),
+          getEchoMethod(),
           io.grpc.stub.ServerCalls.asyncBidiStreamingCall(
             new MethodHandlers<
-              com.streaming.v1.BiDirectionalStreamingRequest,
-              com.streaming.v1.BiDirectionalStreamingResponse>(
-                service, METHODID_BI_DIRECTIONAL_STREAMING)))
+              com.streaming.v1.EchoRequest,
+              com.streaming.v1.EchoResponse>(
+                service, METHODID_ECHO)))
         .build();
   }
 
@@ -390,9 +390,9 @@ public final class StreamingServiceGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new StreamingServiceFileDescriptorSupplier())
-              .addMethod(getServerStreamingMethod())
-              .addMethod(getClientStreamingMethod())
-              .addMethod(getBiDirectionalStreamingMethod())
+              .addMethod(getDownloadFileMethod())
+              .addMethod(getUploadFileMethod())
+              .addMethod(getEchoMethod())
               .build();
         }
       }
