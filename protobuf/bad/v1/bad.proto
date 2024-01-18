@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package s;
+
+service SS {
+  rpc ServerStreaming(Request) returns (stream Response);
+
+  rpc Client_Streaming(stream Request2) returns (Response2);
+
+  rpc BiDirectionalStreaming(stream Request3) returns (stream Response3);
+}
+
+message Request {
+  string m = 1;
+}
+
+message Response {
+  string m = 1;
+}
+
+message Request2 {
+  string name = 1;
+}
+
+message Response2 {
+  repeated string recMess = 1;
+}
+
+message Request3 {
+  string a = 1;
+  string b = 3;
+}
+
+message Response3 {
+  string message = 3;
+}
