@@ -9,8 +9,8 @@ import (
 	"golang.org/x/sync/errgroup"
 	"google.golang.org/grpc"
 
-	"github.com/cshep4/proto-repository/example-grpc/streaming/internal/stream"
-	"github.com/cshep4/proto-repository/example-grpc/streaming/proto"
+	"github.com/cshep4/proto-registry/example-grpc/streaming/internal/stream"
+	"github.com/cshep4/proto-registry/example-grpc/streaming/proto"
 )
 
 func main() {

@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package hello;
 
-option go_package = "github.com/cshep4/proto-repository/example-grpc/hello/proto";
+option go_package = "github.com/cshep4/proto-registry/example-grpc/hello/proto";
 
 service HelloService {
   rpc SayHello(SayHelloRequest) returns (SayHelloResponse);

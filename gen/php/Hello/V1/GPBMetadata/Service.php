@@ -16,15 +16,15 @@ class Service
         }
         $pool->internalAddGeneratedFile(
             '
-Ê
+‰
 hello/v1/service.protohello.v1"%
 SayHelloRequest
 name (	Rname",
 SayHelloResponse
 message (	Rmessage2Q
 HelloServiceA
-SayHello.hello.v1.SayHelloRequest.hello.v1.SayHelloResponseBë
-com.hello.v1BServiceProtoPZ2github.com/cshep4/proto-repository/gen/go/hello/v1¢HXX™Hello.V1 Hello\\V1‚Hello\\V1\\GPBMetadataÍ	Hello::V1bproto3'
+SayHello.hello.v1.SayHelloRequest.hello.v1.SayHelloResponseBè
+com.hello.v1BServiceProtoPZ0github.com/cshep4/proto-registry/gen/go/hello/v1¢HXX™Hello.V1 Hello\\V1‚Hello\\V1\\GPBMetadataÍ	Hello::V1bproto3'
         , true);
 
         static::$is_initialized = true;

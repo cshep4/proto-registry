@@ -1,6 +1,6 @@
-module github.com/cshep4/proto-repository/example-grpc/hello
+module github.com/cshep4/proto-registry/example-grpc/hello
 
-go 1.21.1
+go 1.21.6
 
 require (
 	golang.org/x/sync v0.4.0

@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package streaming;
 
-option go_package = "github.com/cshep4/proto-repository/example-grpc/streaming/proto";
+option go_package = "github.com/cshep4/proto-registry/example-grpc/streaming/proto";
 
 service StreamingService {
   rpc DownloadFile(DownloadFileRequest) returns (stream DownloadFileResponse);

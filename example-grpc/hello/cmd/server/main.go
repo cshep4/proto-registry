@@ -8,8 +8,8 @@ import (
 	"golang.org/x/sync/errgroup"
 	"google.golang.org/grpc"
 
-	"github.com/cshep4/proto-repository/example-grpc/hello/internal/hello"
-	"github.com/cshep4/proto-repository/example-grpc/hello/proto"
+	"github.com/cshep4/proto-registry/example-grpc/hello/internal/hello"
+	"github.com/cshep4/proto-registry/example-grpc/hello/proto"
 )
 
 func main() {

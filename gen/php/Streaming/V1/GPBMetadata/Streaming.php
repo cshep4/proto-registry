@@ -16,7 +16,7 @@ class Streaming
         }
         $pool->internalAddGeneratedFile(
             '
-ë
+é
 streaming/v1/streaming.protostreaming.v1")
 DownloadFileRequest
 name (	Rname"0
@@ -34,8 +34,8 @@ class Streaming
 DownloadFile!.streaming.v1.DownloadFileRequest".streaming.v1.DownloadFileResponse0Q
 
 UploadFile.streaming.v1.UploadFileRequest .streaming.v1.UploadFileResponse(A
-Echo.streaming.v1.EchoRequest.streaming.v1.EchoResponse(0B«
-com.streaming.v1BStreamingProtoPZ6github.com/cshep4/proto-repository/gen/go/streaming/v1¢SXXªStreaming.V1ÊStreaming\\V1âStreaming\\V1\\GPBMetadataêStreaming::V1bproto3'
+Echo.streaming.v1.EchoRequest.streaming.v1.EchoResponse(0B©
+com.streaming.v1BStreamingProtoPZ4github.com/cshep4/proto-registry/gen/go/streaming/v1¢SXXªStreaming.V1ÊStreaming\\V1âStreaming\\V1\\GPBMetadataêStreaming::V1bproto3'
         , true);
 
         static::$is_initialized = true;

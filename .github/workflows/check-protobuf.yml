@@ -27,4 +27,4 @@ jobs:
         uses: bufbuild/buf-breaking-action@v1
         with:
           input: protobuf
-          against: 'https://github.com/cshep4/proto-repository.git#branch=main,subdir=protobuf'
+          against: 'https://github.com/cshep4/proto-registry.git#branch=main,subdir=protobuf'

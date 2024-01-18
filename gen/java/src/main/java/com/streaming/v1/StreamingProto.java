@@ -68,11 +68,11 @@ public final class StreamingProto {
       "g.v1.UploadFileRequest\032 .streaming.v1.Up" +
       "loadFileResponse(\001\022A\n\004Echo\022\031.streaming.v" +
       "1.EchoRequest\032\032.streaming.v1.EchoRespons" +
-      "e(\0010\001B\253\001\n\020com.streaming.v1B\016StreamingPro" +
-      "toP\001Z6github.com/cshep4/proto-repository" +
-      "/gen/go/streaming/v1\242\002\003SXX\252\002\014Streaming.V" +
-      "1\312\002\014Streaming\\V1\342\002\030Streaming\\V1\\GPBMetad" +
-      "ata\352\002\rStreaming::V1b\006proto3"
+      "e(\0010\001B\251\001\n\020com.streaming.v1B\016StreamingPro" +
+      "toP\001Z4github.com/cshep4/proto-registry/g" +
+      "en/go/streaming/v1\242\002\003SXX\252\002\014Streaming.V1\312" +
+      "\002\014Streaming\\V1\342\002\030Streaming\\V1\\GPBMetadat" +
+      "a\352\002\rStreaming::V1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

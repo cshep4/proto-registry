@@ -14,14 +14,14 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x16hello/v1/service.proto\x12\x08hello.v1\"%\n\x0fSayHelloRequest\x12\x12\n\x04name\x18\x01 \x01(\tR\x04name\",\n\x10SayHelloResponse\x12\x18\n\x07message\x18\x01 \x01(\tR\x07message2Q\n\x0cHelloService\x12\x41\n\x08SayHello\x12\x19.hello.v1.SayHelloRequest\x1a\x1a.hello.v1.SayHelloResponseB\x91\x01\n\x0c\x63om.hello.v1B\x0cServiceProtoP\x01Z2github.com/cshep4/proto-repository/gen/go/hello/v1\xa2\x02\x03HXX\xaa\x02\x08Hello.V1\xca\x02\x08Hello\\V1\xe2\x02\x14Hello\\V1\\GPBMetadata\xea\x02\tHello::V1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x16hello/v1/service.proto\x12\x08hello.v1\"%\n\x0fSayHelloRequest\x12\x12\n\x04name\x18\x01 \x01(\tR\x04name\",\n\x10SayHelloResponse\x12\x18\n\x07message\x18\x01 \x01(\tR\x07message2Q\n\x0cHelloService\x12\x41\n\x08SayHello\x12\x19.hello.v1.SayHelloRequest\x1a\x1a.hello.v1.SayHelloResponseB\x8f\x01\n\x0c\x63om.hello.v1B\x0cServiceProtoP\x01Z0github.com/cshep4/proto-registry/gen/go/hello/v1\xa2\x02\x03HXX\xaa\x02\x08Hello.V1\xca\x02\x08Hello\\V1\xe2\x02\x14Hello\\V1\\GPBMetadata\xea\x02\tHello::V1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'hello.v1.service_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['DESCRIPTOR']._options = None
-  _globals['DESCRIPTOR']._serialized_options = b'\n\014com.hello.v1B\014ServiceProtoP\001Z2github.com/cshep4/proto-repository/gen/go/hello/v1\242\002\003HXX\252\002\010Hello.V1\312\002\010Hello\\V1\342\002\024Hello\\V1\\GPBMetadata\352\002\tHello::V1'
+  _globals['DESCRIPTOR']._serialized_options = b'\n\014com.hello.v1B\014ServiceProtoP\001Z0github.com/cshep4/proto-registry/gen/go/hello/v1\242\002\003HXX\252\002\010Hello.V1\312\002\010Hello\\V1\342\002\024Hello\\V1\\GPBMetadata\352\002\tHello::V1'
   _globals['_SAYHELLOREQUEST']._serialized_start=36
   _globals['_SAYHELLOREQUEST']._serialized_end=73
   _globals['_SAYHELLORESPONSE']._serialized_start=75

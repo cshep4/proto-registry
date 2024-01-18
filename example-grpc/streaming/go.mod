@@ -1,6 +1,6 @@
-module github.com/cshep4/proto-repository/example-grpc/streaming
+module github.com/cshep4/proto-registry/example-grpc/streaming
 
-go 1.21.1
+go 1.21.6
 
 require (
 	github.com/google/uuid v1.3.1

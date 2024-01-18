@@ -12,7 +12,7 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 
-	"github.com/cshep4/proto-repository/example-grpc/streaming/proto"
+	"github.com/cshep4/proto-registry/example-grpc/streaming/proto"
 )
 
 func main() {

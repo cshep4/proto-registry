@@ -7,7 +7,7 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	"github.com/cshep4/proto-repository/example-grpc/hello/proto"
+	"github.com/cshep4/proto-registry/example-grpc/hello/proto"
 )
 
 type Service struct {

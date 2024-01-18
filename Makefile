@@ -8,7 +8,7 @@ get-buf:
 
 .PHONY: break-check
 break-check:
-	buf breaking protobuf --against "ssh://git@github.com/cshep4/proto-repository.git#branch=main,subdir=protobuf"
+	buf breaking protobuf --against "ssh://git@github.com/cshep4/proto-registry.git#branch=main,subdir=protobuf"
 
 .PHONY: lint
 lint:

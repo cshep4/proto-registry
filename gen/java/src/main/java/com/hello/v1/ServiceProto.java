@@ -39,10 +39,10 @@ public final class ServiceProto {
       "HelloResponse\022\030\n\007message\030\001 \001(\tR\007message2" +
       "Q\n\014HelloService\022A\n\010SayHello\022\031.hello.v1.S" +
       "ayHelloRequest\032\032.hello.v1.SayHelloRespon" +
-      "seB\221\001\n\014com.hello.v1B\014ServiceProtoP\001Z2git" +
-      "hub.com/cshep4/proto-repository/gen/go/h" +
-      "ello/v1\242\002\003HXX\252\002\010Hello.V1\312\002\010Hello\\V1\342\002\024He" +
-      "llo\\V1\\GPBMetadata\352\002\tHello::V1b\006proto3"
+      "seB\217\001\n\014com.hello.v1B\014ServiceProtoP\001Z0git" +
+      "hub.com/cshep4/proto-registry/gen/go/hel" +
+      "lo/v1\242\002\003HXX\252\002\010Hello.V1\312\002\010Hello\\V1\342\002\024Hell" +
+      "o\\V1\\GPBMetadata\352\002\tHello::V1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

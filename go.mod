@@ -1,6 +1,6 @@
-module github.com/cshep4/proto-repository
+module github.com/cshep4/proto-registry
 
-go 1.21.1
+go 1.21.6
 
 require (
 	google.golang.org/grpc v1.44.0
