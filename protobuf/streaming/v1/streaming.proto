@@ -10,31 +10,29 @@ option php_namespace = "Streaming\\V1";
 service StreamingService {
   rpc DownloadFile(DownloadFileRequest) returns (stream DownloadFileResponse);
 
-  rpc UploadFile(stream UploadFileRequest) returns (UploadFileResponse);
-
-  rpc Echo(stream EchoRequest) returns (stream EchoResponse);
+  rpc UploadNewFile(stream UploadNewFileRequest) returns (UploadNewFileResponse);
 }
 
 message DownloadFileRequest {
-  string name = 1;
+  string file_name = 1;
 }
 
 message DownloadFileResponse {
+  bytes content = 2;
+}
+
+message UploadNewFileRequest {
   bytes content = 1;
 }
 
-message UploadFileRequest {
-  bytes content = 1;
-}
-
-message UploadFileResponse {
-  string id = 1;
+message UploadNewFileResponse {
+  int32 id = 1;
 }
 
 message EchoRequest {
-  string message = 1;
+  bytes message = 1;
 }
 
 message EchoResponse {
-  string message = 1;
+  bytes message = 1;
 }
