@@ -14,12 +14,13 @@ class Service
         if (static::$is_initialized == true) {
           return;
         }
+        \Buf\Validate\GPBMetadata\Validate::initOnce();
         $pool->internalAddGeneratedFile(
             '
-ä
-hello/v1/service.protohello.v1"%
-SayHelloRequest
-name (	Rname",
+í
+hello/v1/service.protohello.v1".
+SayHelloRequest
+name (	BºHrRname",
 SayHelloResponse
 message (	Rmessage2Q
 HelloServiceA

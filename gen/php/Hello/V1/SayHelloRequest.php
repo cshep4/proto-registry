@@ -14,7 +14,7 @@ use Google\Protobuf\Internal\GPBUtil;
 class SayHelloRequest extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>string name = 1 [json_name = "name"];</code>
+     * Generated from protobuf field <code>string name = 1 [json_name = "name", (.buf.validate.field) = {</code>
      */
     protected $name = '';
 
@@ -33,7 +33,7 @@ class SayHelloRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string name = 1 [json_name = "name"];</code>
+     * Generated from protobuf field <code>string name = 1 [json_name = "name", (.buf.validate.field) = {</code>
      * @return string
      */
     public function getName()
@@ -42,7 +42,7 @@ class SayHelloRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string name = 1 [json_name = "name"];</code>
+     * Generated from protobuf field <code>string name = 1 [json_name = "name", (.buf.validate.field) = {</code>
      * @param string $var
      * @return $this
      */

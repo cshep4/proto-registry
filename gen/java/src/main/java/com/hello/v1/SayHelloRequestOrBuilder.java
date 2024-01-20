@@ -9,12 +9,12 @@ public interface SayHelloRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string name = 1 [json_name = "name"];</code>
+   * <code>string name = 1 [json_name = "name", (.buf.validate.field) = { ... }</code>
    * @return The name.
    */
   java.lang.String getName();
   /**
-   * <code>string name = 1 [json_name = "name"];</code>
+   * <code>string name = 1 [json_name = "name", (.buf.validate.field) = { ... }</code>
    * @return The bytes for name.
    */
   com.google.protobuf.ByteString

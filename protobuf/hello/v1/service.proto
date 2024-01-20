@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package hello.v1;
 
+import "buf/validate/validate.proto";
+
 option go_package = "github.com/cshep4/proto-registry/gen/go/hello/v1";
 option java_multiple_files = true;
 option java_package = "com.cshep4.proto.hello.v1";
@@ -12,7 +14,7 @@ service HelloService {
 }
 
 message SayHelloRequest {
-  string name = 1;
+  string name = 1 [(buf.validate.field).string.min_len = 1];
 }
 
 message SayHelloResponse {
