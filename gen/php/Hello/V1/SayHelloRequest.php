@@ -9,11 +9,16 @@ use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
 /**
+ * SayHelloRequest is the request message containing the user's name.
+ *
  * Generated from protobuf message <code>hello.v1.SayHelloRequest</code>
  */
 class SayHelloRequest extends \Google\Protobuf\Internal\Message
 {
     /**
+     * name is the name for the response greeting.
+     * Field validation is added to ensure the minimum length is 1.
+     *
      * Generated from protobuf field <code>string name = 1 [json_name = "name", (.buf.validate.field) = {</code>
      */
     protected $name = '';
@@ -25,6 +30,8 @@ class SayHelloRequest extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $name
+     *           name is the name for the response greeting.
+     *           Field validation is added to ensure the minimum length is 1.
      * }
      */
     public function __construct($data = NULL) {
@@ -33,6 +40,9 @@ class SayHelloRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * name is the name for the response greeting.
+     * Field validation is added to ensure the minimum length is 1.
+     *
      * Generated from protobuf field <code>string name = 1 [json_name = "name", (.buf.validate.field) = {</code>
      * @return string
      */
@@ -42,6 +52,9 @@ class SayHelloRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * name is the name for the response greeting.
+     * Field validation is added to ensure the minimum length is 1.
+     *
      * Generated from protobuf field <code>string name = 1 [json_name = "name", (.buf.validate.field) = {</code>
      * @param string $var
      * @return $this

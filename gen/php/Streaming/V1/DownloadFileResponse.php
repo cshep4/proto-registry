@@ -9,11 +9,16 @@ use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
 /**
+ * DownloadFileResponse is the response message for downloading a file.
+ * It contains a chunk of the file content.
+ *
  * Generated from protobuf message <code>streaming.v1.DownloadFileResponse</code>
  */
 class DownloadFileResponse extends \Google\Protobuf\Internal\Message
 {
     /**
+     * content is a chunk of the file content in bytes.
+     *
      * Generated from protobuf field <code>bytes content = 1 [json_name = "content"];</code>
      */
     protected $content = '';
@@ -25,6 +30,7 @@ class DownloadFileResponse extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $content
+     *           content is a chunk of the file content in bytes.
      * }
      */
     public function __construct($data = NULL) {
@@ -33,6 +39,8 @@ class DownloadFileResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * content is a chunk of the file content in bytes.
+     *
      * Generated from protobuf field <code>bytes content = 1 [json_name = "content"];</code>
      * @return string
      */
@@ -42,6 +50,8 @@ class DownloadFileResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * content is a chunk of the file content in bytes.
+     *
      * Generated from protobuf field <code>bytes content = 1 [json_name = "content"];</code>
      * @param string $var
      * @return $this

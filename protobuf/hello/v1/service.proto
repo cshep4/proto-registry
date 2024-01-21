@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package hello.v1;
 
+// imports the validate.proto from the protovalidate library which is used for message validation.
 import "buf/validate/validate.proto";
 
 option go_package = "github.com/cshep4/proto-registry/gen/go/hello/v1";
@@ -9,14 +10,21 @@ option java_multiple_files = true;
 option java_package = "com.cshep4.proto.hello.v1";
 option php_namespace = "Hello\\V1";
 
+// HelloService is a sample hello world gRPC service.
 service HelloService {
+  // SayHello accepts a name as part of the request and returns a greeting.
   rpc SayHello(SayHelloRequest) returns (SayHelloResponse);
 }
 
+// SayHelloRequest is the request message containing the user's name.
 message SayHelloRequest {
+  // name is the name for the response greeting.
+  // Field validation is added to ensure the minimum length is 1.
   string name = 1 [(buf.validate.field).string.min_len = 1];
 }
 
+// SayHelloResponse is the response message containing the greeting.
 message SayHelloResponse {
+  // message is the greeting message.
   string message = 1;
 }

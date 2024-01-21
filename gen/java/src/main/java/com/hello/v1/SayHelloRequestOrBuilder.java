@@ -9,11 +9,21 @@ public interface SayHelloRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <pre>
+   * name is the name for the response greeting.
+   * Field validation is added to ensure the minimum length is 1.
+   * </pre>
+   *
    * <code>string name = 1 [json_name = "name", (.buf.validate.field) = { ... }</code>
    * @return The name.
    */
   java.lang.String getName();
   /**
+   * <pre>
+   * name is the name for the response greeting.
+   * Field validation is added to ensure the minimum length is 1.
+   * </pre>
+   *
    * <code>string name = 1 [json_name = "name", (.buf.validate.field) = { ... }</code>
    * @return The bytes for name.
    */

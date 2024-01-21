@@ -9,11 +9,19 @@ public interface SayHelloResponseOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <pre>
+   * message is the greeting message.
+   * </pre>
+   *
    * <code>string message = 1 [json_name = "message"];</code>
    * @return The message.
    */
   java.lang.String getMessage();
   /**
+   * <pre>
+   * message is the greeting message.
+   * </pre>
+   *
    * <code>string message = 1 [json_name = "message"];</code>
    * @return The bytes for message.
    */

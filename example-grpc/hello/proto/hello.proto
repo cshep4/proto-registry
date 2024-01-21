@@ -4,14 +4,20 @@ package hello;
 
 option go_package = "github.com/cshep4/proto-registry/example-grpc/hello/proto";
 
+// HelloService is a sample hello world gRPC service.
 service HelloService {
+  // SayHello accepts a name as part of the request and returns a greeting.
   rpc SayHello(SayHelloRequest) returns (SayHelloResponse);
 }
 
+// SayHelloRequest is the request message containing the user's name.
 message SayHelloRequest {
+  // name is the name for the response greeting.
   string name = 1;
 }
 
+// SayHelloResponse is the response message containing the greeting.
 message SayHelloResponse {
+  // message is the greeting message.
   string message = 1;
 }

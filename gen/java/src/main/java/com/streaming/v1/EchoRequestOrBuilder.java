@@ -9,11 +9,19 @@ public interface EchoRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <pre>
+   * message is the message to be echoed.
+   * </pre>
+   *
    * <code>string message = 1 [json_name = "message"];</code>
    * @return The message.
    */
   java.lang.String getMessage();
   /**
+   * <pre>
+   * message is the message to be echoed.
+   * </pre>
+   *
    * <code>string message = 1 [json_name = "message"];</code>
    * @return The bytes for message.
    */

@@ -5,6 +5,10 @@
 package com.hello.v1;
 
 /**
+ * <pre>
+ * SayHelloResponse is the response message containing the greeting.
+ * </pre>
+ *
  * Protobuf type {@code hello.v1.SayHelloResponse}
  */
 public final class SayHelloResponse extends
@@ -44,6 +48,10 @@ private static final long serialVersionUID = 0L;
   @SuppressWarnings("serial")
   private volatile java.lang.Object message_ = "";
   /**
+   * <pre>
+   * message is the greeting message.
+   * </pre>
+   *
    * <code>string message = 1 [json_name = "message"];</code>
    * @return The message.
    */
@@ -61,6 +69,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * message is the greeting message.
+   * </pre>
+   *
    * <code>string message = 1 [json_name = "message"];</code>
    * @return The bytes for message.
    */
@@ -236,6 +248,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * SayHelloResponse is the response message containing the greeting.
+   * </pre>
+   *
    * Protobuf type {@code hello.v1.SayHelloResponse}
    */
   public static final class Builder extends
@@ -407,6 +423,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object message_ = "";
     /**
+     * <pre>
+     * message is the greeting message.
+     * </pre>
+     *
      * <code>string message = 1 [json_name = "message"];</code>
      * @return The message.
      */
@@ -423,6 +443,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * message is the greeting message.
+     * </pre>
+     *
      * <code>string message = 1 [json_name = "message"];</code>
      * @return The bytes for message.
      */
@@ -440,6 +464,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * message is the greeting message.
+     * </pre>
+     *
      * <code>string message = 1 [json_name = "message"];</code>
      * @param value The message to set.
      * @return This builder for chaining.
@@ -453,6 +481,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * message is the greeting message.
+     * </pre>
+     *
      * <code>string message = 1 [json_name = "message"];</code>
      * @return This builder for chaining.
      */
@@ -463,6 +495,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * message is the greeting message.
+     * </pre>
+     *
      * <code>string message = 1 [json_name = "message"];</code>
      * @param value The bytes for message to set.
      * @return This builder for chaining.

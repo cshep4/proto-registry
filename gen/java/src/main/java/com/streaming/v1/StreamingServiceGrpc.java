@@ -3,6 +3,9 @@ package com.streaming.v1;
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /**
+ * <pre>
+ * StreamingService is a gRPC service to demonstrate different types of streaming.
+ * </pre>
  */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.55.1)",
@@ -153,10 +156,17 @@ public final class StreamingServiceGrpc {
   }
 
   /**
+   * <pre>
+   * StreamingService is a gRPC service to demonstrate different types of streaming.
+   * </pre>
    */
   public interface AsyncService {
 
     /**
+     * <pre>
+     * DownloadFile is a server-streaming RPC method for downloading a file.
+     * It takes a filename in the request and streams back the file content in chunks.
+     * </pre>
      */
     default void downloadFile(com.streaming.v1.DownloadFileRequest request,
         io.grpc.stub.StreamObserver<com.streaming.v1.DownloadFileResponse> responseObserver) {
@@ -164,6 +174,11 @@ public final class StreamingServiceGrpc {
     }
 
     /**
+     * <pre>
+     * UploadFile is a client-streaming RPC method for uploading a file.
+     * It accepts a stream of bytes, which contains chunks of the file content, and
+     * returns a generated file ID upon completion.
+     * </pre>
      */
     default io.grpc.stub.StreamObserver<com.streaming.v1.UploadFileRequest> uploadFile(
         io.grpc.stub.StreamObserver<com.streaming.v1.UploadFileResponse> responseObserver) {
@@ -171,6 +186,10 @@ public final class StreamingServiceGrpc {
     }
 
     /**
+     * <pre>
+     * Echo is a bi-directional streaming RPC method.
+     * It accepts a stream of messages and echos back received messages in a stream.
+     * </pre>
      */
     default io.grpc.stub.StreamObserver<com.streaming.v1.EchoRequest> echo(
         io.grpc.stub.StreamObserver<com.streaming.v1.EchoResponse> responseObserver) {
@@ -180,6 +199,9 @@ public final class StreamingServiceGrpc {
 
   /**
    * Base class for the server implementation of the service StreamingService.
+   * <pre>
+   * StreamingService is a gRPC service to demonstrate different types of streaming.
+   * </pre>
    */
   public static abstract class StreamingServiceImplBase
       implements io.grpc.BindableService, AsyncService {
@@ -191,6 +213,9 @@ public final class StreamingServiceGrpc {
 
   /**
    * A stub to allow clients to do asynchronous rpc calls to service StreamingService.
+   * <pre>
+   * StreamingService is a gRPC service to demonstrate different types of streaming.
+   * </pre>
    */
   public static final class StreamingServiceStub
       extends io.grpc.stub.AbstractAsyncStub<StreamingServiceStub> {
@@ -206,6 +231,10 @@ public final class StreamingServiceGrpc {
     }
 
     /**
+     * <pre>
+     * DownloadFile is a server-streaming RPC method for downloading a file.
+     * It takes a filename in the request and streams back the file content in chunks.
+     * </pre>
      */
     public void downloadFile(com.streaming.v1.DownloadFileRequest request,
         io.grpc.stub.StreamObserver<com.streaming.v1.DownloadFileResponse> responseObserver) {
@@ -214,6 +243,11 @@ public final class StreamingServiceGrpc {
     }
 
     /**
+     * <pre>
+     * UploadFile is a client-streaming RPC method for uploading a file.
+     * It accepts a stream of bytes, which contains chunks of the file content, and
+     * returns a generated file ID upon completion.
+     * </pre>
      */
     public io.grpc.stub.StreamObserver<com.streaming.v1.UploadFileRequest> uploadFile(
         io.grpc.stub.StreamObserver<com.streaming.v1.UploadFileResponse> responseObserver) {
@@ -222,6 +256,10 @@ public final class StreamingServiceGrpc {
     }
 
     /**
+     * <pre>
+     * Echo is a bi-directional streaming RPC method.
+     * It accepts a stream of messages and echos back received messages in a stream.
+     * </pre>
      */
     public io.grpc.stub.StreamObserver<com.streaming.v1.EchoRequest> echo(
         io.grpc.stub.StreamObserver<com.streaming.v1.EchoResponse> responseObserver) {
@@ -232,6 +270,9 @@ public final class StreamingServiceGrpc {
 
   /**
    * A stub to allow clients to do synchronous rpc calls to service StreamingService.
+   * <pre>
+   * StreamingService is a gRPC service to demonstrate different types of streaming.
+   * </pre>
    */
   public static final class StreamingServiceBlockingStub
       extends io.grpc.stub.AbstractBlockingStub<StreamingServiceBlockingStub> {
@@ -247,6 +288,10 @@ public final class StreamingServiceGrpc {
     }
 
     /**
+     * <pre>
+     * DownloadFile is a server-streaming RPC method for downloading a file.
+     * It takes a filename in the request and streams back the file content in chunks.
+     * </pre>
      */
     public java.util.Iterator<com.streaming.v1.DownloadFileResponse> downloadFile(
         com.streaming.v1.DownloadFileRequest request) {
@@ -257,6 +302,9 @@ public final class StreamingServiceGrpc {
 
   /**
    * A stub to allow clients to do ListenableFuture-style rpc calls to service StreamingService.
+   * <pre>
+   * StreamingService is a gRPC service to demonstrate different types of streaming.
+   * </pre>
    */
   public static final class StreamingServiceFutureStub
       extends io.grpc.stub.AbstractFutureStub<StreamingServiceFutureStub> {

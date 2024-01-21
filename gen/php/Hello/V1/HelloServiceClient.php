@@ -4,6 +4,7 @@
 namespace Hello\V1;
 
 /**
+ * HelloService is a sample hello world gRPC service.
  */
 class HelloServiceClient extends \Grpc\BaseStub {
 
@@ -17,6 +18,7 @@ class HelloServiceClient extends \Grpc\BaseStub {
     }
 
     /**
+     * SayHello accepts a name as part of the request and returns a greeting.
      * @param \Hello\V1\SayHelloRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options

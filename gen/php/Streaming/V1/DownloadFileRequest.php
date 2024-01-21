@@ -9,11 +9,16 @@ use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
 /**
+ * DownloadFileRequest is the request message for downloading a file.
+ * It contains the name of the file to be downloaded from the server.
+ *
  * Generated from protobuf message <code>streaming.v1.DownloadFileRequest</code>
  */
 class DownloadFileRequest extends \Google\Protobuf\Internal\Message
 {
     /**
+     * name is the name of the file to download.
+     *
      * Generated from protobuf field <code>string name = 1 [json_name = "name"];</code>
      */
     protected $name = '';
@@ -25,6 +30,7 @@ class DownloadFileRequest extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $name
+     *           name is the name of the file to download.
      * }
      */
     public function __construct($data = NULL) {
@@ -33,6 +39,8 @@ class DownloadFileRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * name is the name of the file to download.
+     *
      * Generated from protobuf field <code>string name = 1 [json_name = "name"];</code>
      * @return string
      */
@@ -42,6 +50,8 @@ class DownloadFileRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * name is the name of the file to download.
+     *
      * Generated from protobuf field <code>string name = 1 [json_name = "name"];</code>
      * @param string $var
      * @return $this

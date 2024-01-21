@@ -9,11 +9,19 @@ public interface DownloadFileRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <pre>
+   * name is the name of the file to download.
+   * </pre>
+   *
    * <code>string name = 1 [json_name = "name"];</code>
    * @return The name.
    */
   java.lang.String getName();
   /**
+   * <pre>
+   * name is the name of the file to download.
+   * </pre>
+   *
    * <code>string name = 1 [json_name = "name"];</code>
    * @return The bytes for name.
    */

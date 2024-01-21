@@ -5,6 +5,11 @@
 package com.streaming.v1;
 
 /**
+ * <pre>
+ * DownloadFileResponse is the response message for downloading a file.
+ * It contains a chunk of the file content.
+ * </pre>
+ *
  * Protobuf type {@code streaming.v1.DownloadFileResponse}
  */
 public final class DownloadFileResponse extends
@@ -43,6 +48,10 @@ private static final long serialVersionUID = 0L;
   public static final int CONTENT_FIELD_NUMBER = 1;
   private com.google.protobuf.ByteString content_ = com.google.protobuf.ByteString.EMPTY;
   /**
+   * <pre>
+   * content is a chunk of the file content in bytes.
+   * </pre>
+   *
    * <code>bytes content = 1 [json_name = "content"];</code>
    * @return The content.
    */
@@ -209,6 +218,11 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * DownloadFileResponse is the response message for downloading a file.
+   * It contains a chunk of the file content.
+   * </pre>
+   *
    * Protobuf type {@code streaming.v1.DownloadFileResponse}
    */
   public static final class Builder extends
@@ -378,6 +392,10 @@ private static final long serialVersionUID = 0L;
 
     private com.google.protobuf.ByteString content_ = com.google.protobuf.ByteString.EMPTY;
     /**
+     * <pre>
+     * content is a chunk of the file content in bytes.
+     * </pre>
+     *
      * <code>bytes content = 1 [json_name = "content"];</code>
      * @return The content.
      */
@@ -386,6 +404,10 @@ private static final long serialVersionUID = 0L;
       return content_;
     }
     /**
+     * <pre>
+     * content is a chunk of the file content in bytes.
+     * </pre>
+     *
      * <code>bytes content = 1 [json_name = "content"];</code>
      * @param value The content to set.
      * @return This builder for chaining.
@@ -398,6 +420,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * content is a chunk of the file content in bytes.
+     * </pre>
+     *
      * <code>bytes content = 1 [json_name = "content"];</code>
      * @return This builder for chaining.
      */

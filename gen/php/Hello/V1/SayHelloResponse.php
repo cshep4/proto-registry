@@ -9,11 +9,15 @@ use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
 /**
+ * SayHelloResponse is the response message containing the greeting.
+ *
  * Generated from protobuf message <code>hello.v1.SayHelloResponse</code>
  */
 class SayHelloResponse extends \Google\Protobuf\Internal\Message
 {
     /**
+     * message is the greeting message.
+     *
      * Generated from protobuf field <code>string message = 1 [json_name = "message"];</code>
      */
     protected $message = '';
@@ -25,6 +29,7 @@ class SayHelloResponse extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $message
+     *           message is the greeting message.
      * }
      */
     public function __construct($data = NULL) {
@@ -33,6 +38,8 @@ class SayHelloResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * message is the greeting message.
+     *
      * Generated from protobuf field <code>string message = 1 [json_name = "message"];</code>
      * @return string
      */
@@ -42,6 +49,8 @@ class SayHelloResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * message is the greeting message.
+     *
      * Generated from protobuf field <code>string message = 1 [json_name = "message"];</code>
      * @param string $var
      * @return $this

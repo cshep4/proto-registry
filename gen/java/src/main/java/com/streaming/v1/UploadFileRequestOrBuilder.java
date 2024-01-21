@@ -9,6 +9,10 @@ public interface UploadFileRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <pre>
+   * content is a chunk of the file content in bytes.
+   * </pre>
+   *
    * <code>bytes content = 1 [json_name = "content"];</code>
    * @return The content.
    */

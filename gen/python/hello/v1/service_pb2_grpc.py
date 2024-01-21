@@ -6,7 +6,8 @@ from hello.v1 import service_pb2 as hello_dot_v1_dot_service__pb2
 
 
 class HelloServiceStub(object):
-    """Missing associated documentation comment in .proto file."""
+    """HelloService is a sample hello world gRPC service.
+    """
 
     def __init__(self, channel):
         """Constructor.
@@ -22,10 +23,12 @@ class HelloServiceStub(object):
 
 
 class HelloServiceServicer(object):
-    """Missing associated documentation comment in .proto file."""
+    """HelloService is a sample hello world gRPC service.
+    """
 
     def SayHello(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """SayHello accepts a name as part of the request and returns a greeting.
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -46,7 +49,8 @@ def add_HelloServiceServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class HelloService(object):
-    """Missing associated documentation comment in .proto file."""
+    """HelloService is a sample hello world gRPC service.
+    """
 
     @staticmethod
     def SayHello(request,

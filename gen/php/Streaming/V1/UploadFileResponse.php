@@ -9,11 +9,16 @@ use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
 /**
+ * UploadFileResponse is the response message after a file upload is complete.
+ * It contains an ID that uniquely identifies the uploaded file.
+ *
  * Generated from protobuf message <code>streaming.v1.UploadFileResponse</code>
  */
 class UploadFileResponse extends \Google\Protobuf\Internal\Message
 {
     /**
+     * id is the unique identifier for the uploaded file.
+     *
      * Generated from protobuf field <code>string id = 1 [json_name = "id"];</code>
      */
     protected $id = '';
@@ -25,6 +30,7 @@ class UploadFileResponse extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $id
+     *           id is the unique identifier for the uploaded file.
      * }
      */
     public function __construct($data = NULL) {
@@ -33,6 +39,8 @@ class UploadFileResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * id is the unique identifier for the uploaded file.
+     *
      * Generated from protobuf field <code>string id = 1 [json_name = "id"];</code>
      * @return string
      */
@@ -42,6 +50,8 @@ class UploadFileResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * id is the unique identifier for the uploaded file.
+     *
      * Generated from protobuf field <code>string id = 1 [json_name = "id"];</code>
      * @param string $var
      * @return $this

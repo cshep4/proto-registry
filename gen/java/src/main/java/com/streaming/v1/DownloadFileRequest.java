@@ -5,6 +5,11 @@
 package com.streaming.v1;
 
 /**
+ * <pre>
+ * DownloadFileRequest is the request message for downloading a file.
+ * It contains the name of the file to be downloaded from the server.
+ * </pre>
+ *
  * Protobuf type {@code streaming.v1.DownloadFileRequest}
  */
 public final class DownloadFileRequest extends
@@ -44,6 +49,10 @@ private static final long serialVersionUID = 0L;
   @SuppressWarnings("serial")
   private volatile java.lang.Object name_ = "";
   /**
+   * <pre>
+   * name is the name of the file to download.
+   * </pre>
+   *
    * <code>string name = 1 [json_name = "name"];</code>
    * @return The name.
    */
@@ -61,6 +70,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * name is the name of the file to download.
+   * </pre>
+   *
    * <code>string name = 1 [json_name = "name"];</code>
    * @return The bytes for name.
    */
@@ -236,6 +249,11 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * DownloadFileRequest is the request message for downloading a file.
+   * It contains the name of the file to be downloaded from the server.
+   * </pre>
+   *
    * Protobuf type {@code streaming.v1.DownloadFileRequest}
    */
   public static final class Builder extends
@@ -407,6 +425,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object name_ = "";
     /**
+     * <pre>
+     * name is the name of the file to download.
+     * </pre>
+     *
      * <code>string name = 1 [json_name = "name"];</code>
      * @return The name.
      */
@@ -423,6 +445,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * name is the name of the file to download.
+     * </pre>
+     *
      * <code>string name = 1 [json_name = "name"];</code>
      * @return The bytes for name.
      */
@@ -440,6 +466,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * name is the name of the file to download.
+     * </pre>
+     *
      * <code>string name = 1 [json_name = "name"];</code>
      * @param value The name to set.
      * @return This builder for chaining.
@@ -453,6 +483,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * name is the name of the file to download.
+     * </pre>
+     *
      * <code>string name = 1 [json_name = "name"];</code>
      * @return This builder for chaining.
      */
@@ -463,6 +497,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * name is the name of the file to download.
+     * </pre>
+     *
      * <code>string name = 1 [json_name = "name"];</code>
      * @param value The bytes for name to set.
      * @return This builder for chaining.

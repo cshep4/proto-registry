@@ -7,34 +7,60 @@ option java_multiple_files = true;
 option java_package = "com.cshep4.proto.streaming.v1";
 option php_namespace = "Streaming\\V1";
 
+// StreamingService is a gRPC service to demonstrate different types of streaming.
 service StreamingService {
+  // DownloadFile is a server-streaming RPC method for downloading a file.
+  // It takes a filename in the request and streams back the file content in chunks.
   rpc DownloadFile(DownloadFileRequest) returns (stream DownloadFileResponse);
 
+  // UploadFile is a client-streaming RPC method for uploading a file.
+  // It accepts a stream of bytes, which contains chunks of the file content, and
+  // returns a generated file ID upon completion.
   rpc UploadFile(stream UploadFileRequest) returns (UploadFileResponse);
 
+  // Echo is a bi-directional streaming RPC method.
+  // It accepts a stream of messages and echos back received messages in a stream.
   rpc Echo(stream EchoRequest) returns (stream EchoResponse);
 }
 
+// DownloadFileRequest is the request message for downloading a file.
+// It contains the name of the file to be downloaded from the server.
 message DownloadFileRequest {
+  // name is the name of the file to download.
   string name = 1;
 }
 
+// DownloadFileResponse is the response message for downloading a file.
+// It contains a chunk of the file content.
 message DownloadFileResponse {
+  // content is a chunk of the file content in bytes.
   bytes content = 1;
 }
 
+// UploadFileRequest is the request message for uploading a file.
+// It contains a chunk of the file content.
 message UploadFileRequest {
+  // content is a chunk of the file content in bytes.
   bytes content = 1;
 }
 
+// UploadFileResponse is the response message after a file upload is complete.
+// It contains an ID that uniquely identifies the uploaded file.
 message UploadFileResponse {
+  // id is the unique identifier for the uploaded file.
   string id = 1;
 }
 
+// EchoRequest is the request message for the Echo RPC.
+// It contains a message that will be echoed back by the server.
 message EchoRequest {
+  // message is the message to be echoed.
   string message = 1;
 }
 
+// EchoResponse is the response message for the Echo RPC.
+// It contains the 'message' that was echoed back by the server.
 message EchoResponse {
+  // message is the echoed message.
   string message = 1;
 }

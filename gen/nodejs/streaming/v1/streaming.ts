@@ -5,27 +5,57 @@ import { map } from "rxjs/operators";
 
 export const protobufPackage = "streaming.v1";
 
+/**
+ * DownloadFileRequest is the request message for downloading a file.
+ * It contains the name of the file to be downloaded from the server.
+ */
 export interface DownloadFileRequest {
+  /** name is the name of the file to download. */
   name: string;
 }
 
+/**
+ * DownloadFileResponse is the response message for downloading a file.
+ * It contains a chunk of the file content.
+ */
 export interface DownloadFileResponse {
+  /** content is a chunk of the file content in bytes. */
   content: Uint8Array;
 }
 
+/**
+ * UploadFileRequest is the request message for uploading a file.
+ * It contains a chunk of the file content.
+ */
 export interface UploadFileRequest {
+  /** content is a chunk of the file content in bytes. */
   content: Uint8Array;
 }
 
+/**
+ * UploadFileResponse is the response message after a file upload is complete.
+ * It contains an ID that uniquely identifies the uploaded file.
+ */
 export interface UploadFileResponse {
+  /** id is the unique identifier for the uploaded file. */
   id: string;
 }
 
+/**
+ * EchoRequest is the request message for the Echo RPC.
+ * It contains a message that will be echoed back by the server.
+ */
 export interface EchoRequest {
+  /** message is the message to be echoed. */
   message: string;
 }
 
+/**
+ * EchoResponse is the response message for the Echo RPC.
+ * It contains the 'message' that was echoed back by the server.
+ */
 export interface EchoResponse {
+  /** message is the echoed message. */
   message: string;
 }
 
@@ -371,9 +401,23 @@ export const EchoResponse = {
   },
 };
 
+/** StreamingService is a gRPC service to demonstrate different types of streaming. */
 export interface StreamingService {
+  /**
+   * DownloadFile is a server-streaming RPC method for downloading a file.
+   * It takes a filename in the request and streams back the file content in chunks.
+   */
   DownloadFile(request: DownloadFileRequest): Observable<DownloadFileResponse>;
+  /**
+   * UploadFile is a client-streaming RPC method for uploading a file.
+   * It accepts a stream of bytes, which contains chunks of the file content, and
+   * returns a generated file ID upon completion.
+   */
   UploadFile(request: Observable<UploadFileRequest>): Promise<UploadFileResponse>;
+  /**
+   * Echo is a bi-directional streaming RPC method.
+   * It accepts a stream of messages and echos back received messages in a stream.
+   */
   Echo(request: Observable<EchoRequest>): Observable<EchoResponse>;
 }
 

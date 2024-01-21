@@ -4,6 +4,7 @@
 namespace Streaming\V1;
 
 /**
+ * StreamingService is a gRPC service to demonstrate different types of streaming.
  */
 class StreamingServiceClient extends \Grpc\BaseStub {
 
@@ -17,6 +18,8 @@ class StreamingServiceClient extends \Grpc\BaseStub {
     }
 
     /**
+     * DownloadFile is a server-streaming RPC method for downloading a file.
+     * It takes a filename in the request and streams back the file content in chunks.
      * @param \Streaming\V1\DownloadFileRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
@@ -31,6 +34,9 @@ class StreamingServiceClient extends \Grpc\BaseStub {
     }
 
     /**
+     * UploadFile is a client-streaming RPC method for uploading a file.
+     * It accepts a stream of bytes, which contains chunks of the file content, and
+     * returns a generated file ID upon completion.
      * @param array $metadata metadata
      * @param array $options call options
      * @return \Grpc\ClientStreamingCall
@@ -42,6 +48,8 @@ class StreamingServiceClient extends \Grpc\BaseStub {
     }
 
     /**
+     * Echo is a bi-directional streaming RPC method.
+     * It accepts a stream of messages and echos back received messages in a stream.
      * @param array $metadata metadata
      * @param array $options call options
      * @return \Grpc\BidiStreamingCall

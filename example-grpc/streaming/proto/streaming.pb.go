@@ -20,11 +20,14 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// DownloadFileRequest is the request message for downloading a file.
+// It contains the name of the file to be downloaded from the server.
 type DownloadFileRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// name is the name of the file to download.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
@@ -67,11 +70,14 @@ func (x *DownloadFileRequest) GetName() string {
 	return ""
 }
 
+// DownloadFileResponse is the response message for downloading a file.
+// It contains a chunk of the file content.
 type DownloadFileResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// content is a chunk of the file content in bytes.
 	Content []byte `protobuf:"bytes,1,opt,name=content,proto3" json:"content,omitempty"`
 }
 
@@ -114,11 +120,14 @@ func (x *DownloadFileResponse) GetContent() []byte {
 	return nil
 }
 
+// UploadFileRequest is the request message for uploading a file.
+// It contains a chunk of the file content.
 type UploadFileRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// content is a chunk of the file content in bytes.
 	Content []byte `protobuf:"bytes,1,opt,name=content,proto3" json:"content,omitempty"`
 }
 
@@ -161,11 +170,14 @@ func (x *UploadFileRequest) GetContent() []byte {
 	return nil
 }
 
+// UploadFileResponse is the response message after a file upload is complete.
+// It contains an ID that uniquely identifies the uploaded file.
 type UploadFileResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// name is the name for the uploaded file.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
@@ -208,11 +220,14 @@ func (x *UploadFileResponse) GetName() string {
 	return ""
 }
 
+// EchoRequest is the request message for the Echo RPC.
+// It contains a message that will be echoed back by the server.
 type EchoRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// message is the message to be echoed.
 	Message string `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
 }
 
@@ -255,11 +270,14 @@ func (x *EchoRequest) GetMessage() string {
 	return ""
 }
 
+// EchoResponse is the response message for the Echo RPC.
+// It contains the 'message' that was echoed back by the server.
 type EchoResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// message is the echoed message.
 	Message string `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
 }
 
@@ -338,12 +356,12 @@ var file_proto_streaming_proto_rawDesc = []byte{
 	0x12, 0x3b, 0x0a, 0x04, 0x45, 0x63, 0x68, 0x6f, 0x12, 0x16, 0x2e, 0x73, 0x74, 0x72, 0x65, 0x61,
 	0x6d, 0x69, 0x6e, 0x67, 0x2e, 0x45, 0x63, 0x68, 0x6f, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
 	0x1a, 0x17, 0x2e, 0x73, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x69, 0x6e, 0x67, 0x2e, 0x45, 0x63, 0x68,
-	0x6f, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x28, 0x01, 0x30, 0x01, 0x42, 0x41, 0x5a,
-	0x3f, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x63, 0x73, 0x68, 0x65,
-	0x70, 0x34, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2d, 0x72, 0x65, 0x70, 0x6f, 0x73, 0x69, 0x74,
-	0x6f, 0x72, 0x79, 0x2f, 0x65, 0x78, 0x61, 0x6d, 0x70, 0x6c, 0x65, 0x2d, 0x67, 0x72, 0x70, 0x63,
-	0x2f, 0x73, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x69, 0x6e, 0x67, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x6f, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x28, 0x01, 0x30, 0x01, 0x42, 0x3f, 0x5a,
+	0x3d, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x63, 0x73, 0x68, 0x65,
+	0x70, 0x34, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2d, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72,
+	0x79, 0x2f, 0x65, 0x78, 0x61, 0x6d, 0x70, 0x6c, 0x65, 0x2d, 0x67, 0x72, 0x70, 0x63, 0x2f, 0x73,
+	0x74, 0x72, 0x65, 0x61, 0x6d, 0x69, 0x6e, 0x67, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (

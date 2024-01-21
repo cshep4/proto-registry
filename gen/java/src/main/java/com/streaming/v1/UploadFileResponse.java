@@ -5,6 +5,11 @@
 package com.streaming.v1;
 
 /**
+ * <pre>
+ * UploadFileResponse is the response message after a file upload is complete.
+ * It contains an ID that uniquely identifies the uploaded file.
+ * </pre>
+ *
  * Protobuf type {@code streaming.v1.UploadFileResponse}
  */
 public final class UploadFileResponse extends
@@ -44,6 +49,10 @@ private static final long serialVersionUID = 0L;
   @SuppressWarnings("serial")
   private volatile java.lang.Object id_ = "";
   /**
+   * <pre>
+   * id is the unique identifier for the uploaded file.
+   * </pre>
+   *
    * <code>string id = 1 [json_name = "id"];</code>
    * @return The id.
    */
@@ -61,6 +70,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * id is the unique identifier for the uploaded file.
+   * </pre>
+   *
    * <code>string id = 1 [json_name = "id"];</code>
    * @return The bytes for id.
    */
@@ -236,6 +249,11 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * UploadFileResponse is the response message after a file upload is complete.
+   * It contains an ID that uniquely identifies the uploaded file.
+   * </pre>
+   *
    * Protobuf type {@code streaming.v1.UploadFileResponse}
    */
   public static final class Builder extends
@@ -407,6 +425,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object id_ = "";
     /**
+     * <pre>
+     * id is the unique identifier for the uploaded file.
+     * </pre>
+     *
      * <code>string id = 1 [json_name = "id"];</code>
      * @return The id.
      */
@@ -423,6 +445,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * id is the unique identifier for the uploaded file.
+     * </pre>
+     *
      * <code>string id = 1 [json_name = "id"];</code>
      * @return The bytes for id.
      */
@@ -440,6 +466,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * id is the unique identifier for the uploaded file.
+     * </pre>
+     *
      * <code>string id = 1 [json_name = "id"];</code>
      * @param value The id to set.
      * @return This builder for chaining.
@@ -453,6 +483,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * id is the unique identifier for the uploaded file.
+     * </pre>
+     *
      * <code>string id = 1 [json_name = "id"];</code>
      * @return This builder for chaining.
      */
@@ -463,6 +497,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * id is the unique identifier for the uploaded file.
+     * </pre>
+     *
      * <code>string id = 1 [json_name = "id"];</code>
      * @param value The bytes for id to set.
      * @return This builder for chaining.

@@ -21,11 +21,14 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// SayHelloRequest is the request message containing the user's name.
 type SayHelloRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// name is the name for the response greeting.
+	// Field validation is added to ensure the minimum length is 1.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
@@ -68,11 +71,13 @@ func (x *SayHelloRequest) GetName() string {
 	return ""
 }
 
+// SayHelloResponse is the response message containing the greeting.
 type SayHelloResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// message is the greeting message.
 	Message string `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
 }
 

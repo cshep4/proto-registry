@@ -9,11 +9,16 @@ use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
 /**
+ * EchoRequest is the request message for the Echo RPC.
+ * It contains a message that will be echoed back by the server.
+ *
  * Generated from protobuf message <code>streaming.v1.EchoRequest</code>
  */
 class EchoRequest extends \Google\Protobuf\Internal\Message
 {
     /**
+     * message is the message to be echoed.
+     *
      * Generated from protobuf field <code>string message = 1 [json_name = "message"];</code>
      */
     protected $message = '';
@@ -25,6 +30,7 @@ class EchoRequest extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $message
+     *           message is the message to be echoed.
      * }
      */
     public function __construct($data = NULL) {
@@ -33,6 +39,8 @@ class EchoRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * message is the message to be echoed.
+     *
      * Generated from protobuf field <code>string message = 1 [json_name = "message"];</code>
      * @return string
      */
@@ -42,6 +50,8 @@ class EchoRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * message is the message to be echoed.
+     *
      * Generated from protobuf field <code>string message = 1 [json_name = "message"];</code>
      * @param string $var
      * @return $this

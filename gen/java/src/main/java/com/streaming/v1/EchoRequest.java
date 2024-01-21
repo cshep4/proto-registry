@@ -5,6 +5,11 @@
 package com.streaming.v1;
 
 /**
+ * <pre>
+ * EchoRequest is the request message for the Echo RPC.
+ * It contains a message that will be echoed back by the server.
+ * </pre>
+ *
  * Protobuf type {@code streaming.v1.EchoRequest}
  */
 public final class EchoRequest extends
@@ -44,6 +49,10 @@ private static final long serialVersionUID = 0L;
   @SuppressWarnings("serial")
   private volatile java.lang.Object message_ = "";
   /**
+   * <pre>
+   * message is the message to be echoed.
+   * </pre>
+   *
    * <code>string message = 1 [json_name = "message"];</code>
    * @return The message.
    */
@@ -61,6 +70,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * message is the message to be echoed.
+   * </pre>
+   *
    * <code>string message = 1 [json_name = "message"];</code>
    * @return The bytes for message.
    */
@@ -236,6 +249,11 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * EchoRequest is the request message for the Echo RPC.
+   * It contains a message that will be echoed back by the server.
+   * </pre>
+   *
    * Protobuf type {@code streaming.v1.EchoRequest}
    */
   public static final class Builder extends
@@ -407,6 +425,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object message_ = "";
     /**
+     * <pre>
+     * message is the message to be echoed.
+     * </pre>
+     *
      * <code>string message = 1 [json_name = "message"];</code>
      * @return The message.
      */
@@ -423,6 +445,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * message is the message to be echoed.
+     * </pre>
+     *
      * <code>string message = 1 [json_name = "message"];</code>
      * @return The bytes for message.
      */
@@ -440,6 +466,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * message is the message to be echoed.
+     * </pre>
+     *
      * <code>string message = 1 [json_name = "message"];</code>
      * @param value The message to set.
      * @return This builder for chaining.
@@ -453,6 +483,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * message is the message to be echoed.
+     * </pre>
+     *
      * <code>string message = 1 [json_name = "message"];</code>
      * @return This builder for chaining.
      */
@@ -463,6 +497,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * message is the message to be echoed.
+     * </pre>
+     *
      * <code>string message = 1 [json_name = "message"];</code>
      * @param value The bytes for message to set.
      * @return This builder for chaining.

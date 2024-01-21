@@ -28,8 +28,15 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type StreamingServiceClient interface {
+	// DownloadFile is a server-streaming RPC method for downloading a file.
+	// It takes a filename in the request and streams back the file content in chunks.
 	DownloadFile(ctx context.Context, in *DownloadFileRequest, opts ...grpc.CallOption) (StreamingService_DownloadFileClient, error)
+	// UploadFile is a client-streaming RPC method for uploading a file.
+	// It accepts a stream of bytes, which contains chunks of the file content, and
+	// returns a generated file ID upon completion.
 	UploadFile(ctx context.Context, opts ...grpc.CallOption) (StreamingService_UploadFileClient, error)
+	// Echo is a bi-directional streaming RPC method.
+	// It accepts a stream of messages and echos back received messages in a stream.
 	Echo(ctx context.Context, opts ...grpc.CallOption) (StreamingService_EchoClient, error)
 }
 
@@ -142,8 +149,15 @@ func (x *streamingServiceEchoClient) Recv() (*EchoResponse, error) {
 // All implementations should embed UnimplementedStreamingServiceServer
 // for forward compatibility
 type StreamingServiceServer interface {
+	// DownloadFile is a server-streaming RPC method for downloading a file.
+	// It takes a filename in the request and streams back the file content in chunks.
 	DownloadFile(*DownloadFileRequest, StreamingService_DownloadFileServer) error
+	// UploadFile is a client-streaming RPC method for uploading a file.
+	// It accepts a stream of bytes, which contains chunks of the file content, and
+	// returns a generated file ID upon completion.
 	UploadFile(StreamingService_UploadFileServer) error
+	// Echo is a bi-directional streaming RPC method.
+	// It accepts a stream of messages and echos back received messages in a stream.
 	Echo(StreamingService_EchoServer) error
 }
 

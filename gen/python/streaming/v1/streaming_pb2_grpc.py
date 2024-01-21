@@ -6,7 +6,8 @@ from streaming.v1 import streaming_pb2 as streaming_dot_v1_dot_streaming__pb2
 
 
 class StreamingServiceStub(object):
-    """Missing associated documentation comment in .proto file."""
+    """StreamingService is a gRPC service to demonstrate different types of streaming.
+    """
 
     def __init__(self, channel):
         """Constructor.
@@ -32,22 +33,30 @@ class StreamingServiceStub(object):
 
 
 class StreamingServiceServicer(object):
-    """Missing associated documentation comment in .proto file."""
+    """StreamingService is a gRPC service to demonstrate different types of streaming.
+    """
 
     def DownloadFile(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """DownloadFile is a server-streaming RPC method for downloading a file.
+        It takes a filename in the request and streams back the file content in chunks.
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def UploadFile(self, request_iterator, context):
-        """Missing associated documentation comment in .proto file."""
+        """UploadFile is a client-streaming RPC method for uploading a file.
+        It accepts a stream of bytes, which contains chunks of the file content, and
+        returns a generated file ID upon completion.
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def Echo(self, request_iterator, context):
-        """Missing associated documentation comment in .proto file."""
+        """Echo is a bi-directional streaming RPC method.
+        It accepts a stream of messages and echos back received messages in a stream.
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -78,7 +87,8 @@ def add_StreamingServiceServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class StreamingService(object):
-    """Missing associated documentation comment in .proto file."""
+    """StreamingService is a gRPC service to demonstrate different types of streaming.
+    """
 
     @staticmethod
     def DownloadFile(request,

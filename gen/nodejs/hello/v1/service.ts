@@ -3,11 +3,18 @@ import _m0 from "protobufjs/minimal";
 
 export const protobufPackage = "hello.v1";
 
+/** SayHelloRequest is the request message containing the user's name. */
 export interface SayHelloRequest {
+  /**
+   * name is the name for the response greeting.
+   * Field validation is added to ensure the minimum length is 1.
+   */
   name: string;
 }
 
+/** SayHelloResponse is the response message containing the greeting. */
 export interface SayHelloResponse {
+  /** message is the greeting message. */
   message: string;
 }
 
@@ -125,7 +132,9 @@ export const SayHelloResponse = {
   },
 };
 
+/** HelloService is a sample hello world gRPC service. */
 export interface HelloService {
+  /** SayHello accepts a name as part of the request and returns a greeting. */
   SayHello(request: SayHelloRequest): Promise<SayHelloResponse>;
 }
 

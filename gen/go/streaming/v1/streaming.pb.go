@@ -20,11 +20,14 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// DownloadFileRequest is the request message for downloading a file.
+// It contains the name of the file to be downloaded from the server.
 type DownloadFileRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// name is the name of the file to download.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
@@ -67,11 +70,14 @@ func (x *DownloadFileRequest) GetName() string {
 	return ""
 }
 
+// DownloadFileResponse is the response message for downloading a file.
+// It contains a chunk of the file content.
 type DownloadFileResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// content is a chunk of the file content in bytes.
 	Content []byte `protobuf:"bytes,1,opt,name=content,proto3" json:"content,omitempty"`
 }
 
@@ -114,11 +120,14 @@ func (x *DownloadFileResponse) GetContent() []byte {
 	return nil
 }
 
+// UploadFileRequest is the request message for uploading a file.
+// It contains a chunk of the file content.
 type UploadFileRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// content is a chunk of the file content in bytes.
 	Content []byte `protobuf:"bytes,1,opt,name=content,proto3" json:"content,omitempty"`
 }
 
@@ -161,11 +170,14 @@ func (x *UploadFileRequest) GetContent() []byte {
 	return nil
 }
 
+// UploadFileResponse is the response message after a file upload is complete.
+// It contains an ID that uniquely identifies the uploaded file.
 type UploadFileResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// id is the unique identifier for the uploaded file.
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 }
 
@@ -208,11 +220,14 @@ func (x *UploadFileResponse) GetId() string {
 	return ""
 }
 
+// EchoRequest is the request message for the Echo RPC.
+// It contains a message that will be echoed back by the server.
 type EchoRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// message is the message to be echoed.
 	Message string `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
 }
 
@@ -255,11 +270,14 @@ func (x *EchoRequest) GetMessage() string {
 	return ""
 }
 
+// EchoResponse is the response message for the Echo RPC.
+// It contains the 'message' that was echoed back by the server.
 type EchoResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// message is the echoed message.
 	Message string `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
 }
 

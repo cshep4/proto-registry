@@ -3,6 +3,9 @@ package com.hello.v1;
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /**
+ * <pre>
+ * HelloService is a sample hello world gRPC service.
+ * </pre>
  */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.55.1)",
@@ -91,10 +94,16 @@ public final class HelloServiceGrpc {
   }
 
   /**
+   * <pre>
+   * HelloService is a sample hello world gRPC service.
+   * </pre>
    */
   public interface AsyncService {
 
     /**
+     * <pre>
+     * SayHello accepts a name as part of the request and returns a greeting.
+     * </pre>
      */
     default void sayHello(com.hello.v1.SayHelloRequest request,
         io.grpc.stub.StreamObserver<com.hello.v1.SayHelloResponse> responseObserver) {
@@ -104,6 +113,9 @@ public final class HelloServiceGrpc {
 
   /**
    * Base class for the server implementation of the service HelloService.
+   * <pre>
+   * HelloService is a sample hello world gRPC service.
+   * </pre>
    */
   public static abstract class HelloServiceImplBase
       implements io.grpc.BindableService, AsyncService {
@@ -115,6 +127,9 @@ public final class HelloServiceGrpc {
 
   /**
    * A stub to allow clients to do asynchronous rpc calls to service HelloService.
+   * <pre>
+   * HelloService is a sample hello world gRPC service.
+   * </pre>
    */
   public static final class HelloServiceStub
       extends io.grpc.stub.AbstractAsyncStub<HelloServiceStub> {
@@ -130,6 +145,9 @@ public final class HelloServiceGrpc {
     }
 
     /**
+     * <pre>
+     * SayHello accepts a name as part of the request and returns a greeting.
+     * </pre>
      */
     public void sayHello(com.hello.v1.SayHelloRequest request,
         io.grpc.stub.StreamObserver<com.hello.v1.SayHelloResponse> responseObserver) {
@@ -140,6 +158,9 @@ public final class HelloServiceGrpc {
 
   /**
    * A stub to allow clients to do synchronous rpc calls to service HelloService.
+   * <pre>
+   * HelloService is a sample hello world gRPC service.
+   * </pre>
    */
   public static final class HelloServiceBlockingStub
       extends io.grpc.stub.AbstractBlockingStub<HelloServiceBlockingStub> {
@@ -155,6 +176,9 @@ public final class HelloServiceGrpc {
     }
 
     /**
+     * <pre>
+     * SayHello accepts a name as part of the request and returns a greeting.
+     * </pre>
      */
     public com.hello.v1.SayHelloResponse sayHello(com.hello.v1.SayHelloRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -164,6 +188,9 @@ public final class HelloServiceGrpc {
 
   /**
    * A stub to allow clients to do ListenableFuture-style rpc calls to service HelloService.
+   * <pre>
+   * HelloService is a sample hello world gRPC service.
+   * </pre>
    */
   public static final class HelloServiceFutureStub
       extends io.grpc.stub.AbstractFutureStub<HelloServiceFutureStub> {
@@ -179,6 +206,9 @@ public final class HelloServiceGrpc {
     }
 
     /**
+     * <pre>
+     * SayHello accepts a name as part of the request and returns a greeting.
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<com.hello.v1.SayHelloResponse> sayHello(
         com.hello.v1.SayHelloRequest request) {

@@ -5,6 +5,10 @@
 package com.hello.v1;
 
 /**
+ * <pre>
+ * SayHelloRequest is the request message containing the user's name.
+ * </pre>
+ *
  * Protobuf type {@code hello.v1.SayHelloRequest}
  */
 public final class SayHelloRequest extends
@@ -44,6 +48,11 @@ private static final long serialVersionUID = 0L;
   @SuppressWarnings("serial")
   private volatile java.lang.Object name_ = "";
   /**
+   * <pre>
+   * name is the name for the response greeting.
+   * Field validation is added to ensure the minimum length is 1.
+   * </pre>
+   *
    * <code>string name = 1 [json_name = "name", (.buf.validate.field) = { ... }</code>
    * @return The name.
    */
@@ -61,6 +70,11 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * name is the name for the response greeting.
+   * Field validation is added to ensure the minimum length is 1.
+   * </pre>
+   *
    * <code>string name = 1 [json_name = "name", (.buf.validate.field) = { ... }</code>
    * @return The bytes for name.
    */
@@ -236,6 +250,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * SayHelloRequest is the request message containing the user's name.
+   * </pre>
+   *
    * Protobuf type {@code hello.v1.SayHelloRequest}
    */
   public static final class Builder extends
@@ -407,6 +425,11 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object name_ = "";
     /**
+     * <pre>
+     * name is the name for the response greeting.
+     * Field validation is added to ensure the minimum length is 1.
+     * </pre>
+     *
      * <code>string name = 1 [json_name = "name", (.buf.validate.field) = { ... }</code>
      * @return The name.
      */
@@ -423,6 +446,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * name is the name for the response greeting.
+     * Field validation is added to ensure the minimum length is 1.
+     * </pre>
+     *
      * <code>string name = 1 [json_name = "name", (.buf.validate.field) = { ... }</code>
      * @return The bytes for name.
      */
@@ -440,6 +468,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * name is the name for the response greeting.
+     * Field validation is added to ensure the minimum length is 1.
+     * </pre>
+     *
      * <code>string name = 1 [json_name = "name", (.buf.validate.field) = { ... }</code>
      * @param value The name to set.
      * @return This builder for chaining.
@@ -453,6 +486,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * name is the name for the response greeting.
+     * Field validation is added to ensure the minimum length is 1.
+     * </pre>
+     *
      * <code>string name = 1 [json_name = "name", (.buf.validate.field) = { ... }</code>
      * @return This builder for chaining.
      */
@@ -463,6 +501,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * name is the name for the response greeting.
+     * Field validation is added to ensure the minimum length is 1.
+     * </pre>
+     *
      * <code>string name = 1 [json_name = "name", (.buf.validate.field) = { ... }</code>
      * @param value The bytes for name to set.
      * @return This builder for chaining.
