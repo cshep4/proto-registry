@@ -1,6 +1,6 @@
 # Proto-Registry
 
-A example repository to show how to effectively store & manage protocol buffer definitions for gRPC services.
+An example repository to show how to effectively store & manage protocol buffer definitions for gRPC services.
 
 This was created as a reference for the [Gophercon Europe 2024](https://gophercon.eu/) talk "Building gRPC Microservices Effectively with Go".
 
@@ -11,13 +11,14 @@ This was created as a reference for the [Gophercon Europe 2024](https://gopherco
     - [Linting](#linting)
     - [Breaking Change Detection](#breaking-change-detection)
     - [Generating](#generating)
-- [Importing Protobuf (in Go)](#importing-protobuf-in-go)
+- [Importing Generated Protobuf (in Go)](#importing-generated-protobuf-in-go)
+- [gRPC Examples](#grpc-examples)
 
 ## Project structure
 
-- `example-grpc/` contains example gRPC clients & services.
-- `gen/` contains generated code from protobuf, each language is kept in a separate directory
-- `protobuf/` contains all the proto files
+- [example-grpc/](example-grpc) contains example gRPC clients & services.
+- [gen/](gen) contains generated code from protobuf, each language is kept in a separate directory
+- [protobuf/](protobuf) contains all the proto files
 
 ## Creating New Protos
 To create new proto files, create a new directory for the service inside the `protobuf` folder and
@@ -59,7 +60,7 @@ To generate code from the proto files, run
 make proto-gen
 ```
 
-## Importing Protobuf (in Go)
+## Importing Generated Protobuf (in Go)
 To import the generated protobuf code into your Go project, run
 ```
 go get github.com/cshep4/proto-registry
@@ -98,5 +99,11 @@ func main() {
 
 	log.Printf("Response received: %s", res.Message)
 }
-
 ```
+
+## gRPC Examples
+
+The [example-grpc/](example-grpc) directory contains example gRPC clients & services.
+
+- [example-grpc/hello](example-grpc/hello) contains a simple example of a hello world gRPC service and client.
+- [example-grpc/streaming](example-grpc/streaming) contains a gRPC server and client with example RPC using client-streaming, server-streaming and bi-directional streaming.
