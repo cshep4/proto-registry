@@ -1,12 +1,9 @@
 package main
 
 import (
-	"context"
-	"log/slog"
+	"log"
 	"net"
-	"os"
 
-	"golang.org/x/sync/errgroup"
 	"google.golang.org/grpc"
 
 	"github.com/cshep4/proto-registry/example-grpc/streaming/internal/stream"
@@ -14,29 +11,20 @@ import (
 )
 
 func main() {
-	ctx := context.Background()
-
-	gs := grpc.NewServer()
+	grpcServer := grpc.NewServer()
 
 	streamingService := &stream.Service{}
 
-	proto.RegisterStreamingServiceServer(gs, streamingService)
+	proto.RegisterStreamingServiceServer(grpcServer, streamingService)
 
 	lis, err := net.Listen("tcp", ":50051")
 	if err != nil {
-		slog.Error("failed to listen", slog.String("error", err.Error()))
-		os.Exit(1)
+		log.Fatal(err)
 	}
 
-	eg, ctx := errgroup.WithContext(ctx)
+	log.Printf("starting grpc server on address: %s", ":50051")
 
-	eg.Go(func() error {
-		slog.Info("starting grpc server", slog.String("address", ":50051"))
-		return gs.Serve(lis)
-	})
-
-	if err := eg.Wait(); err != nil {
-		slog.Error("error running server", slog.String("error", err.Error()))
-		os.Exit(1)
+	if err := grpcServer.Serve(lis); err != nil {
+		log.Fatal(err)
 	}
 }

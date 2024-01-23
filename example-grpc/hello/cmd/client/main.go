@@ -13,14 +13,17 @@ import (
 func main() {
 	ctx := context.Background()
 
+	// initialise a gRPC connection
 	conn, err := grpc.Dial("localhost:50051", grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer conn.Close()
 
+	// create client
 	client := proto.NewHelloServiceClient(conn)
 
+	// make gRPC request
 	res, err := client.SayHello(ctx, &proto.SayHelloRequest{Name: "Chris"})
 	if err != nil {
 		log.Fatal(err)

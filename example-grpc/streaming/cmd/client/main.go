@@ -109,8 +109,7 @@ func clientStreaming(ctx context.Context, client proto.StreamingServiceClient) e
 		}
 
 		// stream bytes to server
-		err = stream.Send(&proto.UploadFileRequest{Content: buff[:bytesRead]})
-		if err != nil {
+		if err := stream.Send(&proto.UploadFileRequest{Content: buff[:bytesRead]}); err != nil {
 			return err
 		}
 	}
