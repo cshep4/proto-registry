@@ -43,8 +43,13 @@ func downloadHandler(client proto.StreamingServiceClient) http.HandlerFunc {
 		stream, err := client.DownloadFile(ctx, &proto.DownloadFileRequest{Name: "gopher.png"})
 		if err != nil {
 			// check status code returned from server
-			if st, ok := status.FromError(err); ok && st.Code() == codes.NotFound {
+			st := status.Convert(err)
+			switch st.Code() {
+			case codes.NotFound:
 				http.Error(w, "File not found.", 404)
+				return
+			case codes.InvalidArgument:
+				http.Error(w, "Bad request.", 400)
 				return
 			}
 
