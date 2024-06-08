@@ -4,17 +4,18 @@ import (
 	"context"
 	"log"
 
+	"github.com/cshep4/proto-registry/example-grpc/hello/proto"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
-
-	"github.com/cshep4/proto-registry/example-grpc/hello/proto"
 )
 
 func main() {
 	ctx := context.Background()
 
 	// initialise a gRPC connection
-	conn, err := grpc.Dial("localhost:50051", grpc.WithTransportCredentials(insecure.NewCredentials()))
+	conn, err := grpc.NewClient("localhost:50051",
+		grpc.WithTransportCredentials(insecure.NewCredentials()),
+	)
 	if err != nil {
 		log.Fatal(err)
 	}
