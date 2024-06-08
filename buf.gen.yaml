@@ -1,33 +1,43 @@
-version: v1
+version: v2
 managed:
   enabled: true
 plugins:
-  # go
-  - plugin: buf.build/grpc/go:v1.3.0
+  # Go
+  - remote: buf.build/grpc/go:v1.3.0
     out: gen/go
     opt:
       - paths=source_relative
       - require_unimplemented_servers=false
-  - plugin: buf.build/protocolbuffers/go
+  # Go (ConnectRPC)
+  - remote: buf.build/connectrpc/go:v1.16.2
     out: gen/go
     opt: paths=source_relative
-  # java
-  - plugin: buf.build/grpc/java:v1.55.1
+  - remote: buf.build/protocolbuffers/go
+    out: gen/go
+    opt: paths=source_relative
+  # Java
+  - remote: buf.build/grpc/java:v1.55.1
     out: gen/java/src/main/java
-  - plugin: buf.build/protocolbuffers/java
+  - remote: buf.build/protocolbuffers/java
     out: gen/java/src/main/java
-  # node
-  - plugin: buf.build/community/stephenh-ts-proto:v1.166.2
+  # Node.js (ConnectRPC)
+  - remote: buf.build/connectrpc/es:v1.4.0
+    out: gen/connectes
+    opt: target=ts
+  - remote: buf.build/bufbuild/es
+    out: gen/connectes
+    opt: target=ts
+  # Node.js
+  - remote: buf.build/community/stephenh-ts-proto:v1.166.2
     out: gen/nodejs
-    opt:
-      - esModuleInterop=true
-  # php
-  - plugin: buf.build/grpc/php:v1.60.0
+    opt: esModuleInterop=true
+  # PHP
+  - remote: buf.build/grpc/php:v1.60.0
     out: gen/php
-  - plugin: buf.build/protocolbuffers/php:v25.1
+  - remote: buf.build/protocolbuffers/php:v25.1
     out: gen/php
-  # python
-  - plugin: buf.build/grpc/python:v1.60.0
+  # Python
+  - remote: buf.build/grpc/python:v1.60.0
     out: gen/python
-  - plugin: buf.build/protocolbuffers/python
+  - remote: buf.build/protocolbuffers/python
     out: gen/python

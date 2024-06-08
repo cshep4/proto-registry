@@ -20,7 +20,7 @@ fmt:
 
 .PHONY: mod
 mod:
-	buf mod update protobuf
+	buf dep update protobuf
 
 .PHONY: proto-gen
 proto-gen:

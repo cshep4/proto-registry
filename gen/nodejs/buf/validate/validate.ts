@@ -7,6 +7,220 @@ import { Constraint } from "./expression";
 
 export const protobufPackage = "buf.validate";
 
+/**
+ * Specifies how FieldConstraints.ignore behaves. See the documentation for
+ * FieldConstraints.required for definitions of "populated" and "nullable".
+ */
+export enum Ignore {
+  /**
+   * IGNORE_UNSPECIFIED - Validation is only skipped if it's an unpopulated nullable fields.
+   *
+   * ```proto
+   * syntax="proto3";
+   *
+   * message Request {
+   *   // The uri rule applies to any value, including the empty string.
+   *   string foo = 1 [
+   *     (buf.validate.field).string.uri = true
+   *   ];
+   *
+   *   // The uri rule only applies if the field is set, including if it's
+   *   // set to the empty string.
+   *   optional string bar = 2 [
+   *     (buf.validate.field).string.uri = true
+   *   ];
+   *
+   *   // The min_items rule always applies, even if the list is empty.
+   *   repeated string baz = 3 [
+   *     (buf.validate.field).repeated.min_items = 3
+   *   ];
+   *
+   *   // The custom CEL rule applies only if the field is set, including if
+   *   // it's the "zero" value of that message.
+   *   SomeMessage quux = 4 [
+   *     (buf.validate.field).cel = {/* ... * /}
+   *   ];
+   * }
+   * ```
+   */
+  IGNORE_UNSPECIFIED = 0,
+  /**
+   * IGNORE_IF_UNPOPULATED - Validation is skipped if the field is unpopulated. This rule is redundant
+   * if the field is already nullable. This value is equivalent behavior to the
+   * deprecated ignore_empty rule.
+   *
+   * ```proto
+   * syntax="proto3
+   *
+   * message Request {
+   *   // The uri rule applies only if the value is not the empty string.
+   *   string foo = 1 [
+   *     (buf.validate.field).string.uri = true,
+   *     (buf.validate.field).ignore = IGNORE_IF_UNPOPULATED
+   *   ];
+   *
+   *   // IGNORE_IF_UNPOPULATED is equivalent to IGNORE_UNSPECIFIED in this
+   *   // case: the uri rule only applies if the field is set, including if
+   *   // it's set to the empty string.
+   *   optional string bar = 2 [
+   *     (buf.validate.field).string.uri = true,
+   *     (buf.validate.field).ignore = IGNORE_IF_UNPOPULATED
+   *   ];
+   *
+   *   // The min_items rule only applies if the list has at least one item.
+   *   repeated string baz = 3 [
+   *     (buf.validate.field).repeated.min_items = 3,
+   *     (buf.validate.field).ignore = IGNORE_IF_UNPOPULATED
+   *   ];
+   *
+   *   // IGNORE_IF_UNPOPULATED is equivalent to IGNORE_UNSPECIFIED in this
+   *   // case: the custom CEL rule applies only if the field is set, including
+   *   // if it's the "zero" value of that message.
+   *   SomeMessage quux = 4 [
+   *     (buf.validate.field).cel = {/* ... * /},
+   *     (buf.validate.field).ignore = IGNORE_IF_UNPOPULATED
+   *   ];
+   * }
+   * ```
+   */
+  IGNORE_IF_UNPOPULATED = 1,
+  /**
+   * IGNORE_IF_DEFAULT_VALUE - Validation is skipped if the field is unpopulated or if it is a nullable
+   * field populated with its default value. This is typically the zero or
+   * empty value, but proto2 scalars support custom defaults. For messages, the
+   * default is a non-null message with all its fields unpopulated.
+   *
+   * ```proto
+   * syntax="proto3
+   *
+   * message Request {
+   *   // IGNORE_IF_DEFAULT_VALUE is equivalent to IGNORE_IF_UNPOPULATED in
+   *   // this case; the uri rule applies only if the value is not the empty
+   *   // string.
+   *   string foo = 1 [
+   *     (buf.validate.field).string.uri = true,
+   *     (buf.validate.field).ignore = IGNORE_IF_DEFAULT_VALUE
+   *   ];
+   *
+   *   // The uri rule only applies if the field is set to a value other than
+   *   // the empty string.
+   *   optional string bar = 2 [
+   *     (buf.validate.field).string.uri = true,
+   *     (buf.validate.field).ignore = IGNORE_IF_DEFAULT_VALUE
+   *   ];
+   *
+   *   // IGNORE_IF_DEFAULT_VALUE is equivalent to IGNORE_IF_UNPOPULATED in
+   *   // this case; the min_items rule only applies if the list has at least
+   *   // one item.
+   *   repeated string baz = 3 [
+   *     (buf.validate.field).repeated.min_items = 3,
+   *     (buf.validate.field).ignore = IGNORE_IF_DEFAULT_VALUE
+   *   ];
+   *
+   *   // The custom CEL rule only applies if the field is set to a value other
+   *   // than an empty message (i.e., fields are unpopulated).
+   *   SomeMessage quux = 4 [
+   *     (buf.validate.field).cel = {/* ... * /},
+   *     (buf.validate.field).ignore = IGNORE_IF_DEFAULT_VALUE
+   *   ];
+   * }
+   * ```
+   *
+   * This rule is affected by proto2 custom default values:
+   *
+   * ```proto
+   * syntax="proto2";
+   *
+   * message Request {
+   *   // The gt rule only applies if the field is set and it's value is not
+   *   the default (i.e., not -42). The rule even applies if the field is set
+   *   to zero since the default value differs.
+   *   optional int32 value = 1 [
+   *     default = -42,
+   *     (buf.validate.field).int32.gt = 0,
+   *     (buf.validate.field).ignore = IGNORE_IF_DEFAULT_VALUE
+   *   ];
+   * }
+   */
+  IGNORE_IF_DEFAULT_VALUE = 2,
+  /**
+   * IGNORE_ALWAYS - The validation rules of this field will be skipped and not evaluated. This
+   * is useful for situations that necessitate turning off the rules of a field
+   * containing a message that may not make sense in the current context, or to
+   * temporarily disable constraints during development.
+   *
+   * ```proto
+   * message MyMessage {
+   *   // The field's rules will always be ignored, including any validation's
+   *   // on value's fields.
+   *   MyOtherMessage value = 1 [
+   *     (buf.validate.field).ignore = IGNORE_ALWAYS];
+   * }
+   * ```
+   */
+  IGNORE_ALWAYS = 3,
+  /**
+   * IGNORE_EMPTY - Deprecated: Use IGNORE_IF_UNPOPULATED instead. TODO: Remove this value pre-v1.
+   *
+   * @deprecated
+   */
+  IGNORE_EMPTY = 1,
+  /**
+   * IGNORE_DEFAULT - Deprecated: Use IGNORE_IF_DEFAULT_VALUE. TODO: Remove this value pre-v1.
+   *
+   * @deprecated
+   */
+  IGNORE_DEFAULT = 2,
+  UNRECOGNIZED = -1,
+}
+
+export function ignoreFromJSON(object: any): Ignore {
+  switch (object) {
+    case 0:
+    case "IGNORE_UNSPECIFIED":
+      return Ignore.IGNORE_UNSPECIFIED;
+    case 1:
+    case "IGNORE_IF_UNPOPULATED":
+      return Ignore.IGNORE_IF_UNPOPULATED;
+    case 2:
+    case "IGNORE_IF_DEFAULT_VALUE":
+      return Ignore.IGNORE_IF_DEFAULT_VALUE;
+    case 3:
+    case "IGNORE_ALWAYS":
+      return Ignore.IGNORE_ALWAYS;
+    case 1:
+    case "IGNORE_EMPTY":
+      return Ignore.IGNORE_EMPTY;
+    case 2:
+    case "IGNORE_DEFAULT":
+      return Ignore.IGNORE_DEFAULT;
+    case -1:
+    case "UNRECOGNIZED":
+    default:
+      return Ignore.UNRECOGNIZED;
+  }
+}
+
+export function ignoreToJSON(object: Ignore): string {
+  switch (object) {
+    case Ignore.IGNORE_UNSPECIFIED:
+      return "IGNORE_UNSPECIFIED";
+    case Ignore.IGNORE_IF_UNPOPULATED:
+      return "IGNORE_IF_UNPOPULATED";
+    case Ignore.IGNORE_IF_DEFAULT_VALUE:
+      return "IGNORE_IF_DEFAULT_VALUE";
+    case Ignore.IGNORE_ALWAYS:
+      return "IGNORE_ALWAYS";
+    case Ignore.IGNORE_EMPTY:
+      return "IGNORE_EMPTY";
+    case Ignore.IGNORE_DEFAULT:
+      return "IGNORE_DEFAULT";
+    case Ignore.UNRECOGNIZED:
+    default:
+      return "UNRECOGNIZED";
+  }
+}
+
 /** WellKnownRegex contain some well-known patterns. */
 export enum KnownRegex {
   KNOWN_REGEX_UNSPECIFIED = 0,
@@ -116,8 +330,8 @@ export interface OneofConstraints {
 }
 
 /**
- * FieldRules encapsulates the rules for each type of field. Depending on the
- * field, the correct set should be used to ensure proper validations.
+ * FieldConstraints encapsulates the rules for each type of field. Depending on
+ * the field, the correct set should be used to ensure proper validations.
  */
 export interface FieldConstraints {
   /**
@@ -138,29 +352,16 @@ export interface FieldConstraints {
    */
   cel: Constraint[];
   /**
-   * `skipped` is an optional boolean attribute that specifies that the
-   * validation rules of this field should not be evaluated. If skipped is set to
-   * true, any validation rules set for the field will be ignored.
+   * If `required` is true, the field must be populated. A populated field can be
+   * described as "serialized in the wire format," which includes:
    *
-   * ```proto
-   * message MyMessage {
-   *   // The field `value` must not be set.
-   *   optional MyOtherMessage value = 1 [(buf.validate.field).skipped = true];
-   * }
-   * ```
-   */
-  skipped: boolean;
-  /**
-   * If `required` is true, the field must be populated. Field presence can be
-   * described as "serialized in the wire format," which follows the following rules:
-   *
-   * - the following "nullable" fields must be explicitly set to be considered present:
-   *   - singular message fields (may be their empty value)
+   * - the following "nullable" fields must be explicitly set to be considered populated:
+   *   - singular message fields (whose fields may be unpopulated/default values)
    *   - member fields of a oneof (may be their default value)
    *   - proto3 optional fields (may be their default value)
-   *   - proto2 scalar fields
-   * - proto3 scalar fields must be non-zero to be considered present
-   * - repeated and map fields must be non-empty to be considered present
+   *   - proto2 scalar fields (both optional and required)
+   * - proto3 scalar fields must be non-zero to be considered populated
+   * - repeated and map fields must be non-empty to be considered populated
    *
    * ```proto
    * message MyMessage {
@@ -171,23 +372,21 @@ export interface FieldConstraints {
    */
   required: boolean;
   /**
-   * If `ignore_empty` is true and applied to a non-nullable field (see
-   * `required` for more details), validation is skipped on the field if it is
-   * the default or empty value. Adding `ignore_empty` to a "nullable" field is
-   * a noop as these unset fields already skip validation (with the exception
-   * of `required`).
+   * Skip validation on the field if its value matches the specified criteria.
+   * See Ignore enum for details.
    *
    * ```proto
-   * message MyRepeated {
-   *   // The field `value` min_len rule is only applied if the field isn't empty.
-   *   repeated string value = 1 [
-   *     (buf.validate.field).ignore_empty = true,
-   *     (buf.validate.field).min_len = 5
+   * message UpdateRequest {
+   *   // The uri rule only applies if the field is populated and not an empty
+   *   // string.
+   *   optional string url = 1 [
+   *     (buf.validate.field).ignore = IGNORE_IF_DEFAULT_VALUE,
+   *     (buf.validate.field).string.uri = true,
    *   ];
    * }
    * ```
    */
-  ignoreEmpty: boolean;
+  ignore: Ignore;
   /** Scalar Field Types */
   float?: FloatRules | undefined;
   double?: DoubleRules | undefined;
@@ -215,7 +414,21 @@ export interface FieldConstraints {
   /** Well-Known Field Types */
   any?: AnyRules | undefined;
   duration?: DurationRules | undefined;
-  timestamp?: TimestampRules | undefined;
+  timestamp?:
+    | TimestampRules
+    | undefined;
+  /**
+   * DEPRECATED: use ignore=IGNORE_ALWAYS instead. TODO: remove this field pre-v1.
+   *
+   * @deprecated
+   */
+  skipped: boolean;
+  /**
+   * DEPRECATED: use ignore=IGNORE_IF_UNPOPULATED instead. TODO: remove this field pre-v1.
+   *
+   * @deprecated
+   */
+  ignoreEmpty: boolean;
 }
 
 /**
@@ -2060,6 +2273,22 @@ export interface StringRules {
     | boolean
     | undefined;
   /**
+   * `tuuid` (trimmed UUID) specifies that the field value must be a valid UUID as
+   * defined by [RFC 4122](https://tools.ietf.org/html/rfc4122#section-4.1.2) with all dashes
+   * omitted. If the field value isn't a valid UUID without dashes, an error message
+   * will be generated.
+   *
+   * ```proto
+   * message MyString {
+   *   // value must be a valid trimmed UUID
+   *   string value = 1 [(buf.validate.field).string.tuuid = true];
+   * }
+   * ```
+   */
+  tuuid?:
+    | boolean
+    | undefined;
+  /**
    * `ip_with_prefixlen` specifies that the field value must be a valid IP (v4 or v6)
    * address with prefix length. If the field value isn't a valid IP with prefix
    * length, an error message will be generated.
@@ -2082,7 +2311,7 @@ export interface StringRules {
    *
    * ```proto
    * message MyString {
-   *   // value must be a valid IPv4 address with prefix lentgh
+   *   // value must be a valid IPv4 address with prefix length
    *    string value = 1 [(buf.validate.field).string.ipv4_with_prefixlen = true];
    * }
    * ```
@@ -2155,6 +2384,15 @@ export interface StringRules {
     | boolean
     | undefined;
   /**
+   * `host_and_port` specifies the field value must be a valid host and port
+   * pair. The host must be a valid hostname or IP address while the port
+   * must be in the range of 0-65535, inclusive. IPv6 addresses must be delimited
+   * with square brackets (e.g., `[::1]:1234`).
+   */
+  hostAndPort?:
+    | boolean
+    | undefined;
+  /**
    * `well_known_regex` specifies a common well-known pattern
    * defined as a regex. If the field value doesn't match the well-known
    * regex, an error message will be generated.
@@ -2162,7 +2400,7 @@ export interface StringRules {
    * ```proto
    * message MyString {
    *   // value must be a valid HTTP header value
-   *   string value = 1 [(buf.validate.field).string.well_known_regex = 2];
+   *   string value = 1 [(buf.validate.field).string.well_known_regex = KNOWN_REGEX_HTTP_HEADER_VALUE];
    * }
    * ```
    *
@@ -3018,9 +3256,8 @@ export const OneofConstraints = {
 function createBaseFieldConstraints(): FieldConstraints {
   return {
     cel: [],
-    skipped: false,
     required: false,
-    ignoreEmpty: false,
+    ignore: 0,
     float: undefined,
     double: undefined,
     int32: undefined,
@@ -3042,6 +3279,8 @@ function createBaseFieldConstraints(): FieldConstraints {
     any: undefined,
     duration: undefined,
     timestamp: undefined,
+    skipped: false,
+    ignoreEmpty: false,
   };
 }
 
@@ -3050,14 +3289,11 @@ export const FieldConstraints = {
     for (const v of message.cel) {
       Constraint.encode(v!, writer.uint32(186).fork()).ldelim();
     }
-    if (message.skipped === true) {
-      writer.uint32(192).bool(message.skipped);
-    }
     if (message.required === true) {
       writer.uint32(200).bool(message.required);
     }
-    if (message.ignoreEmpty === true) {
-      writer.uint32(208).bool(message.ignoreEmpty);
+    if (message.ignore !== 0) {
+      writer.uint32(216).int32(message.ignore);
     }
     if (message.float !== undefined) {
       FloatRules.encode(message.float, writer.uint32(10).fork()).ldelim();
@@ -3122,6 +3358,12 @@ export const FieldConstraints = {
     if (message.timestamp !== undefined) {
       TimestampRules.encode(message.timestamp, writer.uint32(178).fork()).ldelim();
     }
+    if (message.skipped === true) {
+      writer.uint32(192).bool(message.skipped);
+    }
+    if (message.ignoreEmpty === true) {
+      writer.uint32(208).bool(message.ignoreEmpty);
+    }
     return writer;
   },
 
@@ -3139,13 +3381,6 @@ export const FieldConstraints = {
 
           message.cel.push(Constraint.decode(reader, reader.uint32()));
           continue;
-        case 24:
-          if (tag !== 192) {
-            break;
-          }
-
-          message.skipped = reader.bool();
-          continue;
         case 25:
           if (tag !== 200) {
             break;
@@ -3153,12 +3388,12 @@ export const FieldConstraints = {
 
           message.required = reader.bool();
           continue;
-        case 26:
-          if (tag !== 208) {
+        case 27:
+          if (tag !== 216) {
             break;
           }
 
-          message.ignoreEmpty = reader.bool();
+          message.ignore = reader.int32() as any;
           continue;
         case 1:
           if (tag !== 10) {
@@ -3307,6 +3542,20 @@ export const FieldConstraints = {
 
           message.timestamp = TimestampRules.decode(reader, reader.uint32());
           continue;
+        case 24:
+          if (tag !== 192) {
+            break;
+          }
+
+          message.skipped = reader.bool();
+          continue;
+        case 26:
+          if (tag !== 208) {
+            break;
+          }
+
+          message.ignoreEmpty = reader.bool();
+          continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -3319,9 +3568,8 @@ export const FieldConstraints = {
   fromJSON(object: any): FieldConstraints {
     return {
       cel: globalThis.Array.isArray(object?.cel) ? object.cel.map((e: any) => Constraint.fromJSON(e)) : [],
-      skipped: isSet(object.skipped) ? globalThis.Boolean(object.skipped) : false,
       required: isSet(object.required) ? globalThis.Boolean(object.required) : false,
-      ignoreEmpty: isSet(object.ignoreEmpty) ? globalThis.Boolean(object.ignoreEmpty) : false,
+      ignore: isSet(object.ignore) ? ignoreFromJSON(object.ignore) : 0,
       float: isSet(object.float) ? FloatRules.fromJSON(object.float) : undefined,
       double: isSet(object.double) ? DoubleRules.fromJSON(object.double) : undefined,
       int32: isSet(object.int32) ? Int32Rules.fromJSON(object.int32) : undefined,
@@ -3343,6 +3591,8 @@ export const FieldConstraints = {
       any: isSet(object.any) ? AnyRules.fromJSON(object.any) : undefined,
       duration: isSet(object.duration) ? DurationRules.fromJSON(object.duration) : undefined,
       timestamp: isSet(object.timestamp) ? TimestampRules.fromJSON(object.timestamp) : undefined,
+      skipped: isSet(object.skipped) ? globalThis.Boolean(object.skipped) : false,
+      ignoreEmpty: isSet(object.ignoreEmpty) ? globalThis.Boolean(object.ignoreEmpty) : false,
     };
   },
 
@@ -3351,14 +3601,11 @@ export const FieldConstraints = {
     if (message.cel?.length) {
       obj.cel = message.cel.map((e) => Constraint.toJSON(e));
     }
-    if (message.skipped === true) {
-      obj.skipped = message.skipped;
-    }
     if (message.required === true) {
       obj.required = message.required;
     }
-    if (message.ignoreEmpty === true) {
-      obj.ignoreEmpty = message.ignoreEmpty;
+    if (message.ignore !== 0) {
+      obj.ignore = ignoreToJSON(message.ignore);
     }
     if (message.float !== undefined) {
       obj.float = FloatRules.toJSON(message.float);
@@ -3423,6 +3670,12 @@ export const FieldConstraints = {
     if (message.timestamp !== undefined) {
       obj.timestamp = TimestampRules.toJSON(message.timestamp);
     }
+    if (message.skipped === true) {
+      obj.skipped = message.skipped;
+    }
+    if (message.ignoreEmpty === true) {
+      obj.ignoreEmpty = message.ignoreEmpty;
+    }
     return obj;
   },
 
@@ -3432,9 +3685,8 @@ export const FieldConstraints = {
   fromPartial<I extends Exact<DeepPartial<FieldConstraints>, I>>(object: I): FieldConstraints {
     const message = createBaseFieldConstraints();
     message.cel = object.cel?.map((e) => Constraint.fromPartial(e)) || [];
-    message.skipped = object.skipped ?? false;
     message.required = object.required ?? false;
-    message.ignoreEmpty = object.ignoreEmpty ?? false;
+    message.ignore = object.ignore ?? 0;
     message.float = (object.float !== undefined && object.float !== null)
       ? FloatRules.fromPartial(object.float)
       : undefined;
@@ -3490,6 +3742,8 @@ export const FieldConstraints = {
     message.timestamp = (object.timestamp !== undefined && object.timestamp !== null)
       ? TimestampRules.fromPartial(object.timestamp)
       : undefined;
+    message.skipped = object.skipped ?? false;
+    message.ignoreEmpty = object.ignoreEmpty ?? false;
     return message;
   },
 };
@@ -5700,12 +5954,14 @@ function createBaseStringRules(): StringRules {
     uriRef: undefined,
     address: undefined,
     uuid: undefined,
+    tuuid: undefined,
     ipWithPrefixlen: undefined,
     ipv4WithPrefixlen: undefined,
     ipv6WithPrefixlen: undefined,
     ipPrefix: undefined,
     ipv4Prefix: undefined,
     ipv6Prefix: undefined,
+    hostAndPort: undefined,
     wellKnownRegex: undefined,
     strict: undefined,
   };
@@ -5782,6 +6038,9 @@ export const StringRules = {
     if (message.uuid !== undefined) {
       writer.uint32(176).bool(message.uuid);
     }
+    if (message.tuuid !== undefined) {
+      writer.uint32(264).bool(message.tuuid);
+    }
     if (message.ipWithPrefixlen !== undefined) {
       writer.uint32(208).bool(message.ipWithPrefixlen);
     }
@@ -5799,6 +6058,9 @@ export const StringRules = {
     }
     if (message.ipv6Prefix !== undefined) {
       writer.uint32(248).bool(message.ipv6Prefix);
+    }
+    if (message.hostAndPort !== undefined) {
+      writer.uint32(256).bool(message.hostAndPort);
     }
     if (message.wellKnownRegex !== undefined) {
       writer.uint32(192).int32(message.wellKnownRegex);
@@ -5977,6 +6239,13 @@ export const StringRules = {
 
           message.uuid = reader.bool();
           continue;
+        case 33:
+          if (tag !== 264) {
+            break;
+          }
+
+          message.tuuid = reader.bool();
+          continue;
         case 26:
           if (tag !== 208) {
             break;
@@ -6018,6 +6287,13 @@ export const StringRules = {
           }
 
           message.ipv6Prefix = reader.bool();
+          continue;
+        case 32:
+          if (tag !== 256) {
+            break;
+          }
+
+          message.hostAndPort = reader.bool();
           continue;
         case 24:
           if (tag !== 192) {
@@ -6067,12 +6343,14 @@ export const StringRules = {
       uriRef: isSet(object.uriRef) ? globalThis.Boolean(object.uriRef) : undefined,
       address: isSet(object.address) ? globalThis.Boolean(object.address) : undefined,
       uuid: isSet(object.uuid) ? globalThis.Boolean(object.uuid) : undefined,
+      tuuid: isSet(object.tuuid) ? globalThis.Boolean(object.tuuid) : undefined,
       ipWithPrefixlen: isSet(object.ipWithPrefixlen) ? globalThis.Boolean(object.ipWithPrefixlen) : undefined,
       ipv4WithPrefixlen: isSet(object.ipv4WithPrefixlen) ? globalThis.Boolean(object.ipv4WithPrefixlen) : undefined,
       ipv6WithPrefixlen: isSet(object.ipv6WithPrefixlen) ? globalThis.Boolean(object.ipv6WithPrefixlen) : undefined,
       ipPrefix: isSet(object.ipPrefix) ? globalThis.Boolean(object.ipPrefix) : undefined,
       ipv4Prefix: isSet(object.ipv4Prefix) ? globalThis.Boolean(object.ipv4Prefix) : undefined,
       ipv6Prefix: isSet(object.ipv6Prefix) ? globalThis.Boolean(object.ipv6Prefix) : undefined,
+      hostAndPort: isSet(object.hostAndPort) ? globalThis.Boolean(object.hostAndPort) : undefined,
       wellKnownRegex: isSet(object.wellKnownRegex) ? knownRegexFromJSON(object.wellKnownRegex) : undefined,
       strict: isSet(object.strict) ? globalThis.Boolean(object.strict) : undefined,
     };
@@ -6149,6 +6427,9 @@ export const StringRules = {
     if (message.uuid !== undefined) {
       obj.uuid = message.uuid;
     }
+    if (message.tuuid !== undefined) {
+      obj.tuuid = message.tuuid;
+    }
     if (message.ipWithPrefixlen !== undefined) {
       obj.ipWithPrefixlen = message.ipWithPrefixlen;
     }
@@ -6166,6 +6447,9 @@ export const StringRules = {
     }
     if (message.ipv6Prefix !== undefined) {
       obj.ipv6Prefix = message.ipv6Prefix;
+    }
+    if (message.hostAndPort !== undefined) {
+      obj.hostAndPort = message.hostAndPort;
     }
     if (message.wellKnownRegex !== undefined) {
       obj.wellKnownRegex = knownRegexToJSON(message.wellKnownRegex);
@@ -6204,12 +6488,14 @@ export const StringRules = {
     message.uriRef = object.uriRef ?? undefined;
     message.address = object.address ?? undefined;
     message.uuid = object.uuid ?? undefined;
+    message.tuuid = object.tuuid ?? undefined;
     message.ipWithPrefixlen = object.ipWithPrefixlen ?? undefined;
     message.ipv4WithPrefixlen = object.ipv4WithPrefixlen ?? undefined;
     message.ipv6WithPrefixlen = object.ipv6WithPrefixlen ?? undefined;
     message.ipPrefix = object.ipPrefix ?? undefined;
     message.ipv4Prefix = object.ipv4Prefix ?? undefined;
     message.ipv6Prefix = object.ipv6Prefix ?? undefined;
+    message.hostAndPort = object.hostAndPort ?? undefined;
     message.wellKnownRegex = object.wellKnownRegex ?? undefined;
     message.strict = object.strict ?? undefined;
     return message;

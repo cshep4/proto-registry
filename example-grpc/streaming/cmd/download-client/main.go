@@ -39,6 +39,9 @@ func main() {
 // The file content will be buffered until the server stream is complete, then the content will be returned to the user.
 func downloadHandler(client proto.StreamingServiceClient) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		if r.Method != http.MethodGet {
+			return
+		}
 		ctx := r.Context()
 
 		// make request to gRPC server and initialise server stream
