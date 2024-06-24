@@ -1,0 +1,18 @@
+{
+  "name": "@cshep4/proto-registry",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cshep4/proto-registry.git"
+  },
+  "version": "1.0.0",
+  "description": "An example repository to show how to effectively store & manage protocol buffer definitions for gRPC services.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Chris Shepherd",
+  "license": "APACHE 2.0",
+  "dependencies": {
+    "@bufbuild/protobuf": "^1.10.0",
+    "protobufjs": "^7.3.2"
+  }
+}
