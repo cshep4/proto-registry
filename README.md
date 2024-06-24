@@ -2,8 +2,6 @@
 
 An example repository to show how to effectively store & manage protocol buffer definitions for gRPC services.
 
-This was created as a reference for the conference talk "Building gRPC Microservices Effectively with Go".
-
 - [Project structure](#project-structure)
 - [Creating New Protos](#creating-new-protos)
 - [Formatting, Generating, Linting and Breaking Change Detection](#formatting-generating-linting-and-breaking-change-detection)

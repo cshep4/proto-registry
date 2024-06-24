@@ -6,14 +6,6 @@ get-buf:
 	brew tap bufbuild/buf
 	brew install buf
 
-.PHONY: break-check
-break-check:
-	buf breaking protobuf --against "ssh://git@github.com/cshep4/proto-registry.git#branch=main,subdir=protobuf"
-
-.PHONY: lint
-lint:
-	buf lint protobuf
-
 .PHONY: fmt
 fmt:
 	buf format -w protobuf
@@ -21,6 +13,14 @@ fmt:
 .PHONY: mod
 mod:
 	buf dep update protobuf
+
+.PHONY: lint
+lint:
+	buf lint protobuf
+
+.PHONY: break-check
+break-check:
+	buf breaking protobuf --against "ssh://git@github.com/cshep4/proto-registry.git#branch=main,subdir=protobuf"
 
 .PHONY: proto-gen
 proto-gen:
